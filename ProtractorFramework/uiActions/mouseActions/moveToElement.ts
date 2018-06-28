@@ -1,4 +1,4 @@
-import { browser, protractor, $ } from "protractor";
+import { browser, protractor, $, ElementFinder } from "protractor";
 import { loginPage_OR } from "../../bdd/objectRepository/loginPage_OR";
 import { checkIfElementExists } from "../verifyActions/checkIfElementExists";
 const { When, Then } = require("cucumber");
@@ -7,10 +7,10 @@ const expect = chai.expect;
 
 const search: loginPage_OR = new loginPage_OR();
 
-const moveToElement = async(element) => {
+const moveToElement = async(elem : ElementFinder) => {
      
     await browser.actions().
-    mouseMove($(search[element])).
+    mouseMove(elem).
     perform();
 };
 

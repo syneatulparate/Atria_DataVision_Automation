@@ -7,8 +7,7 @@ class loginPage_OR {
     constructor() {
         this.txtUserName = "#username";
         this.txtPassword = "#password";
-        this.btnLogin = "button.btn[type='submit']";
-        this.btnLoginRem = "button.btn[type='button']";
+        this.btnLogin = "button.btn[type='submit'";
         this.btnLogout = "a[routerlink='/logout']";
         //this.errMsg = element(by.xpath("//div[@class='toast-message']"));
         //this.errMsg = "div.toast-message";
@@ -17,11 +16,11 @@ class loginPage_OR {
         //this.securityQuestion = "label[for='security-answer']";
         this.securityQuestion = ".flexcol-2.p";
         this.securityAnswer = "input#security-answer";
-        this.lnkforgotpass = "div[class='col-6 tar'] >  a"; //"a[href='#/login/forgotpassword']";//div[class='col-6 tar'] >  
-        this.txtemail = "input#security-email";
-        this.clserrrMsg = ".toast.alert-danger>.toast-close svg";
-        this.txtOTP = "#code";
-        this.txtforgtOTP = "input#opt-text";
+        //this.changeAuthMethod = ".form-group a";
+        this.changeAuthMethod = "div.form-group a"; //"div .form-group a";
+        this.changeMethodDropDown = "#method";
+        this.changeMethodOptions = "select option";
+        this.changeMethodSearchBtn = ".btn.btn-small";
     }
 }
 exports.loginPage_OR = loginPage_OR;

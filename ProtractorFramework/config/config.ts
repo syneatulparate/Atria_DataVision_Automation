@@ -1,26 +1,29 @@
 import * as path from "path";
 import { browser, Config } from "protractor";
 import { Reporter } from "../support/reporter";
-import {} from "../../"
+
 
 const jsonReports = process.cwd() + "/reports/json";
 
+
+export enum Env {
+    QA = "http://172.20.235.129:3000",
+    Dev = "http://172.20.235.113:3000",
+    UAT = "",
+}
+
 export const config: Config = {
 
-    
     seleniumAddress: "http://127.0.0.1:4444/wd/hub",
 
     SELENIUM_PROMISE_MANAGER: false,
 
-    baseUrl: "http://172.20.235.129:3000/",
-    //baseUrl: "http://newtours.demoaut.com/",
-
+    baseUrl: Env.QA,
+    //baseUrl: Env.Dev,
 
     capabilities: {
-        browserName: "chrome",
-       // browserName: "internet explorer",
-        
-        //maxInstances:2
+       browserName: "chrome",
+        //browserName : "firefox",
     },
    /* multiCapabilities: [
 
@@ -28,9 +31,7 @@ export const config: Config = {
             browserName : "chrome",  
         }, {
             browserName : "firefox"
-        },{
-            browserName : "internet explorer"
-        }
+        },
 
     ],*/
        
@@ -40,28 +41,25 @@ export const config: Config = {
     frameworkPath: require.resolve("protractor-cucumber-framework"),
 
     specs: [
-        "../../bdd/Features/*/*.feature",  
-        
+        "../../bdd/Features/*/*.feature",          
     ],
 
     onPrepare: () => {
         browser.ignoreSynchronization = true;
         browser.manage().window().maximize();
         Reporter.createDirectory(jsonReports);
-        //browser.manage().timeouts().implicitlyWait(2000);
     },
 
     cucumberOpts: {
         compiler: "ts:ts-node/register",
         format: "json:./reports/json/cucumber_report.json",
-        require: ["../../bdd/StepDefinition/*/*.ts", "../../support/*.ts"],
+        require: ["../../bdd/StepDefinition/*.ts", "../../support/*.ts"],
         strict: true,
-        tags: "@UVL>1Day2FAConfigModernInvalidOTP",
-        
-        
+        tags: "@Sprint41",       
     },
+    
 
     onComplete: () => {
-        Reporter.createHTMLReport();
+       Reporter.createHTMLReport();
     },
 };

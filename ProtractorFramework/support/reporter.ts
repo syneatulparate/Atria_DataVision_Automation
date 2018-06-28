@@ -14,6 +14,7 @@ const cucumberReporterOptions = {
     output: htmlReports + "/cucumber_reporter.html",
     reportSuiteAsScenarios: true,
     theme: "bootstrap",
+
     //theme: "hierarchy"
 
 };

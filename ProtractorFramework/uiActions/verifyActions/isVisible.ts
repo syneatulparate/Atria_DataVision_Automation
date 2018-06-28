@@ -12,7 +12,7 @@ const isVisible = async(element, falseCase) => {
      * Visible state of the give element
      * @type {String}
      */
-    const isVisible = await ($(search[element])).isDisplayed();
+    const isVisible = await (element).isDisplayed();
 
     
 

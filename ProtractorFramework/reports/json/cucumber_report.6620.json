@@ -24,7 +24,7 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 23,
-            "name": "User go to DV3 url \"https://dv3.orcasnet.com/\"",
+            "name": "I go to DV3 url \"https://dv3.orcasnet.com/\"",
             "match": {
               "location": "bdd\\StepDefinition\\LoginPage\\LoginPage_stepdef.ts:15"
             },
@@ -37,7 +37,7 @@
             "arguments": [],
             "keyword": "When ",
             "line": 24,
-            "name": "User set \"MOHAN\" to the inputfield \"txtUserName\"",
+            "name": "I set \"MOHAN\" to the inputfield \"txtUserName\"",
             "match": {
               "location": "bdd\\StepDefinition\\LoginPage\\LoginPage_stepdef.ts:26"
             },
@@ -50,7 +50,7 @@
             "arguments": [],
             "keyword": "When ",
             "line": 25,
-            "name": "User set \"Dec!234567\" to the inputfield \"txtPassword\"",
+            "name": "I set \"Dec!234567\" to the inputfield \"txtPassword\"",
             "match": {
               "location": "bdd\\StepDefinition\\LoginPage\\LoginPage_stepdef.ts:26"
             },
@@ -63,7 +63,7 @@
             "arguments": [],
             "keyword": "When ",
             "line": 26,
-            "name": "User click on the button \"btnLogin\"",
+            "name": "I click on the button \"btnLogin\"",
             "match": {
               "location": "bdd\\StepDefinition\\LoginPage\\LoginPage_stepdef.ts:36"
             },
@@ -76,7 +76,7 @@
             "arguments": [],
             "keyword": "Then ",
             "line": 27,
-            "name": "User expect that the title is \"Log In – dataVISION\"",
+            "name": "I expect that the title is \"Log In – dataVISION\"",
             "match": {
               "location": "bdd\\StepDefinition\\LoginPage\\LoginPage_stepdef.ts:20"
             },
@@ -89,7 +89,7 @@
             "arguments": [],
             "keyword": "When ",
             "line": 28,
-            "name": "User set \"SHASHI\" to the inputfield \"securityAnswer\"",
+            "name": "I set \"SHASHI\" to the inputfield \"securityAnswer\"",
             "match": {
               "location": "bdd\\StepDefinition\\LoginPage\\LoginPage_stepdef.ts:26"
             },
@@ -135,7 +135,7 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 23,
-            "name": "User go to DV3 url \"https://dv3.orcasnet.com/\"",
+            "name": "I go to DV3 url \"https://dv3.orcasnet.com/\"",
             "match": {
               "location": "bdd\\StepDefinition\\LoginPage\\LoginPage_stepdef.ts:15"
             },
@@ -148,7 +148,7 @@
             "arguments": [],
             "keyword": "When ",
             "line": 24,
-            "name": "User set \"Atul\" to the inputfield \"txtUserName\"",
+            "name": "I set \"Atul\" to the inputfield \"txtUserName\"",
             "match": {
               "location": "bdd\\StepDefinition\\LoginPage\\LoginPage_stepdef.ts:26"
             },
@@ -161,7 +161,7 @@
             "arguments": [],
             "keyword": "When ",
             "line": 25,
-            "name": "User set \"Testing\" to the inputfield \"txtPassword\"",
+            "name": "I set \"Testing\" to the inputfield \"txtPassword\"",
             "match": {
               "location": "bdd\\StepDefinition\\LoginPage\\LoginPage_stepdef.ts:26"
             },
@@ -174,7 +174,7 @@
             "arguments": [],
             "keyword": "When ",
             "line": 26,
-            "name": "User click on the button \"btnLogin\"",
+            "name": "I click on the button \"btnLogin\"",
             "match": {
               "location": "bdd\\StepDefinition\\LoginPage\\LoginPage_stepdef.ts:36"
             },
@@ -187,7 +187,7 @@
             "arguments": [],
             "keyword": "Then ",
             "line": 27,
-            "name": "User expect that the title is \"Log In – dataVISION\"",
+            "name": "I expect that the title is \"Log In – dataVISION\"",
             "match": {
               "location": "bdd\\StepDefinition\\LoginPage\\LoginPage_stepdef.ts:20"
             },
@@ -200,7 +200,7 @@
             "arguments": [],
             "keyword": "When ",
             "line": 28,
-            "name": "User set \"SHASHI\" to the inputfield \"securityAnswer\"",
+            "name": "I set \"SHASHI\" to the inputfield \"securityAnswer\"",
             "match": {
               "location": "bdd\\StepDefinition\\LoginPage\\LoginPage_stepdef.ts:26"
             },
@@ -246,7 +246,7 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 36,
-            "name": "User go to DV3 url \"https://dv3.orcasnet.com/\"",
+            "name": "I go to DV3 url \"https://dv3.orcasnet.com/\"",
             "match": {
               "location": "bdd\\StepDefinition\\LoginPage\\LoginPage_stepdef.ts:15"
             },
@@ -259,7 +259,7 @@
             "arguments": [],
             "keyword": "When ",
             "line": 37,
-            "name": "User set \"Test\" to the inputfield \"txtUserName\"",
+            "name": "I set \"Test\" to the inputfield \"txtUserName\"",
             "match": {
               "location": "bdd\\StepDefinition\\LoginPage\\LoginPage_stepdef.ts:26"
             },
@@ -272,7 +272,7 @@
             "arguments": [],
             "keyword": "When ",
             "line": 38,
-            "name": "User set \"Dec!234567\" to the inputfield \"txtPassword\"",
+            "name": "I set \"Dec!234567\" to the inputfield \"txtPassword\"",
             "match": {
               "location": "bdd\\StepDefinition\\LoginPage\\LoginPage_stepdef.ts:26"
             },
@@ -285,7 +285,7 @@
             "arguments": [],
             "keyword": "When ",
             "line": 39,
-            "name": "User click on the button \"btnLogin\"",
+            "name": "I click on the button \"btnLogin\"",
             "match": {
               "location": "bdd\\StepDefinition\\LoginPage\\LoginPage_stepdef.ts:36"
             },
@@ -298,7 +298,7 @@
             "arguments": [],
             "keyword": "Then ",
             "line": 40,
-            "name": "User expect that element \"errMsg\" contains the text \"Bad username or password\"",
+            "name": "I expect that element \"errMsg\" contains the text \"Bad username or password\"",
             "match": {
               "location": "bdd\\StepDefinition\\LoginPage\\LoginPage_stepdef.ts:41"
             },

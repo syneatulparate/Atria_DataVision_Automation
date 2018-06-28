@@ -14,9 +14,9 @@ const { When, Then } = require("cucumber");
 const chai = require("chai").use(require("chai-as-promised"));
 const expect = chai.expect;
 const search = new loginPage_OR_1.loginPage_OR();
-const moveToElement = (element) => __awaiter(this, void 0, void 0, function* () {
+const moveToElement = (elem) => __awaiter(this, void 0, void 0, function* () {
     yield protractor_1.browser.actions().
-        mouseMove(protractor_1.$(search[element])).
+        mouseMove(elem).
         perform();
 });
 exports.moveToElement = moveToElement;

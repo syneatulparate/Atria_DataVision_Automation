@@ -8,19 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const protractor_1 = require("protractor");
-const loginPage_OR_1 = require("../../bdd/objectRepository/loginPage_OR");
 const { When, Then } = require("cucumber");
 const chai = require("chai").use(require("chai-as-promised"));
 const expect = chai.expect;
-const search = new loginPage_OR_1.loginPage_OR();
-const clearInputField = (element) => __awaiter(this, void 0, void 0, function* () {
+const clearInputField = (elem) => __awaiter(this, void 0, void 0, function* () {
     /**
     * The command to perform on the browser object (addValue or setValue)
     * @type {String}
     */
-    yield protractor_1.$(search[element]).clear();
-    // browser.setValue( element, value )
-    // browser[command](element, checkValue);
+    yield elem.clear();
 });
 exports.clearInputField = clearInputField;

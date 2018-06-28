@@ -9,10 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const protractor_1 = require("protractor");
+const config_1 = require("../../config/config");
 const { When, Then } = require("cucumber");
 const chai = require("chai").use(require("chai-as-promised"));
 const expect = chai.expect;
-const openWebsite = (type, page) => __awaiter(this, void 0, void 0, function* () {
-    yield protractor_1.browser.get(page);
+const openWebsite = () => __awaiter(this, void 0, void 0, function* () {
+    yield protractor_1.browser.get(config_1.config.baseUrl);
 });
 exports.openWebsite = openWebsite;

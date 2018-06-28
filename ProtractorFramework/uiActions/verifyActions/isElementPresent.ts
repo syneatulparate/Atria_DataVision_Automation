@@ -1,32 +1,23 @@
 import { browser, protractor, $ } from "protractor";
-import { loginPage_OR } from "../../bdd/objectRepository/loginPage_OR";
 import { checkIfElementExists } from "../verifyActions/checkIfElementExists";
 const { When, Then } = require("cucumber");
 const chai = require("chai").use(require("chai-as-promised"));
 const expect = chai.expect;
 
-const search: loginPage_OR = new loginPage_OR();
-
-const isElementPresent = async(element, falseCase) => {
+const isElementPresent = async(element) => {
     /**
      * Visible state of the give element
      * @type {String}
      */
-    const isElementPresent = await browser.isElementPresent($(search[element]));
-                            
-
-    // if (falseCase) {
-    //     expect(isElementPresent).to.not
-    //         .equal(true, `Expected element "${element}" not to be visible`);
-    // } else {
-    //     expect(isElementPresent).to
-    //         .equal(true, `Expected element "${element}" to be visible`);
-    // }
+    const isElementPresent = await browser.isElementPresent(element);
+         
     if (isElementPresent) {
-        expect(isElementPresent).to.equal(true, `Expected element "${element}" to be visible`);
-    } else {
 
-        expect(isElementPresent).to.not.equal(true, `Expected element "${element}" not to be visible`);
+        expect(isElementPresent).to.equal(true, `Expected element "${element}" to be visible`);
+        console.log("from true part");
+    } else {
+        expect(isElementPresent).to.equal(false, `Expected element "${element}" not to be visible`);
+        console.log("from false part");
     }
 };
 
