@@ -8,7 +8,7 @@ import { isVisible } from "../../uiActions/verifyActions/isVisible";
 import { isElementPresent } from "../../uiActions/verifyActions/isElementPresent";
 import { securityQuestions } from "../../testData/securityQuestions";
 import { clearInputField } from "../../uiActions/keyboardActions/clearInputField";
-import { waitForObject } from "../../uiActions/waitActions/waitActions";
+import { waitForObject ,staticWait} from "../../uiActions/waitActions/waitActions";
 export class ForgotPasswordPage {
 
     public txtUsername : ElementFinder;
@@ -69,6 +69,8 @@ export class ForgotPasswordPage {
             await isElementPresent(this.emailTextField)
         }
         verifyOTPField = async() =>{
+
+            await staticWait(3000)
             await waitForObject(this.txtOTP)
             await isElementPresent(this.txtOTP)
         }
@@ -108,7 +110,7 @@ export class ForgotPasswordPage {
         }
 
         enterMultipleInvalidOTP = async (OTP) => {
-          for(var i = 1; i <= 4;i++ ){
+          for(var i = 1; i <= 3;i++ ){
               console.log(i);
             await enterText(this.txtOTP,OTP);
             await this.clickOnContinue();

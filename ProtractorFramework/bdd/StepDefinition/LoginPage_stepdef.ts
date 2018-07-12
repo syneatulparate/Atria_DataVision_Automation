@@ -11,6 +11,7 @@ import { checkContainsTextInElementValue } from "../../uiActions/verifyActions/c
 //import { selectAuthMethodFromDropDown } from "../../uiActions/userDefined/businessActions";
 import { LoginPage } from "../Pages/LoginPage";
 import { waitForObject } from "../../uiActions/waitActions/waitActions";
+import { moveToElement } from "../../uiActions/mouseActions/moveToElement";
 
 
 const { Given } = require("cucumber");
@@ -48,8 +49,10 @@ When(/^User enter securityAnswer to the securityAnswer input field$/, async () =
     await loginPage.enterSecurityAnswer();
 });
 
-Then(/^User logout from the account$/, async () => {
+Then(/^User logout from the account$/, async () => {  
+        // await waitForObject(loginPage.logoutBtn)
         await loginPage.clickOnLogOut();
+        await waitForObject(loginPage.txtUsername)
     });
 //---------------------------------------------------------------Hardik
 
@@ -75,14 +78,14 @@ Then(/^User expects that title  contains the text "([^"]*)?"$/, async (headerMes
     await loginPage.verifyPageTitle(headerMessage);
 });
 
-When(/^User enters invalid Otp "([^"]*)?" 4 times$/, async (OTP) => {
+When(/^User enters invalid Otp "([^"]*)?" 3 times$/, async (OTP) => {
     await loginPage.enterMultipleInvalidOTP(OTP);
 });
 
 Then(/^User expect that the OTP field is Present$/, async () => {
     await loginPage.verifyOTPField();
 });
-When(/^User enters invalid Ans "([^"]*)?" 4 times$/, async (ANS) => {
+When(/^User enters invalid Ans "([^"]*)?" 3 times$/, async (ANS) => {
     await loginPage.enterMultipleInvalidAns(ANS);
 });
 Then(/^User expect that the SecAns field is displayed$/, async () => {

@@ -46,6 +46,7 @@ class ForgotPasswordPage {
             yield isElementPresent_1.isElementPresent(this.emailTextField);
         });
         this.verifyOTPField = () => __awaiter(this, void 0, void 0, function* () {
+            yield waitActions_1.staticWait(3000);
             yield waitActions_1.waitForObject(this.txtOTP);
             yield isElementPresent_1.isElementPresent(this.txtOTP);
         });
@@ -82,7 +83,7 @@ class ForgotPasswordPage {
             yield clickElement_1.clickElement(this.msgCloseButton);
         });
         this.enterMultipleInvalidOTP = (OTP) => __awaiter(this, void 0, void 0, function* () {
-            for (var i = 1; i <= 4; i++) {
+            for (var i = 1; i <= 3; i++) {
                 console.log(i);
                 yield setInputField_1.enterText(this.txtOTP, OTP);
                 yield this.clickOnContinue();

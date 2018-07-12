@@ -35,7 +35,9 @@ When(/^User enter securityAnswer to the securityAnswer input field$/, () => __aw
     yield loginPage.enterSecurityAnswer();
 }));
 Then(/^User logout from the account$/, () => __awaiter(this, void 0, void 0, function* () {
+    // await waitForObject(loginPage.logoutBtn)
     yield loginPage.clickOnLogOut();
+    yield waitActions_1.waitForObject(loginPage.txtUsername);
 }));
 //---------------------------------------------------------------Hardik
 When(/^User click on the logout button and verifies the title "([^"]*)?" is Present$/, (headerMessage) => __awaiter(this, void 0, void 0, function* () {
@@ -55,13 +57,13 @@ Then(/^User expects that title  contains the text "([^"]*)?"$/, (headerMessage) 
     yield waitActions_1.waitForObject(loginPage.logoutBtn);
     yield loginPage.verifyPageTitle(headerMessage);
 }));
-When(/^User enters invalid Otp "([^"]*)?" 4 times$/, (OTP) => __awaiter(this, void 0, void 0, function* () {
+When(/^User enters invalid Otp "([^"]*)?" 3 times$/, (OTP) => __awaiter(this, void 0, void 0, function* () {
     yield loginPage.enterMultipleInvalidOTP(OTP);
 }));
 Then(/^User expect that the OTP field is Present$/, () => __awaiter(this, void 0, void 0, function* () {
     yield loginPage.verifyOTPField();
 }));
-When(/^User enters invalid Ans "([^"]*)?" 4 times$/, (ANS) => __awaiter(this, void 0, void 0, function* () {
+When(/^User enters invalid Ans "([^"]*)?" 3 times$/, (ANS) => __awaiter(this, void 0, void 0, function* () {
     yield loginPage.enterMultipleInvalidAns(ANS);
 }));
 Then(/^User expect that the SecAns field is displayed$/, () => __awaiter(this, void 0, void 0, function* () {

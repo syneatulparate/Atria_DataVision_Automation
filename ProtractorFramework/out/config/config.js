@@ -13,9 +13,10 @@ exports.config = {
     seleniumAddress: "http://127.0.0.1:4444/wd/hub",
     SELENIUM_PROMISE_MANAGER: false,
     baseUrl: Env.QA,
-    //baseUrl: Env.Dev,
+    // baseUrl: Env.Dev,
     capabilities: {
-        browserName: "chrome",
+        // browserName: "chrome",
+        browserName: "MicrosoftEdge",
     },
     /* multiCapabilities: [
  
@@ -41,7 +42,7 @@ exports.config = {
         format: "json:./reports/json/cucumber_report.json",
         require: ["../../bdd/StepDefinition/*.ts", "../../support/*.ts"],
         strict: true,
-        tags: "@Sprint41",
+        tags: "@Sprint4",
     },
     onComplete: () => {
         reporter_1.Reporter.createHTMLReport();

@@ -19,11 +19,11 @@ export const config: Config = {
     SELENIUM_PROMISE_MANAGER: false,
 
     baseUrl: Env.QA,
-    //baseUrl: Env.Dev,
+   // baseUrl: Env.Dev,
 
     capabilities: {
-       browserName: "chrome",
-        //browserName : "firefox",
+      // browserName: "chrome",
+        browserName : "MicrosoftEdge",
     },
    /* multiCapabilities: [
 
@@ -55,11 +55,11 @@ export const config: Config = {
         format: "json:./reports/json/cucumber_report.json",
         require: ["../../bdd/StepDefinition/*.ts", "../../support/*.ts"],
         strict: true,
-        tags: "@Sprint41",       
+        tags: "@Sprint4",       
     },
     
 
     onComplete: () => {
-       Reporter.createHTMLReport();
+        Reporter.createHTMLReport();
     },
 };

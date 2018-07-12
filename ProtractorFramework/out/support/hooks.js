@@ -11,36 +11,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const { BeforeAll, Before, After, Status, defineSupportCode, setDefaultTimeout } = require("cucumber");
 const protractor_1 = require("protractor");
 const config_1 = require("../config/config");
-setDefaultTimeout(30 * 1000);
+setDefaultTimeout(30 * 10000);
 BeforeAll({ timeout: 10 * 10000 }, () => __awaiter(this, void 0, void 0, function* () {
     yield protractor_1.browser.get(config_1.config.baseUrl);
 }));
-/*defineSupportCode(function({registerHandler}) {
-    registerHandler('AfterFeatures', function (features, callback) {
-  
-      var reporter = require('cucumber-html-reporter');
-  
-      var bootstrapOptions = {
-            theme: 'bootstrap',
-            jsonFile: 'reports/cucumber.json',
-            output: 'reports/bootstrap-report.html',
-            reportSuiteAsScenarios: true,
-            launchReport: true,
-            metadata: {
-                      'App Version': '1.0.0',
-                      'Test Environment': 'STAGING',
-                      'Browser': 'Chrome',
-                      'Platform': 'MacOS',
-                      'Parallel': 'Features'
-                  }
-          };
-  
-          reporter.generate(bootstrapOptions);
-  
-          callback();
-    });
-
-})*/
 After(function (scenario) {
     return __awaiter(this, void 0, void 0, function* () {
         if (scenario.result.status === Status.FAILED) {

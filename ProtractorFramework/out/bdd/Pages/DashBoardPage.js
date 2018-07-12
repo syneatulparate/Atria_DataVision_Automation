@@ -10,11 +10,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const protractor_1 = require("protractor");
 const clickElement_1 = require("../../uiActions/mouseActions/clickElement");
+const isElementPresent_1 = require("../../uiActions/verifyActions/isElementPresent");
 const waitActions_1 = require("../../uiActions/waitActions/waitActions");
 class DashBoardPage {
     constructor() {
         this.clickOnAdminButton = () => __awaiter(this, void 0, void 0, function* () {
             yield console.log("Admin");
+            yield waitActions_1.waitForObject(this.adminButton);
             yield clickElement_1.clickElement(this.adminButton);
         });
         this.clickOnRolesAndPermissionLink = () => __awaiter(this, void 0, void 0, function* () {
@@ -27,6 +29,13 @@ class DashBoardPage {
             yield waitActions_1.waitForObject(this.rolesAndPermissionLink);
             yield this.clickOnRolesAndPermissionLink();
             yield waitActions_1.waitForObject(this.headerMsg);
+        });
+        this.verifyAdminLink = () => __awaiter(this, void 0, void 0, function* () {
+            let flag;
+            return yield isElementPresent_1.isElementPresent(this.adminButton).then(function (flag) {
+                console.log("value of the flag = " + flag);
+                return flag;
+            });
         });
         this.adminButton = protractor_1.element(protractor_1.by.css("a[routerlink='admin']"));
         this.rolesAndPermissionLink = protractor_1.element(protractor_1.by.css("a[routerlink='roles']"));

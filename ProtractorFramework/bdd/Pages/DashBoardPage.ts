@@ -22,6 +22,7 @@ export class DashBoardPage{
     }
     clickOnAdminButton = async () => {
         await console.log("Admin");
+        await waitForObject(this.adminButton)
         await clickElement(this.adminButton);
 
     }
@@ -39,10 +40,14 @@ export class DashBoardPage{
         await waitForObject(this.headerMsg)
 
     }
+
     verifyAdminLink = async()=>{
-        await isElementPresent(this.adminButton)
+       
+        let flag: any;
+        return await isElementPresent(this.adminButton).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+        });
     }
-
-
 
 }

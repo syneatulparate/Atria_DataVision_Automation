@@ -15,14 +15,13 @@ const waitForObject = async (element) => browser.wait(async () => {
                 console.log("Object not found --> " + element);
                 return false
             });
-}, 40 * 1000);  
+}, 30 * 1000);  
 
 
-
+export { waitForObject }
 const staticWait = async (TimeValue: number) => {
     await browser.sleep(TimeValue);
 }
 
 export { staticWait }
 
-export { waitForObject }

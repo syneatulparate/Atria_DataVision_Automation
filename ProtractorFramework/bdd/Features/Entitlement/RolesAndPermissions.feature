@@ -1,112 +1,73 @@
 Feature: Entitlement
 
-
-    ########################## Hardik ###################################
     Background: Roles and Permissions
         Given User is on Login page
-        When  User log in with "classicdev49" and "drowssap" and navigates to Roles and Permission Page
+        When  User log in with "classicdev48" and "drowssap" and navigates to Roles and Permission Page
 
-# @SearchWithfirstName @Sprint3
-# Scenario Outline: Roles & Permissions - Search the user using first name
-#     Given User go to DV3 Application
-#     When  User enters valid "<username>" and "<password>" and click login button
-#     Then  User expects that title  contains the text "Dashboard – dataVISION"
-#     When  User navigates to Roles and Permissions page
-#     When  User clicks on details of "<role>" role
-#     When  User clicks on the add user button and verifies the search textbox is displyed
-#     When  User enters "<firstName>" in the search text box
-#     Then  User expect that name with "<firstName>" is displayed
-#     Examples:
-#         | username     | password | firstName | role |
-#         | Classicdev49 | drowssap | Brain     | 543  |
+    @SearchWithfirstName @Sprint3
+    Scenario Outline: Roles & Permissions - Search the user using first name
+        When  User clicks on details of "<role>" role
+        When  User clicks on the add user button and verifies the search textbox is displyed
+        When  User enters "<firstName>" in the search text box
+        Then  User expect that name with "<firstName>" is displayed
+        Examples:
+            | firstName | role       |
+            | Kate      | Super User |
 
-# @SearchWithLastName @Sprint3
-# Scenario Outline: Roles & Permissions - Search the user using last name
-#     Given User go to DV3 Application
-#     When  User enters valid "<username>" and "<password>" and click login button
-#     Then  User expects that title  contains the text "Dashboard – dataVISION"
-#     When  User navigates to Roles and Permissions page
-#     When  User clicks on details of "<role>" role
-#     When  User clicks on the add user button and verifies the search textbox is displyed
-#     When  User enters "<lastName>" in the search text box
-#     Then  User expect that name with "<lastName>" is displayed
-#     Examples:
-#         | username | password | lastName  | role |
-#         |          |          | Fernandes | xyz  |
+    @SearchWithLastName @Sprint3
+    Scenario Outline: Roles & Permissions - Search the user using last name
+        When  User clicks on details of "<role>" role
+        When  User clicks on the add user button and verifies the search textbox is displyed
+        When  User enters "<lastName>" in the search text box
+        Then  User expect that name with "<lastName>" is displayed
+        Examples:
+            | lastName | role       |
+            | Mater    | Super User |
 
-# @SearchWithPartialName @Sprint3
-# Scenario Outline: Roles & Permissions - Search the user by entering partial username
-#     Given User go to DV3 Application
-#     When  User enters valid "<username>" and "<password>" and click login button
-#     Then  User expects that title  contains the text "Dashboard – dataVISION"
-#     When  User navigates to Roles and Permissions page
-#     When  User clicks on details of "<role>" role
-#     When  User clicks on the add user button and verifies the search textbox is displyed
-#     When  User enters "<partialUserName>" in the search text box
-#     Then  User expect that names with "<partialUserName>" is displayed
-#     Examples:
-#         | username | password | partialUserName | role |
-#         |          |          | Bfer            | xyx  |
+    @SearchWithPartialName @Sprint3
+    Scenario Outline: Roles & Permissions - Search the user by entering partial username
+        When  User clicks on details of "<role>" role
+        When  User clicks on the add user button and verifies the search textbox is displyed
+        When  User enters "<partialUserName>" in the search text box
+        Then  User expect that name with "<partialUserName>" is displayed
+        Examples:
+            | partialUserName | role       |
+            | ful             | Super User |
 
-# @AdduserWithSearch @Sprint3
-# Scenario Outline: Roles & Permissions - Verify adding user to a role with search
-#     Given User go to DV3 Application
-#     When  User enters valid "<username>" and "<password>" and click login button
-#     Then  User expects that title  contains the text "Dashboard – dataVISION"
-#     When  User navigates to Roles and Permissions page
-#     When  User clicks on details of "<role>" role
-#     When  User clicks on the add user button and verifies the search textbox is displyed
-#     When  User enters "<roleUserName>" in the search text box
-#     When  User selects the username from the list
-#     When  User clicks on Add selected user button
-#     Then  User expects that the selected user gets assigned to the role
-#     Examples:
-#         | username | password | roleUserName | role |
-#         |          |          | Brian        | xyx  |
+    @AdduserWithSearch @Sprint3 @test3
+    Scenario Outline: Roles & Permissions - Verify adding user to a role with search
+        When  User clicks on details of "<role>" role
+        When  User clicks on the add user button and verifies the search textbox is displyed
+        When  User enters "<searchUserName>" in the search text box
+        When  User selects "<selectUserName>" from the list
+        When  User clicks on Add selected user button
+        Then  User expects that "<selectUserName>" is added successfully
+        Examples:
+            | searchUserName | role       | selectUserName                     |
+            | Prajyot        | Super User | Prajyot Fulsundar PFULSUNDAR (cfs) |
 
-# @AdduserWithoutSearch @Sprint3
-# Scenario Outline: Roles & Permissions - Verify adding user to a role without search
-#     Given User go to DV3 Application
-#     When  User enters valid "<username>" and "<password>" and click login button
-#     Then  User expects that title  contains the text "Dashboard – dataVISION"
-#     When  User navigates to Roles and Permissions page
-#     When  User clicks on details of "<role>" role
-#     When  User clicks on add user button
-#     When  User selects the username from the list
-#     When  User clicks on Add selected user button
-#     Then  User expects that the selected user gets assigned to the role
-#     Examples:
-#         | username | password |
-#         |          |          |
+    @StopAddUser @Sprint3
+    Scenario Outline: Roles & Permissions - Verify adding user to a role
+        When  User clicks on details of "<role>" role
+        When  User clicks on the add user button and verifies the search textbox is displyed
+        When  User enters "<searchUserName>" in the search text box
+        When  User selects "<selectUserName>" from the list
+        When  User clicks on Cancel button
+        Then  User expects that "<searchUserName>" is not added
+        Examples:
+            | searchUserName    | role       | selectUserName          |
+            | Prajyot Fulsundar | Super User | Prajyot Fulsundar (cfs) |
 
-# @StopAddUser @Sprint3
-# Scenario Outline: Roles & Permissions - Verify adding user to a role
-#     Given User go to DV3 Application
-#     When  User enters valid "<username>" and "<password>" and click login button
-#     Then  User expects that title  contains the text "Dashboard – dataVISION"
-#     When  User navigates to Roles and Permissions page
-#     When  User clicks on details of "<role>" role
-#     When  User clicks on the add user button and verifies the search textbox is displyed
-#     # When  User enters "<roleUserName>" in the search text box
-#     When  User clicks on Cancel button
-#     Then  User navigates back to role details page without adding the "new user"
-#     Examples:
-#         | username     | password | roleUserName | role  |
-#         | classicdev49 | drowssap | Brian        | 34545 |
 
-# @RemoveRoleFromUser @Sprint3
-# Scenario Outline: Roles & Permissions - Verify removing role form the user
-#     Given User go to DV3 Application
-#     When  User enters valid "<username>" and "<password>" and click login button
-#     Then  User expects that title  contains the text "Dashboard – dataVISION"
-#     When  User navigates to Roles and Permissions page
-#     When  User clicks on details of "<role>" role
-#     When  User removes "<roleUserName>" from the role
-#     Then  User expects that the removed user is not assigned to the role
-#     And   User logout from the account
-#     Examples:
-#         | username     | password | roleUserName  | role               |
-#         | Classicdev49 | drowssap | Classic Dev18 | CFS/SPF Management |
+    @RemoveRoleFromUser @Sprint3 @test3
+    Scenario Outline: Roles & Permissions - Verify removing role form the user
+        When  User clicks on details of "<role>" role
+        When  User removes "<roleUserName>" from the role
+        Then  User expects that the "<roleUserName>" is not assigned to the role
+
+        Examples:
+            | roleUserName      | role       |
+            | Prajyot Fulsundar | Super User |
 
     @Sprint3 @AT81Ent_018
     Scenario Outline: Roles & Permissions - Verify removing role permanently from the system
@@ -198,7 +159,7 @@ Feature: Entitlement
             | length |
             | 12     |
 
-    @Sprint3 @AT69Ent_008
+    @AT69Ent_008
     Scenario Outline: Creation and cancel New Roles
         When  User click on newRole button and verifies RoleName field is present
         When  User enters rolename of length "<length>" and click on newRole button
@@ -271,16 +232,17 @@ Feature: Entitlement
             | Rolename   | permission   |
             | Super User | admin_realms |
 
-    @Sprint3
+    @Sprint4 @AT_131Ent_
     Scenario Outline:Roles & Permissions - Verifing Roles and Permissions section
         #Roles & Permissions - Verifing Roles and Permissions section
         When  User clicks on details of "<role>" role
         When  User clicks on view button for "<roleUserName>"
         Then  User expects that the Classic user ownerships section is displayed
         Then  User expects that the Roles and Permissions section is displayed
+        Then  User logout from the account
         Examples:
-            | roleUserName      | role               |
-            | Prajyot Fulsundar | CFS/SPF Management |
+            | roleUserName  | role       |
+            | Kate Birchell | Super User |
 
     @Sprint3 @AT73Ent_012
     Scenario Outline: System displays all the users assigned to a role, and permissions a role grants, to the Admin
@@ -327,13 +289,13 @@ Feature: Entitlement
         Then  User expects that rolename is present
         When  User clicks on details of role and verify role and permission column should display
         When  User click on Edit button and select multiple
-        # When  User click on save button and Verify newly added "<permission>"
-        # When  User clicks on details of role and verify role and permission column should display
-        # When  User click on edit button and Verify "<permission>"
-        # Then  User removes "<permission>"
-        # When  User click on save button and Verify "<permission>" removed
-        # When  User deletes role from the system permanently
+# When  User click on save button and Verify newly added "<permission>"
+# When  User clicks on details of role and verify role and permission column should display
+# When  User click on edit button and Verify "<permission>"
+# Then  User removes "<permission>"
+# When  User click on save button and Verify "<permission>" removed
+# When  User deletes role from the system permanently
         # Then  User expects that the role is deleted and "<message>" is displayed
         Examples:
             | length | permission | message                    |
-            | 7      | search     | Role deleted successfully. |        
+            | 7      | search     | Role deleted successfully. |

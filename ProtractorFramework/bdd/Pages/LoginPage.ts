@@ -47,12 +47,13 @@ export class LoginPage{
         this.securityQuestion = element(by.css("label[for='security-answer']"));
         //this.securityQuestion = element(by.xpath("//label[@for='security-answer']"));
         this.txtSecurityAnswer = element(by.css("#security-answer"));
-        this.logoutBtn = element(by.css("a[routerlink='/logout']"));
+        this.logoutBtn = element(by.css("a[ng-reflect-router-link='/logout']"));
         this.headerMsg = element(by.css("div.ng-star-inserted:nth-child(1) > h1:nth-child(1)"));
         //this.logoutBtn = element(by.linkText("logout"));
         this.txtOTP = element(by.xpath("//input[@id='code'] | //input[@id='otp-code']"));
         this.txtEmail= element(by.css("input#security-email"));
         this.errMsg = element(by.xpath("//div[@class='toast-message']"));
+        this.errMsg=element(by.xpath("//dt")).element(by.xpath("//a[@routerlink='users']"));
         
     }
 
@@ -90,6 +91,7 @@ export class LoginPage{
         await console.log("inside verify login page title " + headerMessage);
        //await waitForObject(this.logoutBtn)
         await checkTitle(headerMessage)
+        await staticWait(2000)
     }
     verifyPageTitle = async(headerMessage) =>{
         await console.log("inside verify login page title " + headerMessage);
@@ -138,9 +140,13 @@ export class LoginPage{
 
     clickOnLogOut = async () => {
         await console.log("Click on logout button");
-        
+        await this.logoutBtn.getLocation().then(function(loaction){return browser.executeScript('window.scrollTo(0,0)')})
+       // await waitForObject(this.logoutBtn)
+        await staticWait(2000)
         await clickElement(this.logoutBtn) 
-        await waitForObject(this.txtUsername)       
+        await staticWait(2000)
+        await waitForObject(this.txtUsername)
+           
     }
 
     verifyText = async(headerMessage) =>{
@@ -150,7 +156,7 @@ export class LoginPage{
     }
 
     enterMultipleInvalidOTP = async (OTP) => {
-        for(var i = 1; i <= 4;i++ ){
+        for(var i = 1; i <= 3;i++ ){
             console.log(i);
           await enterText(this.txtOTP,OTP);
           await this.clickOnLogin();
@@ -166,7 +172,7 @@ export class LoginPage{
     }
 
     enterMultipleInvalidAns = async (ANS) => {
-        for(var i = 1; i <= 4;i++ ){
+        for(var i = 1; i <= 3;i++ ){
             console.log(i);
           await enterText(this.txtSecurityAnswer,ANS);
           await this.clickOnLogin();
@@ -175,6 +181,7 @@ export class LoginPage{
           //await this.clickOnMsgCloseButton();
         }  
       }
+
       verifySecAnsField = async() =>{
         await waitForObject(this.txtSecurityAnswer)
         await isElementPresent(this.txtSecurityAnswer)
@@ -203,5 +210,7 @@ export class LoginPage{
         await clickElement(this.dataVisionLogo) 
       //  await waitForObject(this.txtUsername)       
     }
+
 }
+
 

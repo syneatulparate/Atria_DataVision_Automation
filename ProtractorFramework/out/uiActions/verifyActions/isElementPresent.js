@@ -8,23 +8,39 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const protractor_1 = require("protractor");
 const { When, Then } = require("cucumber");
 const chai = require("chai").use(require("chai-as-promised"));
 const expect = chai.expect;
-const isElementPresent = (element) => __awaiter(this, void 0, void 0, function* () {
+//clearconst isElementPresent = async (element) => {
+//     /**
+//      * Visible state of the give element
+//      * @type {String}
+//      */
+//     let isElementPresent = await browser.isElementPresent(element);
+//    // let elementPresent = false;
+//   //  console.log("from true part!!!!!!!!!!!!!!");    
+//     if (isElementPresent) {
+//         expect(isElementPresent).to.equal(true, `Expected element "${element}" to be visible`);
+//         console.log("from true part");
+//          isElementPresent=true;
+//          console.log(isElementPresent+"=is element present")
+//     } else {
+//         expect(isElementPresent).to.equal(false, `Expected element "${element}" not to be visible`);
+//         console.log("from false part");
+//          isElementPresent=false;
+//     }
+const isElementPresent = (elem) => __awaiter(this, void 0, void 0, function* () {
     /**
-     * Visible state of the give element
-     * @type {String}
-     */
-    const isElementPresent = yield protractor_1.browser.isElementPresent(element);
-    if (isElementPresent) {
-        expect(isElementPresent).to.equal(true, `Expected element "${element}" to be visible`);
-        console.log("from true part");
-    }
-    else {
-        expect(isElementPresent).to.equal(false, `Expected element "${element}" not to be visible`);
-        console.log("from false part");
-    }
+    * Visible state of the give element
+    * @type {String}
+    */
+    return yield elem.isDisplayed()
+        .then(function (isDisplayed) {
+        console.log("Elemenet is present on the page");
+        return isDisplayed;
+    }, function (error) {
+        console.log("Element not present on the page");
+        return false;
+    });
 });
 exports.isElementPresent = isElementPresent;

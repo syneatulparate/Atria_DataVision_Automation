@@ -3,13 +3,14 @@ import { clickElement } from "../../uiActions/mouseActions/clickElement";
 import { checkContainsText } from "../../uiActions/verifyActions/checkContainsText";
 import { checkContainsTextInElementValue } from "../../uiActions/verifyActions/checkContainsTextInElementValue"
 import { isVisible } from "../../uiActions/verifyActions/isVisible"
-
+import{staticWait} from "../../uiActions/waitActions/waitActions"
 import { ForgotPasswordPage } from "../Pages/ForgotPasswordPage";
+import { LoginPage } from "../Pages/LoginPage";
 
 
 const { Given } = require("cucumber");
 const { When, Then } = require("cucumber");
-
+let loginPage: LoginPage = new LoginPage();
 let forgotPasswordPage: ForgotPasswordPage = new ForgotPasswordPage();
 // When  User enters "<username>" into the Username field
 
@@ -24,7 +25,15 @@ Then(
     /^User expect that "([^"]*)?" is displayed$/, async (ErrorMsg) => {
         await forgotPasswordPage.verifyErrorMessage(ErrorMsg);
     });
-
+Then(
+        /^User expect that "([^"]*)?" is present$/, async (ErrorMsg) => {
+            await forgotPasswordPage.verifyErrorMessage(ErrorMsg);
+        });
+Then(
+        /^User enters "([^"]*)?"$/, async (emailAddress) => {
+            await forgotPasswordPage.enterInvalidEmail(emailAddress);
+    });
+       
 Then(
     /^User expect that email field is displayed$/, async () => {
         await forgotPasswordPage.verifyEmailField();
@@ -45,7 +54,7 @@ When(/^User enters "([^"]*)?" into the OTP field and clicks on continue button$/
     await forgotPasswordPage.clickOnContinue();
   });
 
-When(/^User enters invalid OTP "([^"]*)?" 4 times$/, async (OTP)=> {
+When(/^User enters invalid OTP "([^"]*)?" 3 times$/, async (OTP)=> {
     await forgotPasswordPage.enterMultipleInvalidOTP(OTP);
   });
 
@@ -58,3 +67,20 @@ When(/^User enters invalid OTP "([^"]*)?" 4 times$/, async (OTP)=> {
     await forgotPasswordPage.clickOnContinue();
   });  
 
+  When(/^User click on the forgot password link and navigates to Forgot password Page$/, async () => {
+    
+    return await loginPage.txtUsername.isDisplayed()
+    .then(
+        async (isDisplayed) => {
+           await loginPage.clickOnForgotPassword()
+           await staticWait(3000)
+           await loginPage.verifyLoginPageTitle("Log In – dataVISION")
+            return true;
+        },
+        async (isDisplayed)=> {
+           await loginPage.clickOnDataVisionLogo();  
+            await staticWait(3000)
+           return false;
+        });   
+       
+});

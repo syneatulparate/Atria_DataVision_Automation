@@ -47,6 +47,7 @@ class LoginPage {
             yield console.log("inside verify login page title " + headerMessage);
             //await waitForObject(this.logoutBtn)
             yield checkTitle_1.checkTitle(headerMessage);
+            yield waitActions_1.staticWait(2000);
         });
         this.verifyPageTitle = (headerMessage) => __awaiter(this, void 0, void 0, function* () {
             yield console.log("inside verify login page title " + headerMessage);
@@ -89,7 +90,11 @@ class LoginPage {
         });
         this.clickOnLogOut = () => __awaiter(this, void 0, void 0, function* () {
             yield console.log("Click on logout button");
+            yield this.logoutBtn.getLocation().then(function (loaction) { return protractor_1.browser.executeScript('window.scrollTo(0,0)'); });
+            // await waitForObject(this.logoutBtn)
+            yield waitActions_1.staticWait(2000);
             yield clickElement_1.clickElement(this.logoutBtn);
+            yield waitActions_1.staticWait(2000);
             yield waitActions_1.waitForObject(this.txtUsername);
         });
         this.verifyText = (headerMessage) => __awaiter(this, void 0, void 0, function* () {
@@ -98,7 +103,7 @@ class LoginPage {
             yield checkContainsText_1.checkContainsText(this.headerMsg, headerMessage);
         });
         this.enterMultipleInvalidOTP = (OTP) => __awaiter(this, void 0, void 0, function* () {
-            for (var i = 1; i <= 4; i++) {
+            for (var i = 1; i <= 3; i++) {
                 console.log(i);
                 yield setInputField_1.enterText(this.txtOTP, OTP);
                 yield this.clickOnLogin();
@@ -112,7 +117,7 @@ class LoginPage {
             yield isElementPresent_1.isElementPresent(this.txtOTP);
         });
         this.enterMultipleInvalidAns = (ANS) => __awaiter(this, void 0, void 0, function* () {
-            for (var i = 1; i <= 4; i++) {
+            for (var i = 1; i <= 3; i++) {
                 console.log(i);
                 yield setInputField_1.enterText(this.txtSecurityAnswer, ANS);
                 yield this.clickOnLogin();
@@ -154,12 +159,13 @@ class LoginPage {
         this.securityQuestion = protractor_1.element(protractor_1.by.css("label[for='security-answer']"));
         //this.securityQuestion = element(by.xpath("//label[@for='security-answer']"));
         this.txtSecurityAnswer = protractor_1.element(protractor_1.by.css("#security-answer"));
-        this.logoutBtn = protractor_1.element(protractor_1.by.css("a[routerlink='/logout']"));
+        this.logoutBtn = protractor_1.element(protractor_1.by.css("a[ng-reflect-router-link='/logout']"));
         this.headerMsg = protractor_1.element(protractor_1.by.css("div.ng-star-inserted:nth-child(1) > h1:nth-child(1)"));
         //this.logoutBtn = element(by.linkText("logout"));
         this.txtOTP = protractor_1.element(protractor_1.by.xpath("//input[@id='code'] | //input[@id='otp-code']"));
         this.txtEmail = protractor_1.element(protractor_1.by.css("input#security-email"));
         this.errMsg = protractor_1.element(protractor_1.by.xpath("//div[@class='toast-message']"));
+        this.errMsg = protractor_1.element(protractor_1.by.xpath("//dt")).element(protractor_1.by.xpath("//a[@routerlink='users']"));
     }
 }
 exports.LoginPage = LoginPage;

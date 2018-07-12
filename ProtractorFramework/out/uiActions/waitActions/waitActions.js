@@ -20,7 +20,7 @@ const waitForObject = (element) => __awaiter(this, void 0, void 0, function* () 
             console.log("Object not found --> " + element);
             return false;
         });
-    }), 40 * 1000);
+    }), 30 * 1000);
 });
 exports.waitForObject = waitForObject;
 const staticWait = (TimeValue) => __awaiter(this, void 0, void 0, function* () {

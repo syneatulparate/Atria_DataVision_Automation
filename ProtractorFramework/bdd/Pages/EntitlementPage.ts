@@ -1,22 +1,16 @@
 import { element, by, ElementFinder, $, browser, ExpectedConditions, ElementArrayFinder } from "protractor";
 import { enterText } from "../../uiActions/keyboardActions/setInputField";
 import { clickElement } from "../../uiActions/mouseActions/clickElement";
-import { checkTitle } from "../../uiActions/verifyActions/checkTitle"
 import { checkContainsText } from "../../uiActions/verifyActions/checkContainsText";
-import { isVisible } from "../../uiActions/verifyActions/isVisible";
-
 import { isElementPresent } from "../../uiActions/verifyActions/isElementPresent";
-import { securityQuestions } from "../../testData/securityQuestions";
-import { clearInputField } from "../../uiActions/keyboardActions/clearInputField";
-import { checkContainsTextInElementValue } from "../../uiActions/verifyActions/checkContainsTextInElementValue";
 import { alertAccept, alertDismiss } from "../../uiActions/alertActions/alertAction";
-import { async } from "q";
 import { waitForObject, staticWait } from "../../uiActions/waitActions/waitActions";
-
+import { moveToElement } from "../../uiActions/mouseActions/moveToElement";
+import { selectCheckBox, deSelectCheckBox } from "../../uiActions/mouseActions/checkBoxActions";
 const chai = require("chai").use(require("chai-as-promised"));
 const expect = chai.expect;
+
 export class EntitlementPage {
-    //--------------------------------------------------------Hardik-----------------------------
     public addUserButton: ElementFinder;
     public txtSearch: ElementFinder;
     public userDropDown: ElementFinder;
@@ -46,9 +40,10 @@ export class EntitlementPage {
     public manageUserLink: ElementFinder;
     public activeLockouts: ElementFinder;
     public workGroupsLink: ElementFinder;
-
-
-    //-------------------------------------------------------- Prajyot -----------------------------------------------
+    public sum; public sum1;
+    public rows; public rows1;
+    public searchTextGlobal: ElementFinder;
+    public searchBtnGlobal: ElementFinder;
     public NewRoleButton: ElementFinder;
     public txtRoleName: ElementFinder;
     public CreateRoleButton: ElementFinder;
@@ -59,39 +54,62 @@ export class EntitlementPage {
     public SaveButton: ElementFinder;
     public headElement: ElementFinder;
     public RolesandPermissionSection: ElementFinder;
-
-
+    public ContactHovertab: ElementFinder;
+    public contactDirectory: ElementFinder;
+    public searchlink: ElementFinder;
+    public senmydoclink: ElementFinder;
+    public comissionslink: ElementFinder;
+    public orgchatlink: ElementFinder;
+    public cfsenggbloglink: ElementFinder;
+    public setupclientscanner: ElementFinder;
+    public ComisInterpreterslink: ElementFinder;
+    public ToolsTab: ElementFinder;
+    public ResourcesTab: ElementFinder;
+    public UserTab: ElementFinder;
+    public UpdateProfileBtn: ElementFinder;
+    public searchtextbox: ElementFinder;
+    public Summeryele: ElementFinder;
+    public Usersettings: ElementFinder;
+    public adminButton: ElementFinder;
+    public rolesfiltertxt: ElementFinder;
+    public PermissionsFiltertxt: ElementFinder;
+    public UsersFiltertxt: ElementFinder;
+    public userList: ElementArrayFinder;
+    public roleList: ElementArrayFinder;
+    public permissionList: ElementArrayFinder;
+    public UsersList: ElementArrayFinder;
+    public settingslink: ElementFinder;
+    public usersetuplink: ElementFinder;
 
     constructor() {
-        //--------------------------------------------------------Hardik-----------------------------
         this.addUserButton = element(by.xpath("//button[contains(text(),  '+ Add Users')]"));
         this.txtSearch = element(by.css("input[placeholder ='User search']"));
-        this.userDropDown = element(by.css(""));
-        this.removeIcon = element(by.id(''));
-        this.removeButton = element(by.id(''));
-        this.cancelButton = element(by.xpath("//button[contains(text(), 'Cancel')]"));
+        this.cancelButton = element(by.xpath("//tfoot//button[contains(text(),'Cancel')]"));
         this.searchButton = element(by.css("td.td-align-right button.btn.btn-small"))
         this.deleteRoleButton = element(by.xpath("//a[contains(text(),'Delete Role')]"));
-        this.addSelectedUserButton = element(by.linkText("Add Selected Users"));
+        this.addSelectedUserButton = element(by.css("button.btn.btn-small[type='submit']"));
         this.messageBox = element(by.xpath("//div[@class='toast-message']"));
         this.userProfile = element(by.xpath("//*[contains(text(),'User Profile')]"));
         this.classicUserOwnerships = element(by.xpath("//th[contains(text(),  'Classic User Ownerships')]"));
         this.classicContact = element(by.xpath("//th[contains(text(),  'Classic Contact Allow Read Scope')]"));
         this.usersLink = element(by.xpath("//a[@routerlink='users']"));
-        this.brokersDealersLink = element(by.xpath("//a[@routerlink='broker-dealers']"));
+        this.brokersDealersLink = element(by.css("a[routerlink='broker-dealers']"));
         this.classicContactViewLink = element(by.xpath("//a[@routerlink='system-usage/classic-contact-views']"));
-        this.classicUsersLink = element(by.xpath("a[@routerlink='classic-users']"));
-        this.cmsesLink = element(by.xpath("//a[@routerlink='cmses']"));
-        this.rolesAndPermissionLink = element(by.xpath("//a[@routerlink='roles']"));
-        this.sendMyDocsSavesLink = element(by.xpath("//a[@routerlink='user-content/scans-saves']"));
-        this.sendMyDocsScanners = element(by.xpath("//a[@routerlink='user-content/scanners']"));
-        this.sendMyScansLink = element(by.xpath("//a[@routerlink='user-content/scans']"));
-        this.userSessionsLink = element(by.xpath("//a[@routerlink='system-usage/user-sessions']"));
-        this.manageUserLink = element(by.xpath("//a[@routerlink='mpv-administration/manage-users']"));
-        this.activeLockouts = element(by.xpath("//a[@routerlink='mpv-administration/active-lockouts']"));
-        this.workGroupsLink = element(by.xpath("//a[@routerlink='workgroups']"));
+        this.classicUsersLink = element(by.css("a[routerlink='classic-users']"));
+        this.cmsesLink = element(by.css("a[routerlink='cmses']"));
+        this.rolesAndPermissionLink = element(by.css("a[routerlink='roles']"));
+        this.sendMyDocsSavesLink = element(by.css("a[routerlink='user-content/scans-saves']"));
+        this.sendMyDocsScanners = element(by.css("a[routerlink='user-content/scanners']"));
+        this.sendMyScansLink = element(by.css("a[routerlink='user-content/scans']"));
+        this.userSessionsLink = element(by.css("a[routerlink='system-usage/user-sessions']"));
+        this.manageUserLink = element(by.css("a[routerlink='mpv-administration/manage-users']"));
+        this.activeLockouts = element(by.css("a[routerlink='mpv-administration/active-lockouts']"));
+        this.workGroupsLink = element(by.css("a[routerlink='workgroups']"));
+        this.adminButton = element(by.css("a[routerlink='admin']"));
+        this.userList = element.all(by.xpath("//table//th[contains(text(),'Assign Users This Role')]//ancestor::table[1]//span[1]"));
+        this.searchTextGlobal = element(by.css("input[placeholder ='Search dataVISION']"));
+        this.searchBtnGlobal = element(by.id("searchDV"));
         //"//dl/dt[@id='system']/ancestor::dl//a[@routerlink='users']")
-        //-------------------------------------------------------- Prajyot -----------------------------------------------
         //this.NewRoleButton=element(by.buttonText("New Role"));
         this.NewRoleButton = element(by.xpath("//button[contains(text(),'+ New Role')]"));
         this.txtRoleName = element(by.xpath("//input[@id='newRoleName']"));
@@ -103,10 +121,33 @@ export class EntitlementPage {
         this.SaveButton = element(by.xpath("//button[contains(text(),  'Save')]"));
         this.headElement = element(by.xpath("//h1"));
         this.RolesandPermissionSection = element(by.xpath("//th[contains(text(),  'Roles & Permissions')]"));
-
+        this.ContactHovertab = element(by.xpath("//div[contains(text(),'Contacts')]"));
+        this.contactDirectory = element(by.xpath("//a[contains(text(),'Directory')"));
+        //this.contactDirectory=element(by.css("//a[routerlink='contacts']"));
+        this.searchlink = element(by.xpath("//a[@routerlink='/search']"));
+        this.senmydoclink = element(by.xpath("//a[contains(text(),'SendMyDocs')]"));
+        this.comissionslink = element(by.xpath("//a[contains(text(),'Commissions')]"));
+        this.ToolsTab = element(by.xpath("//div[contains(text(),'Tools')]"));
+        this.orgchatlink = element(by.xpath("//a[contains(text(),'Org Chart')]"));
+        this.cfsenggbloglink = element(by.xpath("//a[contains(text(),'CFS/SPF Engineering Blog')]"));
+        this.setupclientscanner = element(by.xpath("//a[contains(text(),'+ Set Up Client Scanner')]"));
+        this.ComisInterpreterslink = element(by.xpath("//a[contains(text(),'Commissions Interpreters')]"))
+        this.ResourcesTab = element(by.xpath("//*[contains(text(),'Resources')]"));
+        this.UserTab = element(by.xpath("//nav[@class='masthead-nav']/div[2]/div[2]"));
+        this.UpdateProfileBtn = element(by.xpath("//a/span[text()='Update Profile']"));
+        this.searchtextbox = element(by.css("input[placeholder ='Search dataVISION']"));
+        this.Summeryele = element(by.css("h2.hr"));
+        this.Usersettings = element(by.xpath("//a[@ng-reflect-router-link='settings/user/profile']"));
+        this.rolesfiltertxt = element(by.css("input[placeholder='Filter Roles']"));
+        this.PermissionsFiltertxt = element(by.css("input[placeholder='Filter Permissions']"));
+        this.UsersFiltertxt = element(by.css("input[placeholder='Filter Users']"));
+        this.roleList = element.all(by.xpath("//table//th[contains(text(),'Role')]//ancestor::table[1]//span[1]"));
+        this.permissionList = element.all(by.xpath("//table//th[contains(text(),'Permissions')]//ancestor::table[1]//td/span"));
+        this.UsersList = element.all(by.xpath("//table//th[contains(text(),'Users')]//ancestor::table[1]//td[1]"));
+        this.settingslink = element(by.css("a[routerlink='settings/usersettings']"));
+        this.usersetuplink = element(by.css("a[routerlink='settings/usersetup']"));
     }
 
-    //--------------------------------------------------------Hardik-----------------------------
     clickOnAddUserButton = async () => {
         await console.log("Click Add user button");
         await waitForObject(this.addUserButton)
@@ -114,19 +155,63 @@ export class EntitlementPage {
     }
 
     verifySearchTextBox = async () => {
-        await console.log("Search textbox");
-        await isElementPresent(this.txtSearch);
+        let flag: any;
+        return await isElementPresent(this.txtSearch).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+        });
     }
 
+    verifyGlobalSearchTexbox = async () => {
+        let flag: any;
+        return await isElementPresent(this.searchTextGlobal)
+            .then(function (flag) {
+                console.log("value of the flag = " + flag);
+                return flag;
+            });
+    }
+    verifyGlobalSearchBtn = async () => {
+        let flag: any;
+        return await isElementPresent(this.searchTextGlobal)
+            .then(function (flag) {
+                console.log("value of the flag = " + flag);
+                return flag;
+            });
+    }
+
+    clickOnSearchButton = async () => {
+        await waitForObject(this.searchButton)
+        await clickElement(this.searchButton)
+    }
     enterUserName = async (userName) => {
         await enterText(this.txtSearch, userName);
     }
 
-    verifyUserName = async (userName) => {
-        await checkContainsTextInElementValue(this.userDropDown, userName);
+    async verifyUserName(userName): Promise<boolean> {
+        let flag: any
+        flag = false;
+        // let temp:Promise<boolean>;        
+        await waitForObject(this.userList);
+        await this.userList.each(async (element, index) => {
+            await element.getText().then(async (text) => {
+                await console.log(text);
+                if (await text.toUpperCase().includes(userName.toUpperCase())) {
+                    flag = true;
+                } else {
+                    flag = false;
+                }
+                await console.log("value of flag 1" + flag)
+            });
+
+        })
+
+        await console.log("value of flag 2" + flag)
+
+        return flag;
     }
 
     clickOnAddSelectedUserButton = async () => {
+        await waitForObject(this.addSelectedUserButton)
         await clickElement(this.addSelectedUserButton);
     }
 
@@ -139,6 +224,7 @@ export class EntitlementPage {
     }
 
     clickOnCancelButton = async () => {
+        await waitForObject(this.cancelButton);
         await clickElement(this.cancelButton);
     }
 
@@ -165,12 +251,18 @@ export class EntitlementPage {
     }
 
     verifyAndClickOnDetails = async (role) => {
-        await waitForObject(element(by.xpath("//*[@dv-tooltip='" + role + "']//following::button[1] | //*[contains(text(),'" + role + "')]//following::button[1]")))
-        await clickElement(element(by.xpath("//*[@dv-tooltip='" + role + "']//following::button[1] | //*[contains(text(),'" + role + "')]//following::button[1]")))
+        let roleDetailsButton = element(by.xpath("//*[@dv-tooltip='" +
+            role + "']//following::button[1] | //*[text()=' " +
+            role + "']//following::button[1]"))
+        await waitForObject(roleDetailsButton)
+        await clickElement(roleDetailsButton)
     }
 
     verifyAndClickOnView = async (userName) => {
-        await clickElement(element(by.xpath("//*[@dv-tooltip='" + userName + "']//following::button[1] | //*[contains(text(),'" + userName + "')]//following::button[1]")))
+        let viewButton = element(by.xpath("//*[@dv-tooltip='" +
+            userName + "']//following::button[1] | //*[contains(text(),'" +
+            userName + "')]//following::button[1]"))
+        await clickElement(viewButton)
     }
 
     verifyMessage = async (message) => {
@@ -178,41 +270,76 @@ export class EntitlementPage {
     }
 
     verifyNoUserPresent = async (userName) => {
-        await isElementPresent((element(by.xpath("//*[@dv-tooltip='" + userName + "']//following::button[1] | //*[contains(text(),'" + userName + "')]//following::button[1]"))))
+        await isElementPresent((element(by.xpath("//*[@dv-tooltip='" +
+            userName + "']//following::button[1] | //*[contains(text(),'" +
+            userName + "')]//following::button[1]"))))
     }
 
     verifyAddUserButton = async () => {
-        await isElementPresent(this.addUserButton)
+        await this.verifyElement(this.addUserButton)
+        // await isElementPresent(this.addUserButton)
     }
 
     removeUser = async (userName) => {
-        await clickElement(element(by.xpath("//*[@dv-tooltip='" + userName + "']//following::button[2] | //*[contains(text(),'" + userName + "')]//following::button[2]")))
-        await waitForObject(element(by.xpath("//*[@dv-tooltip='" + userName + "']//following::button[3] | //*[contains(text(),'" + userName + "')]//following::button[3]")))
-        await clickElement(element(by.xpath("//*[@dv-tooltip='" + userName + "']//following::button[3] | //*[contains(text(),'" + userName + "')]//following::button[3]")))
+        let minusButton = element(by.xpath("//*[@dv-tooltip='" +
+            userName + "']//following::button[2] | //*[contains(text(),'" +
+            userName + "')]//following::button[2]"))
+        let removeButton = element(by.xpath("//*[@dv-tooltip='" +
+            userName + "']//following::button[3] | //*[contains(text(),'" +
+            userName + "')]//following::button[3]"))
+
+        await clickElement(minusButton)
+        await waitForObject(removeButton)
+        await clickElement(removeButton)
+        await staticWait(3000)
     }
 
     clickOnViewButton = async (userName) => {
-        await clickElement(element(by.xpath("//*[@dv-tooltip='" + userName + "']//following::button[1] | //*[contains(text(),'" + userName + "')]//following::button[1]")))
+        await clickElement(element(by.xpath("//*[@dv-tooltip='" +
+            userName + "']//following::button[1] | //*[contains(text(),'" +
+            userName + "')]//following::button[1]")))
     }
 
     verifyUserProfile = async (userName) => {
         await waitForObject(this.userProfile)
-        await isElementPresent(this.userProfile);
-        await isElementPresent((element(by.xpath("//*[@dv-tooltip='" + userName + "'] | //*[contains(text(),'" + userName + "')]"))))
+        let useprofilrele = element(by.xpath("//*[@dv-tooltip='" +
+            userName + "'] | //*[contains(text(),'" + userName + "')]"))
+        await this.verifyElement(this.userProfile)
+        // await isElementPresent(this.userProfile);
+        await this.verifyElement(useprofilrele)
     }
 
-    verifyClassicUserOwnerships = async () => {
+     async verifyClassicUserOwnerships (): Promise<boolean> {
+        let linkPresent: Promise<boolean>;
+
+        await console.log("wait element")
+        let flag: any;
         await waitForObject(this.classicUserOwnerships);
-        await isElementPresent(this.classicUserOwnerships);
+        linkPresent= this.verifyElement(this.classicUserOwnerships)
+        await linkPresent.then(function (text) { console.log(text) })
+        return linkPresent;
     }
 
     verifyClassicContactReadScope = async () => {
         await waitForObject(this.classicContact);
-        await isElementPresent(this.classicContact);
+        await this.verifyElement(this.classicContact);
     }
 
+    selectUser = async (userName) => {
+        let checkBoxForUser = element(by.xpath("//*[(text()='" + userName + "')]//ancestor::tr//tbody//input"))
+        await waitForObject(checkBoxForUser)
+        await clickElement(checkBoxForUser)
+    }
 
-    //-------------------------------------------------------- Prajyot -----------------------------------------------
+    verifyUserAdded = async (userName) => {
+        let flag: any;
+        let userAdded = element(by.xpath("//*[contains(text(),'" + userName + "')]"));
+        return await isElementPresent(userAdded).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+        });
+
+    }
 
     verifyWarningMessage = async (errorMessage) => {
         await checkContainsText(element(by.xpath("//p[contains(text(),  'Role name is limited to 50 characters')]")), errorMessage)
@@ -226,7 +353,7 @@ export class EntitlementPage {
     }
     verifyRoleNameField = async () => {
         // await waitForObject(this.txtRoleName)
-        await isElementPresent(this.txtRoleName)
+        await this.verifyElement(this.txtRoleName)
     }
     enterRoleName = async (length) => {
         this.createRandomName(length);
@@ -246,24 +373,28 @@ export class EntitlementPage {
         await clickElement(this.CreateRoleButton)
     }
     verifyRoleName = async () => {
-        await waitForObject(element(by.xpath("//*[@dv-tooltip='" + this.randonname + "'] | //*[contains(text(),'" + this.randonname + "')]")))
-        let elemRoleName = element(by.xpath("//*[@dv-tooltip='" + this.randonname + "'] | //*[contains(text(),'" + this.randonname + "')]"));
+
+        let elemRoleName = element(by.xpath("//*[@dv-tooltip='" +
+            this.randonname + "'] | //*[contains(text(),'" + this.randonname + "')]"));
         console.log("element name is = " + this.randonname);
+        await waitForObject(elemRoleName)
         // await checkContainsText(elemRoleName,this.randonname)
         await clickElement(elemRoleName)
+        await this.verifyElement(elemRoleName)
         //await clickElement(element(by.xpath("//div[@class='tbl ng-star-inserted']//tbody//span[contains(text(),'"+role+"')]")))
     }
     verifyRoleNotPresent = async () => {
-        await isElementPresent(element(by.xpath("//*[@dv-tooltip='" + this.randonname + "'] | //*[contains(text(),'" + this.randonname + "')]")))
+        await this.verifyElement(element(by.xpath("//*[@dv-tooltip='" +
+            this.randonname + "'] | //*[contains(text(),'" + this.randonname + "')]")))
     }
     verifyRoleandPermissionColumn = async () => {
         await waitForObject(this.headElement)
-        await isElementPresent(element(by.xpath("//th[contains(text(),'Users Assigned This Role')]")))
-        await isElementPresent(element(by.xpath("//th[contains(text(),'Permissions')]")))
-        await isElementPresent(this.EditButton)
-        await isElementPresent(this.deleteRoleButton)
-        await isElementPresent(this.addUserButton)
-        await isElementPresent(element(by.xpath("//*[contains(text(),'Roles & Permissions')]")))
+        await this.verifyElement(element(by.xpath("//th[contains(text(),'Users Assigned This Role')]")))
+        await this.verifyElement(element(by.xpath("//th[contains(text(),'Permissions')]")))
+        await this.verifyElement(this.EditButton)
+        await this.verifyElement(this.deleteRoleButton)
+        await this.verifyElement(this.addUserButton)
+        await this.verifyElement(element(by.xpath("//*[contains(text(),'Roles & Permissions')]")))
 
     }
     clickOnEditButton = async () => {
@@ -273,24 +404,21 @@ export class EntitlementPage {
     }
     SelectCheckBox = async (permission) => {
         await console.log("select check box");
-        let elementcheckbox = element(by.xpath("//td[contains(text(),'" + permission + "')]/ancestor::tr[@class='ng-star-inserted']/div//input"));
-        if (elementcheckbox.isSelected()) {
-            await waitForObject(elementcheckbox)
-            await clickElement(elementcheckbox)
-        } else {
-            await waitForObject(elementcheckbox)
-            await clickElement(elementcheckbox)
-            await isElementPresent(element(by.xpath("//th[contains(text(),'Permissions')]")))
-            await clickElement(elementcheckbox)
-        }
+        let checkelement = element(by.xpath("//*[text()=' " +
+            permission + "']/ancestor::tr[@class='ng-star-inserted']//input | //*[@dv-tooltip='" +
+            permission + "']/ancestor::tr[@class='ng-star-inserted']//input"));
+        await waitForObject(checkelement);
+        await selectCheckBox(checkelement);
+    }
+    deSelectCheckBox = async (permission) => {
+        await console.log("select check box");
+        let permissionCheckbox = element(by.xpath("//*[text()=' " +
+            permission + "']/ancestor::tr[@class='ng-star-inserted']//input | //*[@dv-tooltip='" +
+            permission + "']/ancestor::tr[@class='ng-star-inserted']//input"))
+        await waitForObject(permissionCheckbox)
+        await deSelectCheckBox(permissionCheckbox);
     }
     SelectMultipleCheckBox = async () => {
-        // await console.log("select check box");
-        // let elementcheckbox = element(by.css("span input.checkbox"));
-
-        //     await waitForObject(elementcheckbox)
-        //     await clickElement(elementcheckbox)
-
         element.all(by.css("span input.checkbox")).isSelected().then(function (selected) {
             if (selected) {
                 element(by.css("span input.checkbox")).click();
@@ -306,24 +434,27 @@ export class EntitlementPage {
         await waitForObject(this.SaveButton)
         await clickElement(this.SaveButton)
     }
-    VerifyPermission = async (permission) => {
-        await console.log("wait element")
-        await waitForObject(element(by.xpath("//td[contains(text(),'" + permission + "')]")))
-        await isElementPresent(element(by.xpath("//td[contains(text(),'" + permission + "')]")))
-        // await isVisible(element(by.xpath("//td[contains(text(),'" + permission + "')]")), true)
+    async VerifyPermission(permission): Promise<boolean> {
+        let linkPresent: Promise<boolean>;
 
-    }
-    VerifyNotAddedPermission = async (permission) => {
         await console.log("wait element")
-        await isElementPresent(element(by.xpath("//div[@class='dib table-width']//th[contains(text(),'Permissions')]")))
-        await isElementPresent(element(by.xpath("//td[contains(text(),'" + permission + "')]")))
-
-        await waitForObject(this.EditButton)
+        let permissionelement = element(by.xpath("//*[text()=' " +
+            permission + "'] | //*[@dv-tooltip='" + permission + "']"))
+        // await waitForObject(element(by.xpath("//div[@class='dib table-width']//th[contains(text(),'Permissions')]")));
+        linkPresent = this.verifyElement(permissionelement)
+        await linkPresent.then(function (text) { console.log(text) })
+        return linkPresent;
     }
+
     VerifyRemovePermission = async (permission) => {
         await console.log("wait element")
-        await isElementPresent(element(by.xpath("//th[contains(text(),'Permissions')]")))
-        await isElementPresent(element(by.xpath("//td[contains(text(),'" + permission + "')]")))
+        let elem1 = element(by.xpath("//th[contains(text(),'Permissions')]"))
+        let elem = element(by.xpath("//*[text()=' " +
+            permission + "']"))
+        await this.verifyElement(elem1)
+        await this.verifyElement(elem)
+        // await isElementPresent(element(by.xpath("//th[contains(text(),'Permissions')]")))
+        //await isElementPresent(element(by.xpath("//td[contains(text(),'" + permission + "')]")))
 
         await waitForObject(this.EditButton)
     }
@@ -340,9 +471,16 @@ export class EntitlementPage {
         this.randonname = autoname + this.randonname;
         return this.randonname;
     }
-    verifyRolesAndPermissionSection = async () => {
+     async verifyRolesAndPermissionSection() : Promise<boolean> {
+        let linkPresent: Promise<boolean>;
+
+        await console.log("wait element")
+        let flag: any;
         await waitForObject(this.RolesandPermissionSection);
-        await isElementPresent(this.RolesandPermissionSection);
+        linkPresent= this.verifyElement(this.RolesandPermissionSection)
+        await linkPresent.then(function (text) { console.log(text) })
+        return linkPresent;
+        // await isElementPresent(this.RolesandPermissionSection);
     }
 
 
@@ -361,7 +499,8 @@ export class EntitlementPage {
         console.log("create role")
         await waitForObject(this.NewRoleButton)
         await clickElement(this.NewRoleButton);
-        await isElementPresent(this.txtRoleName)
+        await this.verifyElement(this.txtRoleName)
+        // await isElementPresent(this.txtRoleName)
         this.createRandomName(7);
         await enterText(this.txtRoleName, this.randonname)
         await waitForObject(this.CreateRoleButton)
@@ -375,7 +514,8 @@ export class EntitlementPage {
         console.log("create role")
         await waitForObject(this.NewRoleButton)
         await clickElement(this.NewRoleButton);
-        await isElementPresent(this.txtRoleName)
+        //await isElementPresent(this.txtRoleName)
+        await this.verifyElement(this.txtRoleName)
         this.createRandomName(7);
         await enterText(this.txtRoleName, this.randonname)
         await waitForObject(this.CreateRoleButton)
@@ -453,57 +593,14 @@ export class EntitlementPage {
         }
 
     }
-    // verifyPermissionSave=async(permission)=>{
-    //     console.log("before edit");
-    //     let i;
-
-    //     let elem1=element.all(by.xpath("//div[@class='tbl']//tbody/tr/td[@colspan='2']"));
-    //     elem1.getSize().then(async =>{
-
-    //     })
-
-
-
-    //     console.log("size is = "+countele);
-    //     let permissionebeforeedit=[];
-
-    //     for(i=0;i<countele;i++){
-    //         // elem1.get(i).getText().then(async(text)=> {
-    //         //    await permissionebeforeedit.push(text);
-    //         //   });
-    //    var text1 =  elem1.get(i).getText();
-    //    console.log(text1);
-    //     }
-    //     await this.clickOnEditButton();
-    //     await this.SelectCheckBox(permission)
-    //     await this.clickOnSaveButton();
-    //     await staticWait(3000);
-
-    //     let elem=element.all(by.xpath("//div[@class='tbl']//tbody/tr/td[@colspan='2']"));
-    //     let counteleafter=elem.getSize();
-    //     console.log("size is = "+counteleafter);
-    //     let permissioneAfteredit=[];
-    //     for(i=0;i<counteleafter;i++){
-    //         // elem.get(i).getText().then(async(text)=> {
-    //         //    await permissioneAfteredit.push(text);
-    //         //   });
-    //         var text2 =  elem.get(i).getText();
-
-
-    //     }
-
-    //     if (countele!=counteleafter){
-    //         if(countele<counteleafter){
-    //             await isElementPresent(element(by.xpath("//td[contains(text(),'"+permission+"')]")))
-    //         }
-
-    //     }
-
-    // }
 
     ClickOnDetails = async () => {
-        await waitForObject(element(by.xpath("//*[@dv-tooltip='" + this.randonname + "']//following::button[1] | //*[contains(text(),'" + this.randonname + "')]//following::button[1]")))
-        await clickElement(element(by.xpath("//*[@dv-tooltip='" + this.randonname + "']//following::button[1] | //*[contains(text(),'" + this.randonname + "')]//following::button[1]")))
+        await waitForObject(element(by.xpath("//*[@dv-tooltip='" +
+            this.randonname + "']//following::button[1] | //*[contains(text(),'" +
+            this.randonname + "')]//following::button[1]")))
+        await clickElement(element(by.xpath("//*[@dv-tooltip='" +
+            this.randonname + "']//following::button[1] | //*[contains(text(),'" +
+            this.randonname + "')]//following::button[1]")))
     }
 
 
@@ -521,71 +618,276 @@ export class EntitlementPage {
             });
 
     }
-    verifyLink = async (linkName) => {
-        let linkPresent = false;
+    async verifyLink(linkName): Promise<boolean> {
+        let linkPresent: Promise<boolean>;
+        staticWait(5000)
         switch (linkName) {
             case 'Users':
                 console.log("Users");
-                await isElementPresent(this.usersLink)
-                linkPresent = true;
+                linkPresent = this.verifyUsersLink();
                 break;
             case 'Brokers and Dealers':
                 console.log("B and D");
-                await isElementPresent(this.brokersDealersLink)
-                linkPresent = true;
+                linkPresent = this.verifyBrokersAndDealerslink();
                 break;
             case 'Classic Contact Views':
                 console.log("CCV");
-                await isElementPresent(this.classicContactViewLink)
-                linkPresent = true;
+                linkPresent = this.verifyClassicContactViewsLink();
                 break;
             case 'Classic Users':
                 console.log("CU");
-                await isElementPresent(this.classicUsersLink)
-                linkPresent = true;
+                linkPresent = this.verifyClassicUsersLink();
                 break;
             case 'CMSES':
                 console.log("CMSES");
-                await isElementPresent(this.cmsesLink)
-                linkPresent = true;
+                linkPresent = this.verifyCMSesLink();
                 break;
             case 'Roles and Permissions':
-                await isElementPresent(this.rolesAndPermissionLink)
-                linkPresent = true;
+                linkPresent = this.verifyRolesAndPermissionsLink();
                 break;
             case 'Send MyDocs Saves':
-                await isElementPresent(this.sendMyDocsSavesLink)
-                linkPresent = true;
+                linkPresent = this.verifySendMyDocsSavesLink();
+
                 break;
             case 'Send My Doc Scanners':
-                await isElementPresent(this.sendMyDocsScanners)
-                linkPresent = true;
+                linkPresent = this.verifySendMyDocsScannersLink();
                 break;
             case 'Send My Scans':
-                await isElementPresent(this.sendMyScansLink)
-                linkPresent = true;
+                linkPresent = this.verifySendMyScansLink();
                 break;
             case 'User Sessions':
-                await isElementPresent(this.userSessionsLink)
-                linkPresent = true;
+                linkPresent = this.verifyUserSessionsLink();
                 break;
             case 'Manage User':
-                await isElementPresent(this.manageUserLink)
-                linkPresent = true;
+                linkPresent = this.verifyManageUsersLink();
                 break;
             case 'Active Lockouts':
-                await isElementPresent(this.activeLockouts)
-                linkPresent = true;
+                linkPresent = this.verifyActiveLockoutLink();
                 break;
             case 'Workgroups':
-                await isElementPresent(this.workGroupsLink)
-                linkPresent = true;
+                linkPresent = this.verifyWorkgroupsLink();
+                break;
+            case 'CFS/SPF Engineering Blog':
+                linkPresent = this.verifyCFSSPFEngineeringBlog()
+                //linkPresent = true;
+                break;
+            case 'SendMyDocs':
+                linkPresent = this.verifySendMyDocsLink()
+                //  linkPresent = true;
+                break;
+            case 'User settings':
+                linkPresent = this.verifyUserprofilelink()
+                break;
+            case 'Update Profile':
+                linkPresent = this.verifyUpdateProfileBtn()
+                break;
+            case 'Settings':
+                linkPresent = this.verifysettingsLink()
+                break;
+            case 'User Setup':
+                linkPresent = this.verifyUserSetupLink()
+                break;
+            case 'Commissions Interpreters':
+                linkPresent = this.verifyCommissionsInterpretersLink()
+                break;
+            case 'Set Up Client Scanner':
+                linkPresent = this.verifySetUpClientScannerlink()
                 break;
         }
-        console.log("value of return is " + linkPresent)
+        await linkPresent.then(function (text) { console.log(text) })
         return linkPresent;
+
+    }
+    verifyBrokersAndDealerslink = async () => {
+        let flag: any;
+        return await isElementPresent(this.brokersDealersLink).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+        });
+    }
+    verifyUsersLink = async () => {
+        let flag: any;
+        return await isElementPresent(this.usersLink).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+
+        });
+    }
+    verifyCFSSPFEngineeringBlog = async () => {
+        let flag: any;
+        return await isElementPresent(this.cfsenggbloglink).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+
+        });
+    }
+    verifySendMyDocsLink = async () => {
+        let flag: any;
+        return await isElementPresent(this.senmydoclink).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+
+        });
+    }
+    verifyCommissionsInterpretersLink = async () => {
+        let flag: any;
+        return await isElementPresent(this.ComisInterpreterslink).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+
+        });
+    }
+    verifySetUpClientScannerlink = async () => {
+        let flag: any;
+        return await isElementPresent(this.setupclientscanner).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+
+        });
+    }
+    verifyUserprofilelink = async () => {
+        let flag: any;
+        return await isElementPresent(this.Usersettings).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+
+        });
+    }
+    verifyUpdateProfileBtn = async () => {
+        let flag: any;
+        return await isElementPresent(this.UpdateProfileBtn).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+
+        });
+    }
+    verifyClassicContactViewsLink = async () => {
+        let flag: any;
+        return await isElementPresent(this.classicContactViewLink).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+        });
     }
 
+    verifyClassicUsersLink = async () => {
+        let flag: any;
+        return await isElementPresent(this.classicUsersLink).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+        });
+    }
+
+    verifyCMSesLink = async () => {
+        let flag: any;
+        return await isElementPresent(this.cmsesLink).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+        });
+    }
+
+    verifyRolesAndPermissionsLink = async () => {
+        let flag: any;
+        return await isElementPresent(this.rolesAndPermissionLink).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+        });
+    }
+
+    verifySendMyDocsSavesLink = async () => {
+        let flag: any;
+        return await isElementPresent(this.sendMyDocsSavesLink).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+        });
+    }
+
+    verifySendMyDocsScannersLink = async () => {
+        let flag: any;
+        return await isElementPresent(this.sendMyDocsScanners).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+        });
+    }
+
+    verifySendMyScansLink = async () => {
+        let flag: any;
+        return await isElementPresent(this.sendMyScansLink).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+        });
+    }
+    verifyUserSessionsLink = async () => {
+        let flag: any;
+        return await isElementPresent(this.userSessionsLink).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+        });
+    }
+
+    verifyManageUsersLink = async () => {
+        let flag: any;
+        return await isElementPresent(this.manageUserLink).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+        });
+    }
+
+    verifyActiveLockoutLink = async () => {
+        let flag: any;
+        return await isElementPresent(this.activeLockouts).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+        });
+    }
+    verifyWorkgroupsLink = async () => {
+        let flag: any;
+        return await isElementPresent(this.workGroupsLink).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+        });
+    }
+    verifysettingsLink = async () => {
+        let flag: any;
+        return await isElementPresent(this.settingslink).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+        });
+    }
+    verifyUserSetupLink = async () => {
+        let flag: any;
+        return await isElementPresent(this.usersetuplink).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+        });
+    }
+    mousehoverandverifylink = async (element, element1) => {
+        console.log("hover elemet")
+        await moveToElement(element);
+        await staticWait(2000)
+        //await moveToElement(element1)
+        await waitForObject(element1);
+
+
+    }
+
+
+
+    mousehoverandclicklink = async (element, element1) => {
+        console.log("mouse hover on element" + element);
+
+        await moveToElement(element);
+        await staticWait(2000)
+        //await isElementPresent(element1)
+        await console.log("click on element" + element1);
+        //await moveToElement(element1)
+        await clickElement(element1);
+        await staticWait(3000)
+
+    }
+
+    verifyScreenTiltle = async (title) => {
+        await isElementPresent(element(by.xpath("//h1[contains(text(),'" + title + "')]")))
+    }
     clickOnUsersLink = async () => {
         await waitForObject(this.usersLink)
         await clickElement(this.usersLink);
@@ -642,8 +944,125 @@ export class EntitlementPage {
         await waitForObject(this.workGroupsLink)
         await clickElement(this.workGroupsLink);
     }
+    clickOnLink = async (element, element1) => {
+        await moveToElement(element);
+        await staticWait(2000)
+        await clickElement(element1)
 
-    verifyScreenTiltle =async (title)=>{
-        await isElementPresent(element(by.xpath("//h1[contains(text(),'"+title+"')]")))
+    }
+    clickOnUserName = async (linkname) => {
+        let ele = element(by.xpath("//div[@class='tbl']//tbody/tr//a[contains(text(),'" + linkname + "')]"))
+    }
+
+
+    EnterString = async (string, element) => {
+
+        await console.log("Inside enter username");
+        await enterText(element, string);
+
+
+    }
+    afterEnterRole = async (role) => {
+        await console.log("count test");
+        this.rows1 = element.all(by.xpath("//tbody[@class='tbl-body zebrastripe ng-star-inserted']//tr//span[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') , translate('"
+            + role + "', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]"));
+        this.sum1 = this.rows1.count().then(function (count) {
+            var su = count;
+            console.log(su);
+            return su;
+        });
+
+        await console.log("count before = " + this.sum1)
+        return await this.sum1;
+    }
+
+    async verifyRoleNameFilter(role): Promise<boolean> {
+        let flag: any
+        flag = false;
+        // let temp:Promise<boolean>;        
+        await waitForObject(this.roleList);
+        await this.roleList.each(async (element, index) => {
+            await element.getText().then(async (text) => {
+                await console.log(text);
+                if (await text.toUpperCase().includes(role.toUpperCase())) {
+                    flag = true;
+                } else {
+                    flag = false;
+                }
+                await console.log("value of flag 1" + flag)
+            });
+
+        })
+        // temp=flag;
+        await console.log("value of flag 2" + flag)
+        // await console.log("temp"+temp)
+        return flag;
+    }
+
+    async verifyPermissionFilter(role): Promise<boolean> {
+        let flag: any
+        flag = false;
+        // let temp:Promise<boolean>;        
+        await waitForObject(this.permissionList);
+        await this.permissionList.each(async (element, index) => {
+            await element.getText().then(async (text) => {
+                await console.log(text);
+                if (await text.toUpperCase().includes(role.toUpperCase())) {
+                    flag = true;
+                } else {
+                    flag = false;
+                }
+                await console.log("value of flag 1" + flag)
+            })
+
+        })
+        // temp=flag;
+        await console.log("value of flag 2" + flag)
+        // await console.log("temp"+temp)
+
+
+        return await flag;
+
+    }
+    async verifyUsersFilter(role): Promise<boolean> {
+        let flag: any
+        flag = false;
+        // let temp:Promise<boolean>;        
+        await waitForObject(this.UsersList);
+        await this.UsersList.each(async (element, index) => {
+            await element.getText().then(async (text) => {
+                await console.log(text);
+                if (await text.toUpperCase().includes(role.toUpperCase())) {
+                    flag = true;
+                } else {
+                    flag = false;
+                }
+                await console.log("value of flag 1" + flag)
+            });
+
+        })
+        // temp=flag;
+        await console.log("value of flag 2" + flag)
+        // await console.log("temp"+temp)
+        return await flag;
+    }
+
+    clickOnSettngsLink = async () => {
+        await waitForObject(this.settingslink)
+        await clickElement(this.settingslink);
+    }
+    clickOnUserSetup = async () => {
+
+        await waitForObject(this.usersetuplink)
+        await clickElement(this.usersetuplink);
+    }
+
+    verifyElement = async (elem) => {
+        let flag: any;
+        return await isElementPresent(elem).then(function (flag) {
+            console.log("value of the flag = " + flag);
+            return flag;
+
+        });
     }
 }
