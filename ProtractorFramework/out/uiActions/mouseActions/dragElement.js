@@ -9,14 +9,29 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const protractor_1 = require("protractor");
-const loginPage_OR_1 = require("../../bdd/objectRepository/loginPage_OR");
 const { When, Then } = require("cucumber");
 const chai = require("chai").use(require("chai-as-promised"));
 const expect = chai.expect;
-const search = new loginPage_OR_1.loginPage_OR();
+let destX;
+let destY;
+//let EP : EntitlementPage = new EntitlementPage();
+const getElemLocation = (elem) => __awaiter(this, void 0, void 0, function* () {
+    // await elem.getLocation().then(async(srclocation)=>{
+    //     destX = srclocation.x;
+    //     destY = srclocation.y;        
+    //     await browser.actions().mouseMove(destX,destY).mouseUp().perform;
+    // })
+    yield protractor_1.browser.actions().mouseMove(elem).mouseUp().perform;
+});
+exports.getElemLocation = getElemLocation;
 const dragElement = (source, destination) => __awaiter(this, void 0, void 0, function* () {
-    yield protractor_1.browser.actions().
-        dragAndDrop(protractor_1.$(search[source]), protractor_1.$(search[destination])).
-        perform();
+    yield protractor_1.browser.actions().dragAndDrop(source, destination).mouseUp().perform();
+    // await browser.actions().mouseMove(source).perform();
+    // await browser.sleep(5000)
+    // browser.actions().mouseDown(source).mouseDown(source).perform();
+    // await browser.sleep(5000)
+    // browser.actions().mouseMove(destination).perform()
+    // browser.actions().mouseUp(destination).perform();
+    yield protractor_1.browser.sleep(5000);
 });
 exports.dragElement = dragElement;

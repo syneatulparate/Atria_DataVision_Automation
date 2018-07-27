@@ -22,17 +22,18 @@ When(/^User enters "([^"]*)?" into the Username field and click on the continue 
     yield forgotPasswordPage.clickOnContinue();
 }));
 Then(/^User expect that "([^"]*)?" is displayed$/, (ErrorMsg) => __awaiter(this, void 0, void 0, function* () {
-    //await forgotPasswordPage.verifyErrorMessage(ErrorMsg);
     expect(yield forgotPasswordPage.verifyErrorMessage(ErrorMsg)).to.equal(true, 'error message is not displayed');
 }));
 Then(/^User expect that "([^"]*)?" is present$/, (ErrorMsg) => __awaiter(this, void 0, void 0, function* () {
     yield forgotPasswordPage.verifyErrorMessage(ErrorMsg);
 }));
+//  verifylockErrorMessage
 Then(/^User enters "([^"]*)?"$/, (emailAddress) => __awaiter(this, void 0, void 0, function* () {
     yield forgotPasswordPage.enterInvalidEmail(emailAddress);
 }));
 Then(/^User expect that email field is displayed$/, () => __awaiter(this, void 0, void 0, function* () {
     //await forgotPasswordPage.verifyEmailField();
+    yield waitActions_1.staticWait(3000);
     expect(yield forgotPasswordPage.verifyEmailField()).to.equal(true, 'email file is not present');
 }));
 When(/^User set "([^"]*)?" to the answer field and "([^"]*)?" into email field and clicks on continue button$/, (securityAnswer, emailAddress) => __awaiter(this, void 0, void 0, function* () {
@@ -70,6 +71,7 @@ When(/^User click on the forgot password link and navigates to Forgot password P
             yield loginPage.clickOnLogOut();
             yield waitActions_1.staticWait(3000);
             yield loginPage.verifyLoginPageTitle("Log In – dataVISION");
+            yield loginPage.clickOnForgotPassword();
             return true;
         }), (isDisplayed) => __awaiter(this, void 0, void 0, function* () {
             yield loginPage.clickOnDataVisionLogo();

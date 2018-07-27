@@ -24,7 +24,6 @@ export class DashBoardPage{
         await console.log("Admin");
         await waitForObject(this.adminButton)
         await clickElement(this.adminButton);
-
     }
 
     clickOnRolesAndPermissionLink = async () => {
@@ -38,16 +37,13 @@ export class DashBoardPage{
         await waitForObject(this.rolesAndPermissionLink)
         await this.clickOnRolesAndPermissionLink()
         await waitForObject(this.headerMsg)
-
     }
 
     verifyAdminLink = async()=>{
-       
         let flag: any;
         return await isElementPresent(this.adminButton).then(function (flag) {
             console.log("value of the flag = " + flag);
             return flag;
         });
     }
-
 }

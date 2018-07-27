@@ -22,9 +22,9 @@ export const config: Config = {
     // baseUrl: Env.Dev,
 
     capabilities: {
-        // browserName: "chrome",
+        browserName: "chrome",
         //browserName : "MicrosoftEdge",
-       browserName: "firefox",
+        //browserName: "firefox",
         //   browserName:"internet explore",
         //browserName:"Safari",
     },
@@ -59,7 +59,7 @@ export const config: Config = {
         require: ["../../bdd/StepDefinition/*/*.ts", "../../support/*.ts"],
         strict: true,
         tags: "@Sprint1 or @Sprint2 or @Sprint3 or @Sprint4",
-            
+
     },
 
 

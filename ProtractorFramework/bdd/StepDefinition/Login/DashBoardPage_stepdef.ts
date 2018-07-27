@@ -18,15 +18,13 @@ Then(
     /^User expects that Admin link is displyed on dashboard$/, async () => {
        
         await staticWait(3000);
-        expect(await dasboardPage.verifyAdminLink())
-            .to.equal(true, "Admin link is displayed")
+        expect(await dasboardPage.verifyAdminLink()).to.equal(true, "Admin link is displayed")
             await loginPage.clickOnLogOut();
     });
 
 Then(
     /^User expects that Admin link is not displyed$/, async () => {
         await staticWait(3000);
-        expect(await dasboardPage.verifyAdminLink())
-            .to.equal(false, "Admin link is not displayed")
+        expect(await dasboardPage.verifyAdminLink()).to.equal(false, "Admin link is not displayed")
             await loginPage.clickOnLogOut();
     });    

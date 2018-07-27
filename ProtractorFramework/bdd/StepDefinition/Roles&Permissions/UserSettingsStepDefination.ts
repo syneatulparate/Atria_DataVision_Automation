@@ -22,9 +22,8 @@ let userSetuppage: UserSetupPage = new UserSetupPage();
 
 Then(/^User expects that "([^"]*)?" is displayed$/, async (expectedScreen) => {
     await staticWait(3000)
-    expect(await userSettings.verifyPageHeading(expectedScreen)).
-        to.equal(true, 'User settings heading not displayed')
-    expect(await userSetuppage.verifyHeaderElement(expectedScreen)).
-        to.equal(true, 'User settings heading not displayed')
+    expect(await userSettings.verifyPageHeading(expectedScreen)).to.equal(true, 'User settings heading not displayed')
+    await staticWait(3000)
+    expect(await userSetuppage.verifyHeaderElement(expectedScreen)).to.equal(true, 'User settings heading not displayed')
 });
 

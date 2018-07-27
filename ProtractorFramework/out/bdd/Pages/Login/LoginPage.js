@@ -35,7 +35,6 @@ class LoginPage {
         });
         this.clickOnLoginRem = () => __awaiter(this, void 0, void 0, function* () {
             yield console.log("Click on loginRem");
-            // await isElementPresent(this.btnLoginRem);
             yield waitActions_1.waitForObject(this.btnLoginRem);
             yield clickElement_1.clickElement(this.btnLoginRem);
             yield waitActions_1.staticWait(5000);
@@ -46,7 +45,6 @@ class LoginPage {
         });
         this.verifyLoginPageTitle = (headerMessage) => __awaiter(this, void 0, void 0, function* () {
             yield console.log("inside verify login page title " + headerMessage);
-            //await waitForObject(this.logoutBtn)
             yield checkTitle_1.checkTitle(headerMessage);
             yield waitActions_1.staticWait(2000);
         });
@@ -74,15 +72,6 @@ class LoginPage {
                 }
             }));
         });
-        /**
-         * Function to login into the Atria Application
-         */
-        // loginToApplication = async (UsernameVal,PasswordVal) => {
-        //     console.log("Inside login to application = " + UsernameVal + "----" + PasswordVal);
-        //      await this.enterUserName(UsernameVal);
-        //         await this.enterPassword(PasswordVal);
-        //            await this.clickOnLogin();         
-        // }
         this.loginToApplication = (UsernameVal, PasswordVal) => __awaiter(this, void 0, void 0, function* () {
             console.log("Inside login to application = " + UsernameVal + "----" + PasswordVal);
             yield this.enterUserName(UsernameVal);
@@ -92,7 +81,6 @@ class LoginPage {
         this.clickOnLogOut = () => __awaiter(this, void 0, void 0, function* () {
             yield console.log("Click on logout button");
             yield this.logoutBtn.getLocation().then(function (loaction) { return protractor_1.browser.executeScript('window.scrollTo(0,0)'); });
-            // await waitForObject(this.logoutBtn)
             yield waitActions_1.staticWait(2000);
             yield clickElement_1.clickElement(this.logoutBtn);
             yield waitActions_1.staticWait(2000);
@@ -100,7 +88,6 @@ class LoginPage {
         });
         this.verifyText = (headerMessage) => __awaiter(this, void 0, void 0, function* () {
             yield console.log("inside verify login page title " + headerMessage);
-            //await waitForObject(this.headerMsg)
             yield checkContainsText_1.checkContainsText(this.headerMsg, headerMessage);
         });
         this.enterMultipleInvalidOTP = (OTP) => __awaiter(this, void 0, void 0, function* () {
@@ -110,7 +97,6 @@ class LoginPage {
                 yield this.clickOnLogin();
                 yield waitActions_1.staticWait(5000);
                 yield clearInputField_1.clearInputField(this.txtOTP);
-                //await this.clickOnMsgCloseButton();
             }
         });
         this.verifyOTPField = () => __awaiter(this, void 0, void 0, function* () {
@@ -121,10 +107,8 @@ class LoginPage {
             for (var i = 1; i <= 3; i++) {
                 console.log(i);
                 yield setInputField_1.enterText(this.txtSecurityAnswer, ANS);
-                yield this.clickOnLogin();
+                yield this.clickOnContinue();
                 yield waitActions_1.staticWait(3000);
-                //await clearInputField(this.txtSecurityAnswer);
-                //await this.clickOnMsgCloseButton();
             }
         });
         this.verifySecAnsField = () => __awaiter(this, void 0, void 0, function* () {
@@ -148,7 +132,10 @@ class LoginPage {
             yield console.log("Click on logout button");
             yield waitActions_1.waitForObject(this.dataVisionLogo);
             yield clickElement_1.clickElement(this.dataVisionLogo);
-            //  await waitForObject(this.txtUsername)       
+        });
+        this.clickOnContinue = () => __awaiter(this, void 0, void 0, function* () {
+            yield console.log("Click on continue");
+            yield clickElement_1.clickElement(this.continueButton);
         });
         console.log("Inside constructor");
         this.txtUsername = protractor_1.element(protractor_1.by.id('username'));
@@ -157,12 +144,11 @@ class LoginPage {
         this.btnLogin = protractor_1.element(protractor_1.by.xpath("//button[contains(text(),'Log In')]"));
         this.btnLoginRem = protractor_1.element(protractor_1.by.xpath("//button[@type='button']"));
         this.lnkForgotPassword = protractor_1.element(protractor_1.by.linkText("Forgot Password?"));
+        this.continueButton = protractor_1.element(protractor_1.by.css(".btn[type='submit']"));
         this.securityQuestion = protractor_1.element(protractor_1.by.css("label[for='security-answer']"));
-        //this.securityQuestion = element(by.xpath("//label[@for='security-answer']"));
         this.txtSecurityAnswer = protractor_1.element(protractor_1.by.css("#security-answer"));
         this.logoutBtn = protractor_1.element(protractor_1.by.css("a[ng-reflect-router-link='/logout']"));
         this.headerMsg = protractor_1.element(protractor_1.by.css("div.ng-star-inserted:nth-child(1) > h1:nth-child(1)"));
-        //this.logoutBtn = element(by.linkText("logout"));
         this.txtOTP = protractor_1.element(protractor_1.by.xpath("//input[@id='code'] | //input[@id='otp-code']"));
         this.txtEmail = protractor_1.element(protractor_1.by.css("input#security-email"));
         this.errMsg = protractor_1.element(protractor_1.by.xpath("//div[@class='toast-message']"));

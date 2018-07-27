@@ -17,6 +17,7 @@ const alertAction_1 = require("../../../uiActions/alertActions/alertAction");
 const waitActions_1 = require("../../../uiActions/waitActions/waitActions");
 const moveToElement_1 = require("../../../uiActions/mouseActions/moveToElement");
 const checkBoxActions_1 = require("../../../uiActions/mouseActions/checkBoxActions");
+const dragElement_1 = require("../../../uiActions/mouseActions/dragElement");
 const chai = require("chai").use(require("chai-as-promised"));
 const expect = chai.expect;
 class EntitlementPage {
@@ -135,7 +136,6 @@ class EntitlementPage {
             let useprofilrele = protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" +
                 userName + "'] | //*[contains(text(),'" + userName + "')]"));
             yield this.verifyElement(this.userProfile);
-            // await isElementPresent(this.userProfile);
             yield this.verifyElement(useprofilrele);
         });
         this.verifyClassicContactReadScope = () => __awaiter(this, void 0, void 0, function* () {
@@ -191,12 +191,10 @@ class EntitlementPage {
                 this.randonname + "'] | //*[contains(text(),'" + this.randonname + "')]"));
             console.log("element name is = " + this.randonname);
             yield waitActions_1.waitForObject(elemRoleName);
-            // await checkContainsText(elemRoleName,this.randonname)
             yield clickElement_1.clickElement(elemRoleName);
             linkPresent = this.verifyElement(elemRoleName);
             yield linkPresent.then(function (text) { console.log(text); });
             return linkPresent;
-            //await clickElement(element(by.xpath("//div[@class='tbl ng-star-inserted']//tbody//span[contains(text(),'"+role+"')]")))
         });
         this.verifyRoleNotPresent = () => __awaiter(this, void 0, void 0, function* () {
             let linkPresent;
@@ -254,8 +252,6 @@ class EntitlementPage {
             let elem = protractor_1.element(protractor_1.by.xpath("//*[text()='" + permission + "']"));
             yield this.verifyElement(elem1);
             yield this.verifyElement(elem);
-            // await isElementPresent(element(by.xpath("//th[contains(text(),'Permissions')]")))
-            //await isElementPresent(element(by.xpath("//td[contains(text(),'" + permission + "')]")))
             yield waitActions_1.waitForObject(this.EditButton);
         });
         this.createRandomName = (length) => __awaiter(this, void 0, void 0, function* () {
@@ -282,8 +278,6 @@ class EntitlementPage {
             console.log("create role");
             yield waitActions_1.waitForObject(this.NewRoleButton);
             yield clickElement_1.clickElement(this.NewRoleButton);
-            //await this.verifyElement(this.txtRoleName)
-            // await isElementPresent(this.txtRoleName)
             yield this.createRandomName(7);
             yield setInputField_1.enterText(this.txtRoleName, this.randonname);
             yield waitActions_1.waitForObject(this.CreateRoleButton);
@@ -654,6 +648,10 @@ class EntitlementPage {
                 return flag;
             });
         });
+        this.dragAndDropTest = () => __awaiter(this, void 0, void 0, function* () {
+            yield console.log("Into drag function");
+            yield dragElement_1.dragElement(this.src1, this.destination1);
+        });
         this.addUserButton = protractor_1.element(protractor_1.by.xpath("//button[contains(text(),  '+ Add Users')]"));
         this.txtSearch = protractor_1.element(protractor_1.by.css("input[placeholder ='User search']"));
         this.cancelButton = protractor_1.element(protractor_1.by.xpath("//button[contains(text(),'Cancel')]"));
@@ -681,8 +679,6 @@ class EntitlementPage {
         this.userList = protractor_1.element.all(protractor_1.by.xpath("//table//th[contains(text(),'Assign Users This Role')]//ancestor::table[1]//tr/td[1]/span[1]"));
         this.searchTextGlobal = protractor_1.element(protractor_1.by.css("input[placeholder ='Search dataVISION']"));
         this.searchBtnGlobal = protractor_1.element(protractor_1.by.id("searchDV"));
-        //"//dl/dt[@id='system']/ancestor::dl//a[@routerlink='users']")
-        //this.NewRoleButton=element(by.buttonText("New Role"));
         this.NewRoleButton = protractor_1.element(protractor_1.by.xpath("//button[contains(text(),'+ New Role')]"));
         this.txtRoleName = protractor_1.element(protractor_1.by.xpath("//input[@id='newRoleName']"));
         this.CreateRoleButton = protractor_1.element(protractor_1.by.xpath("//button[contains(text(),  'Create Role')]"));
@@ -695,7 +691,6 @@ class EntitlementPage {
         this.RolesandPermissionSection = protractor_1.element(protractor_1.by.xpath("//th[contains(text(),  'Roles & Permissions')]"));
         this.ContactHovertab = protractor_1.element(protractor_1.by.xpath("//div[contains(text(),'Contacts')]"));
         this.contactDirectory = protractor_1.element(protractor_1.by.xpath("//a[contains(text(),'Directory')"));
-        //this.contactDirectory=element(by.css("//a[routerlink='contacts']"));
         this.searchlink = protractor_1.element(protractor_1.by.xpath("//a[@routerlink='/search']"));
         this.senmydoclink = protractor_1.element(protractor_1.by.css("a[routerlink='scans']"));
         this.comissionslink = protractor_1.element(protractor_1.by.xpath("//a[contains(text(),'Commissions')]"));
@@ -718,6 +713,8 @@ class EntitlementPage {
         this.UsersList = protractor_1.element.all(protractor_1.by.xpath("//table//th[contains(text(),'Users')]//ancestor::table[1]//td[1]"));
         this.settingslink = protractor_1.element(protractor_1.by.css("a[routerlink='settings/usersettings']"));
         this.usersetuplink = protractor_1.element(protractor_1.by.css("a[routerlink='settings/usersetup']"));
+        this.src1 = protractor_1.element(protractor_1.by.xpath("//div//span[@id='contacts']"));
+        this.destination1 = protractor_1.element(protractor_1.by.xpath("//tr//td[@id='configureTile_1']"));
     }
     verifyUserName(userName) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -771,7 +768,6 @@ class EntitlementPage {
             linkPresent = this.verifyElement(this.RolesandPermissionSection);
             yield linkPresent.then(function (text) { console.log(text); });
             return linkPresent;
-            // await isElementPresent(this.RolesandPermissionSection);
         });
     }
     verifyLink(linkName) {
@@ -858,7 +854,6 @@ class EntitlementPage {
         return __awaiter(this, void 0, void 0, function* () {
             let flag;
             flag = false;
-            // let temp:Promise<boolean>;        
             yield waitActions_1.waitForObject(this.roleList);
             yield this.roleList.each((element, index) => __awaiter(this, void 0, void 0, function* () {
                 yield element.getText().then((text) => __awaiter(this, void 0, void 0, function* () {
@@ -872,9 +867,7 @@ class EntitlementPage {
                     yield console.log("value of flag 1" + flag);
                 }));
             }));
-            // temp=flag;
             yield console.log("value of flag 2" + flag);
-            // await console.log("temp"+temp)
             return flag;
         });
     }
@@ -882,7 +875,6 @@ class EntitlementPage {
         return __awaiter(this, void 0, void 0, function* () {
             let flag;
             flag = false;
-            // let temp:Promise<boolean>;        
             yield waitActions_1.waitForObject(this.permissionList);
             yield this.permissionList.each((element, index) => __awaiter(this, void 0, void 0, function* () {
                 yield element.getText().then((text) => __awaiter(this, void 0, void 0, function* () {
@@ -896,9 +888,7 @@ class EntitlementPage {
                     yield console.log("value of flag 1" + flag);
                 }));
             }));
-            // temp=flag;
             yield console.log("value of flag 2" + flag);
-            // await console.log("temp"+temp)
             return yield flag;
         });
     }
@@ -906,7 +896,6 @@ class EntitlementPage {
         return __awaiter(this, void 0, void 0, function* () {
             let flag;
             flag = false;
-            // let temp:Promise<boolean>;        
             yield waitActions_1.waitForObject(this.UsersList);
             yield this.UsersList.each((element, index) => __awaiter(this, void 0, void 0, function* () {
                 yield element.getText().then((text) => __awaiter(this, void 0, void 0, function* () {
@@ -920,9 +909,7 @@ class EntitlementPage {
                     yield console.log("value of flag 1" + flag);
                 }));
             }));
-            // temp=flag;
             yield console.log("value of flag 2" + flag);
-            // await console.log("temp"+temp)
             return yield flag;
         });
     }

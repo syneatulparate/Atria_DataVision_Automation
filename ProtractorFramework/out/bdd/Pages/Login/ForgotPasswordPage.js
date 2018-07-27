@@ -20,9 +20,6 @@ const EntitlementPage_1 = require("../Roles&Permissions/EntitlementPage");
 let entitlementPage = new EntitlementPage_1.EntitlementPage();
 class ForgotPasswordPage {
     constructor() {
-        /**
-        * Objects from forogot password page
-        */
         this.enterUserName = (UsernameVal) => __awaiter(this, void 0, void 0, function* () {
             yield console.log("Inside enter username");
             yield setInputField_1.enterText(this.txtUsername, UsernameVal);
@@ -40,12 +37,28 @@ class ForgotPasswordPage {
             yield checkTitle_1.checkTitle(headerMessage);
         });
         this.verifyErrorMessage = (errorMessage) => __awaiter(this, void 0, void 0, function* () {
-            //await checkContainsText(this.errMsg,errorMessage)
             let flag;
             flag = false;
-            // let temp:Promise<boolean>;        
             yield waitActions_1.waitForObject(this.errMsg);
             yield this.errMsg.getText().then((text) => __awaiter(this, void 0, void 0, function* () {
+                yield console.log(text);
+                if (yield text.toUpperCase().includes(errorMessage.toUpperCase())) {
+                    flag = true;
+                }
+                else {
+                    flag = false;
+                }
+                yield console.log("value of flag 1" + flag);
+            }));
+            yield console.log("value of flag 2" + flag);
+            return flag;
+        });
+        this.verifylockErrorMessage = (errorMessage) => __awaiter(this, void 0, void 0, function* () {
+            let flag;
+            flag = false;
+            let elemet = protractor_1.element(protractor_1.by.css("div.alert.alert-danger.ng-star-inserted"));
+            yield waitActions_1.waitForObject(elemet);
+            yield elemet.getText().then((text) => __awaiter(this, void 0, void 0, function* () {
                 yield console.log(text);
                 if (yield text.toUpperCase().includes(errorMessage.toUpperCase())) {
                     flag = true;
@@ -108,15 +121,16 @@ class ForgotPasswordPage {
                 yield setInputField_1.enterText(this.txtOTP, OTP);
                 yield this.clickOnContinue();
                 yield clearInputField_1.clearInputField(this.txtOTP);
-                //await this.clickOnMsgCloseButton();
             }
         });
+        /**
+         * Objects from forogot password page
+         */
         console.log("Inside constructor");
         this.txtUsername = protractor_1.element(protractor_1.by.id('username'));
         this.continueButton = protractor_1.element(protractor_1.by.css(".btn[type='submit']"));
         this.errMsg = protractor_1.element(protractor_1.by.xpath("//div[@class='toast-message']"));
         this.msgCloseButton = protractor_1.element(protractor_1.by.xpath("//div[@class='octicon octicon-x']"));
-        //div[@class='octicon octicon-x']
         this.emailTextField = protractor_1.element(protractor_1.by.css("#security-email[type='text']"));
         this.securityQuestion = protractor_1.element(protractor_1.by.css("label[for='security-answer']"));
         this.txtSecurityAnswer = protractor_1.element(protractor_1.by.css("#security-answer[type='text']"));

@@ -4,7 +4,7 @@ Feature: Contacts
         Given User is on Login page
         When User enters valid "<userName>" and "<password>" and click login button
 
-    @Sprint5
+   @Regression @Sprint5
     Scenario Outline: Contacts Tile Icon -Message
         When  User hovers mouse on message Icon for "userName" on Contacts tile
         Then  User expect that "<contact>" primary email of the user is displayed on Contacts tile
@@ -12,7 +12,7 @@ Feature: Contacts
             | userName | primaryEmailId |
             |          |                |
 
-    @Sprint5
+   @Regression @Sprint5
     Scenario Outline: Contacts Tile Icon - Phone
         When  User hovers mouse on phone Icon for "<userName>" on Contacts tile
         Then  User expect that "<contacts>" number of the user is displayed on Contacts tile
@@ -20,7 +20,7 @@ Feature: Contacts
             | userName | phoneNumber |
             |          |             |
 
-    @Sprint5
+   @Regression @Sprint5
     Scenario Outline: Contacts Tile Icon - Comment
         When  User hovers mouse on comments Icon for "<userName>" on Contacts tile
         Then  User expect that number of "<comments>" the user is displayed on Contacts tile
@@ -28,7 +28,7 @@ Feature: Contacts
             | userName | comments |
             |          |          |
 
-    @Sprint5
+   @Regression @Sprint5
     Scenario Outline: Go to Contacts link - Last viewed
         When  User selects "<contactOption>" from the dropdown on Contacts tile
         When  User clicks on Go to Contacts link
@@ -37,7 +37,7 @@ Feature: Contacts
             | contactOption |
             | Last Viewed   |
 
-    @Sprint5
+   @Regression @Sprint5
     Scenario Outline: Go to Contacts link -Most viewed
         When  User selects "<contactOption>" from the dropdown
         When  User clicks on Go to Contacts link
@@ -46,7 +46,7 @@ Feature: Contacts
             | contactOption |
             | Most Viewed   |
 
-    @Sprint5
+   @Regression @Sprint5
     Scenario Outline: Go to Contacts link - bY investment
         When  User selects "<contactOption>" from the dropdown
         When  User clicks on Go to Contacts link
@@ -55,26 +55,26 @@ Feature: Contacts
             | contactOption |
             | By Investment |
 
-    @Sprint5
+   @Regression @Sprint5
     Scenario Outline: Verify Expanded view
         When User clicks on the expand icon on Contacts tile
         Then User expect that contraction button is displayed on Contacts tile
 
-    @Sprint5
+   @Regression @Sprint5
     Scenario Outline: Close Expanded view - Contraction button
         When User clicks on the expand icon on Contacts tile
         Then User expect that contraction button is displayed on Contacts tile
         When User clicks on contraction button on Contacts tile
         Then User expects that tile is closed and dashboard is displayed
 
-    @Sprint5
+   @Regression @Sprint5
     Scenario Outline: Close Expanded view - Clicking outside
         When User clicks on the expand icon on Contacts tile
         Then User expect that contraction button is displayed on Contacts tile
         When User clicks outside of tile
         Then User expects that tile is closed and dashboard is displayed
 
-    @Sprint5
+   @Regression @Sprint5
     Scenario Outline: Close Expanded view - Esc Button
         When User clicks on the expand icon on Contacts tile
         Then User expect that contraction button is displayed on Contacts tile

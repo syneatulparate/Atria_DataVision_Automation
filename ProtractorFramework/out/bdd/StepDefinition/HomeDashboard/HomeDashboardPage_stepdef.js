@@ -20,6 +20,7 @@ const expect = chai.expect;
 let dashboard = new HomeDashboardPage_1.HomeDashboardPage();
 When(/^User hovers mouse on "([^"]*)?" icon and verify "([^"]*)?" panel display on screen$/, (panel) => __awaiter(this, void 0, void 0, function* () {
     yield clickElement_1.clickElement(panel);
+    yield waitActions_1.staticWait(3000);
     yield expect(yield dashboard.verifyLink(panel)).to.equal(true, panel + 'Link is displayed');
 }));
 Then(/^User expects that "([^"]*)?" link is displayed on Reporting panel$/, (LinkName) => __awaiter(this, void 0, void 0, function* () {
@@ -56,16 +57,20 @@ When(/^User click on Close icon$/, () => __awaiter(this, void 0, void 0, functio
     yield clickElement_1.clickElement(this.Closeicon);
 }));
 Then(/^User Naviagets to Dashboard page and Verify "([^"]*)?" is not added to dashboard$/, (Tilename) => __awaiter(this, void 0, void 0, function* () {
+    yield waitActions_1.staticWait(3000);
+    yield expect(yield dashboard.verifyLink(Tilename)).to.equal(false, Tilename + 'Link is displayed');
     yield dashboard.verifyLink(Tilename);
 }));
 Then(/^User Naviagets to Dashboard page and Verify "([^"]*)?" is added to dashboard$/, (Tilename) => __awaiter(this, void 0, void 0, function* () {
     yield dashboard.verifyLink(Tilename);
 }));
 Then(/^User Naviagets to Dashboard page and Verify "([^"]*)?" is not removed from dashboard$/, (Tilename) => __awaiter(this, void 0, void 0, function* () {
-    yield dashboard.verifyLink(Tilename);
+    yield waitActions_1.staticWait(3000);
+    yield expect(yield dashboard.verifyLink(Tilename)).to.equal(true, Tilename + 'Link is displayed');
 }));
 Then(/^User Naviagets to Dashboard page and Verify "([^"]*)?" is removed from dashboard$/, (Tilename) => __awaiter(this, void 0, void 0, function* () {
-    yield dashboard.verifyLink(Tilename);
+    yield waitActions_1.staticWait(3000);
+    yield expect(yield dashboard.verifyLink(Tilename)).to.equal(false, Tilename + 'Link is displayed');
 }));
 Then(/^User can drag and drop "([^"]*)?" tiles from the Add New Tiles section into the Dashboard section and Verify Add New Tiles section count$/, (Tilename) => __awaiter(this, void 0, void 0, function* () {
     yield dashboard.verifyLink(Tilename);

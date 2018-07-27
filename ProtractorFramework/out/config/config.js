@@ -12,12 +12,10 @@ var Env;
 exports.config = {
     seleniumAddress: "http://127.0.0.1:4444/wd/hub",
     SELENIUM_PROMISE_MANAGER: false,
-    baseUrl: Env.QA,
-    // baseUrl: Env.Dev,
+    //baseUrl: Env.QA,
+    baseUrl: Env.Dev,
     capabilities: {
-        // browserName: "chrome",
-        //browserName : "MicrosoftEdge",
-        browserName: "firefox",
+        browserName: "chrome",
     },
     /* multiCapabilities: [
  
@@ -43,7 +41,8 @@ exports.config = {
         format: "json:./reports/json/cucumber_report.json",
         require: ["../../bdd/StepDefinition/*/*.ts", "../../support/*.ts"],
         strict: true,
-        tags: "@Sprint1 or @Sprint2 or @Sprint3 or @Sprint4",
+        //tags: "@Sprint1 or @Sprint2 or @Sprint3 or @Sprint4",
+        tags: "@AT216_Ent_040_01",
     },
     onComplete: () => {
         reporter_1.Reporter.createHTMLReport();

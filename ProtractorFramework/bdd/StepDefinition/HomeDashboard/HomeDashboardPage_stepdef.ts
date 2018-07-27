@@ -12,6 +12,7 @@ const expect = chai.expect;
 let dashboard: HomeDashboardPage = new HomeDashboardPage();
 When(/^User hovers mouse on "([^"]*)?" icon and verify "([^"]*)?" panel display on screen$/, async(panel) => {
     await clickElement(panel)
+    await staticWait(3000)
     await expect(await dashboard.verifyLink(panel)).to.equal(true, panel + 'Link is displayed');
 });
 
@@ -59,16 +60,20 @@ When(/^User click on Close icon$/, async () => {
     
 });
 Then(/^User Naviagets to Dashboard page and Verify "([^"]*)?" is not added to dashboard$/, async (Tilename) => {
+    await staticWait(3000)
+    await expect(await dashboard.verifyLink(Tilename)).to.equal(false, Tilename + 'Link is displayed');
     await dashboard.verifyLink(Tilename)
 });
 Then(/^User Naviagets to Dashboard page and Verify "([^"]*)?" is added to dashboard$/, async (Tilename) => {
     await dashboard.verifyLink(Tilename)
 });
 Then(/^User Naviagets to Dashboard page and Verify "([^"]*)?" is not removed from dashboard$/, async (Tilename) => {
-    await dashboard.verifyLink(Tilename)
+    await staticWait(3000)
+    await expect(await dashboard.verifyLink(Tilename)).to.equal(true, Tilename + 'Link is displayed');
 });
 Then(/^User Naviagets to Dashboard page and Verify "([^"]*)?" is removed from dashboard$/, async (Tilename) => {
-    await dashboard.verifyLink(Tilename)
+    await staticWait(3000)
+    await expect(await dashboard.verifyLink(Tilename)).to.equal(false, Tilename + 'Link is displayed');
 });
 
 Then(/^User can drag and drop "([^"]*)?" tiles from the Add New Tiles section into the Dashboard section and Verify Add New Tiles section count$/, async (Tilename) => {

@@ -22,13 +22,11 @@ When(/^User navigates to Roles and Permissions page$/, () => __awaiter(this, voi
 }));
 Then(/^User expects that Admin link is displyed on dashboard$/, () => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.staticWait(3000);
-    expect(yield dasboardPage.verifyAdminLink())
-        .to.equal(true, "Admin link is displayed");
+    expect(yield dasboardPage.verifyAdminLink()).to.equal(true, "Admin link is displayed");
     yield loginPage.clickOnLogOut();
 }));
 Then(/^User expects that Admin link is not displyed$/, () => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.staticWait(3000);
-    expect(yield dasboardPage.verifyAdminLink())
-        .to.equal(false, "Admin link is not displayed");
+    expect(yield dasboardPage.verifyAdminLink()).to.equal(false, "Admin link is not displayed");
     yield loginPage.clickOnLogOut();
 }));

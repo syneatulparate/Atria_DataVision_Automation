@@ -17,7 +17,7 @@ export class UserSettingsPage {
         this.radioButton1 = element(by.xpath("//input[@value='admin']"))
         this.radioButton2 = element(by.xpath("//div[@class='form-section zebrastripe col-9']/div[3]//input[@value='self']"))
         this.radioButton3 = element(by.xpath("//div[@class='form-section zebrastripe col-9']/div[5]//input[@value='self']"))
-      //  this.applyButton = element( )
+      //this.applyButton = element( )
       //this.cancelButton =
 
 

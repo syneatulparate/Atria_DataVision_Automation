@@ -27,8 +27,7 @@ let userSettings = new UserSettingsPage_1.UserSettingsPage();
 let userSetuppage = new UserSetupPage_1.UserSetupPage();
 Then(/^User expects that "([^"]*)?" is displayed$/, (expectedScreen) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.staticWait(3000);
-    expect(yield userSettings.verifyPageHeading(expectedScreen)).
-        to.equal(true, 'User settings heading not displayed');
-    expect(yield userSetuppage.verifyHeaderElement(expectedScreen)).
-        to.equal(true, 'User settings heading not displayed');
+    expect(yield userSettings.verifyPageHeading(expectedScreen)).to.equal(true, 'User settings heading not displayed');
+    yield waitActions_1.staticWait(3000);
+    expect(yield userSetuppage.verifyHeaderElement(expectedScreen)).to.equal(true, 'User settings heading not displayed');
 }));

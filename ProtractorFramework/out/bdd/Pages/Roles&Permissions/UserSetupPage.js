@@ -63,9 +63,7 @@ class UserSetupPage {
                 }
                 yield console.log("value of flag 1" + flag);
             }));
-            // temp=flag;
             yield console.log("value of flag 2" + flag);
-            // await console.log("temp"+temp)
             return yield flag;
         });
     }

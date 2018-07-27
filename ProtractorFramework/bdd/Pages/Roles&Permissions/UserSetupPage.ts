@@ -9,9 +9,7 @@ export class UserSetupPage {
 
     
     constructor() {
-        this.userSetupHeading = element(by.xpath("//h2"));
-      
-        
+        this.userSetupHeading = element(by.xpath("//h2"));  
     }
 
     async verifyPageElement(expectedPage): Promise<boolean> {
@@ -33,14 +31,10 @@ export class UserSetupPage {
             case 'Module':
                 console.log("User Name");
                 linkPresent = this.verifyUserSettings();
-                
                 break;
-
-
         }
         await linkPresent.then(function (text) { console.log(text) })
         return linkPresent;
-
     }
 
     verifyUserSettings = async () => {
@@ -63,9 +57,7 @@ export class UserSetupPage {
                 }
                 await console.log("value of flag 1" + flag)
             });
-       // temp=flag;
         await console.log("value of flag 2" + flag)  
-       // await console.log("temp"+temp)
         return await flag;
     }
 }

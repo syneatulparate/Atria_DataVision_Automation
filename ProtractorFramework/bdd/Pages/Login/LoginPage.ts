@@ -45,11 +45,9 @@ export class LoginPage{
         this.lnkForgotPassword = element(by.linkText("Forgot Password?"))
         this.continueButton = element(by.css(".btn[type='submit']"));
         this.securityQuestion = element(by.css("label[for='security-answer']"));
-        //this.securityQuestion = element(by.xpath("//label[@for='security-answer']"));
         this.txtSecurityAnswer = element(by.css("#security-answer"));
         this.logoutBtn = element(by.css("a[ng-reflect-router-link='/logout']"));
         this.headerMsg = element(by.css("div.ng-star-inserted:nth-child(1) > h1:nth-child(1)"));
-        //this.logoutBtn = element(by.linkText("logout"));
         this.txtOTP = element(by.xpath("//input[@id='code'] | //input[@id='otp-code']"));
         this.txtEmail= element(by.css("input#security-email"));
         this.errMsg = element(by.xpath("//div[@class='toast-message']"));
@@ -75,12 +73,9 @@ export class LoginPage{
     }
     clickOnLoginRem = async () => {
         await console.log("Click on loginRem");
-       // await isElementPresent(this.btnLoginRem);
         await waitForObject(this.btnLoginRem)
-        
         await clickElement(this.btnLoginRem);
         await staticWait(5000)
-       
     }
 
     clickOnForgotPassword = async () => {
@@ -90,19 +85,19 @@ export class LoginPage{
 
     verifyLoginPageTitle = async(headerMessage) =>{
         await console.log("inside verify login page title " + headerMessage);
-       //await waitForObject(this.logoutBtn)
         await checkTitle(headerMessage)
         await staticWait(2000)
     }
+
     verifyPageTitle = async(headerMessage) =>{
         await console.log("inside verify login page title " + headerMessage);
        await waitForObject(this.logoutBtn)
         await checkTitleContains(headerMessage)
     }
+
     enterSecurityAnswer = async () => {
         await waitForObject(this.securityQuestion);
         await console.log("Inside Business Actions");
-        
         await this.securityQuestion.getText().then(
             async(txtMsg) => {
                 console.log("text message ===>" + txtMsg);
@@ -120,17 +115,6 @@ export class LoginPage{
     
         }
     
-        
-    /**
-     * Function to login into the Atria Application
-     */
-    // loginToApplication = async (UsernameVal,PasswordVal) => {
-    //     console.log("Inside login to application = " + UsernameVal + "----" + PasswordVal);
-    //      await this.enterUserName(UsernameVal);
-    //         await this.enterPassword(PasswordVal);
-    //            await this.clickOnLogin();         
-    // }
-
     loginToApplication = async (UsernameVal,PasswordVal) => {
         console.log("Inside login to application = " + UsernameVal + "----" + PasswordVal);
          await this.enterUserName(UsernameVal);
@@ -142,17 +126,14 @@ export class LoginPage{
     clickOnLogOut = async () => {
         await console.log("Click on logout button");
         await this.logoutBtn.getLocation().then(function(loaction){return browser.executeScript('window.scrollTo(0,0)')})
-       // await waitForObject(this.logoutBtn)
         await staticWait(2000)
         await clickElement(this.logoutBtn) 
         await staticWait(2000)
         await waitForObject(this.txtUsername)
-           
     }
 
     verifyText = async(headerMessage) =>{
         await console.log("inside verify login page title " + headerMessage);
-        //await waitForObject(this.headerMsg)
         await checkContainsText(this.headerMsg, headerMessage)
     }
 
@@ -163,7 +144,6 @@ export class LoginPage{
           await this.clickOnLogin();
           await staticWait(5000)
           await clearInputField(this.txtOTP);
-          //await this.clickOnMsgCloseButton();
         }  
       }
     
@@ -178,8 +158,6 @@ export class LoginPage{
           await enterText(this.txtSecurityAnswer,ANS);
           await this.clickOnContinue();
           await staticWait(3000)
-          //await clearInputField(this.txtSecurityAnswer);
-          //await this.clickOnMsgCloseButton();
         }  
       }
 
@@ -192,14 +170,12 @@ export class LoginPage{
     }
     
     enterInvalidOTP = async (OTP) => {
-        
           await enterText(this.txtOTP,OTP);
           await waitForObject(this.btnLogin)
           await this.clickOnLogin();
          
       }
       enterInvalidANS = async (ANS) => {
-        
         await enterText(this.txtSecurityAnswer,ANS);
         await waitForObject(this.btnLogin)
         await this.clickOnLogin();
@@ -209,7 +185,6 @@ export class LoginPage{
         await console.log("Click on logout button");
         await waitForObject(this.dataVisionLogo)
         await clickElement(this.dataVisionLogo) 
-      //  await waitForObject(this.txtUsername)       
     }
     clickOnContinue = async () => {
         await console.log("Click on continue");

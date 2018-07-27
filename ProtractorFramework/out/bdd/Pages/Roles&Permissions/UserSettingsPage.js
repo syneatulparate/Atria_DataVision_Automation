@@ -32,7 +32,7 @@ class UserSettingsPage {
         this.radioButton1 = protractor_1.element(protractor_1.by.xpath("//input[@value='admin']"));
         this.radioButton2 = protractor_1.element(protractor_1.by.xpath("//div[@class='form-section zebrastripe col-9']/div[3]//input[@value='self']"));
         this.radioButton3 = protractor_1.element(protractor_1.by.xpath("//div[@class='form-section zebrastripe col-9']/div[5]//input[@value='self']"));
-        //  this.applyButton = element( )
+        //this.applyButton = element( )
         //this.cancelButton =
     }
     verifyPageHeading(expectedPage) {

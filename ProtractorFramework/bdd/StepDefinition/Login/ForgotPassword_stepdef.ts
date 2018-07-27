@@ -19,13 +19,14 @@ When(
 
 Then(
     /^User expect that "([^"]*)?" is displayed$/, async (ErrorMsg) => {
-        //await forgotPasswordPage.verifyErrorMessage(ErrorMsg);
+  
         expect(await forgotPasswordPage.verifyErrorMessage(ErrorMsg)).to.equal(true, 'error message is not displayed');
     });
 Then(
         /^User expect that "([^"]*)?" is present$/, async (ErrorMsg) => {
             await forgotPasswordPage.verifyErrorMessage(ErrorMsg);
         });
+      //  verifylockErrorMessage
 Then(
         /^User enters "([^"]*)?"$/, async (emailAddress) => {
             await forgotPasswordPage.enterInvalidEmail(emailAddress);
@@ -34,7 +35,7 @@ Then(
 Then(
     /^User expect that email field is displayed$/, async () => {
         //await forgotPasswordPage.verifyEmailField();
-
+        await staticWait(3000)
         expect(await forgotPasswordPage.verifyEmailField()).to.equal(true, 'email file is not present');
     });
 
@@ -83,6 +84,7 @@ When(/^User enters invalid OTP "([^"]*)?" 3 times$/, async (OTP)=> {
            await loginPage.clickOnLogOut()
            await staticWait(3000)
            await loginPage.verifyLoginPageTitle("Log In – dataVISION")
+           await loginPage.clickOnForgotPassword()
             return true;
         },
         async (isDisplayed)=> {

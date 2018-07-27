@@ -19,7 +19,7 @@ export class ForgotPasswordPage {
     public errMsg :  ElementFinder;
     public emailTextField : ElementFinder; 
     
- /**
+    /**
      * Objects from Verify Identity page
      */
     public securityQuestion : ElementFinder;
@@ -29,25 +29,25 @@ export class ForgotPasswordPage {
     public msgCloseButton : ElementFinder;
     constructor(){
 
-     /**
+    /**
      * Objects from forogot password page   
      */
-       
         console.log("Inside constructor")
         this.txtUsername = element(by.id('username'));
         this.continueButton = element(by.css(".btn[type='submit']"));
         this.errMsg = element(by.xpath("//div[@class='toast-message']"));
         this.msgCloseButton = element(by.xpath("//div[@class='octicon octicon-x']"));
-        //div[@class='octicon octicon-x']
         this.emailTextField=element(by.css("#security-email[type='text']"));
         this.securityQuestion = element(by.css("label[for='security-answer']"));
         this.txtSecurityAnswer = element(by.css("#security-answer[type='text']"));
         this.txtOTP = element(by.id('opt-text'));
         }
+        
         enterUserName = async (UsernameVal) => {
             await console.log("Inside enter username");
             await enterText(this.txtUsername,UsernameVal);
         }
+
         clickOnContinue = async () => {
             await console.log("Click on continue");
             await clickElement(this.continueButton);
@@ -64,13 +64,9 @@ export class ForgotPasswordPage {
         }
 
         verifyErrorMessage = async(errorMessage) =>{
-
-            //await checkContainsText(this.errMsg,errorMessage)
             let flag: any
             flag = false;
-            // let temp:Promise<boolean>;        
             await waitForObject(this.errMsg);
-           
                 await this.errMsg.getText().then(async (text) => {
                     await console.log(text);
                     if (await text.toUpperCase().includes(errorMessage.toUpperCase())) {
@@ -80,31 +76,43 @@ export class ForgotPasswordPage {
                     }
                     await console.log("value of flag 1" + flag)
                 });
-    
-            
-    
             await console.log("value of flag 2" + flag)
-    
             return flag;
         }
+        verifylockErrorMessage = async(errorMessage) =>{
+            let flag: any
+            flag = false;
+            let elemet=element(by.css("div.alert.alert-danger.ng-star-inserted"));  
+            await waitForObject(elemet);
+                await elemet.getText().then(async (text) => {
+                    await console.log(text);
+                    if (await text.toUpperCase().includes(errorMessage.toUpperCase())) {
+                        flag = true;
+                    } else {
+                        flag = false;
+                    }
+                    await console.log("value of flag 1" + flag)
+                });
+            await console.log("value of flag 2" + flag)
+            return flag;
+        }
+
         verifyEmailField = async() =>{
             let linkPresent: Promise<boolean>;
             await waitForObject(this.emailTextField)
             linkPresent= entitlementPage.verifyElement(this.emailTextField)
-            
-        await linkPresent.then(function (text) { console.log(text) })
-        return linkPresent;
+            await linkPresent.then(function (text) { console.log(text) })
+            return linkPresent;
         }
         verifyOTPField = async() =>{
-
             await staticWait(3000)
             await waitForObject(this.txtOTP)
             await isElementPresent(this.txtOTP)
         }
+
         enterSecurityAnswer = async () => {
             await waitForObject(this.securityQuestion);
             await console.log("Inside Business Actions");
-            
             await this.securityQuestion.getText().then(
                 async(txtMsg) => {
                     console.log("text message ===>" + txtMsg);
@@ -120,6 +128,7 @@ export class ForgotPasswordPage {
                     }
                 });
             }
+
         enterInvalidSecurityAnswer = async (invalidAnswer) => {
             await enterText(this.txtSecurityAnswer,invalidAnswer);
         }
@@ -142,7 +151,6 @@ export class ForgotPasswordPage {
             await enterText(this.txtOTP,OTP);
             await this.clickOnContinue();
             await clearInputField(this.txtOTP);
-            //await this.clickOnMsgCloseButton();
           }  
         }
         }
