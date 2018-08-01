@@ -19,125 +19,170 @@ const checkTitleContains_1 = require("../../../uiActions/verifyActions/checkTitl
 const isElementPresent_1 = require("../../../uiActions/verifyActions/isElementPresent");
 const waitActions_1 = require("../../../uiActions/waitActions/waitActions");
 class LoginPage {
+    /**
+     * Objects from Verify Identity page
+     */
     constructor() {
+        /**
+         * To Enter UserName
+         */
         this.enterUserName = (UsernameVal) => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("Inside enter username");
             yield setInputField_1.enterText(this.txtUsername, UsernameVal);
         });
+        /**
+         * To enter Password
+         */
         this.enterPassword = (PasswordVal) => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("Inside enter password");
             yield setInputField_1.enterText(this.txtPassword, PasswordVal);
         });
+        /**
+         * To click on Login Button
+         */
         this.clickOnLogin = () => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("Click on login");
             yield waitActions_1.waitForObject(this.btnLogin);
             yield clickElement_1.clickElement(this.btnLogin);
         });
+        /**
+         * To click on Login and Remember me Button
+         */
         this.clickOnLoginRem = () => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("Click on loginRem");
             yield waitActions_1.waitForObject(this.btnLoginRem);
             yield clickElement_1.clickElement(this.btnLoginRem);
             yield waitActions_1.staticWait(5000);
         });
+        /**
+         * To click on forgot password link
+         */
         this.clickOnForgotPassword = () => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("Click on forgot password link");
             yield clickElement_1.clickElement(this.lnkForgotPassword);
         });
+        /**
+         * To verify login page title
+         */
         this.verifyLoginPageTitle = (headerMessage) => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("inside verify login page title " + headerMessage);
             yield checkTitle_1.checkTitle(headerMessage);
             yield waitActions_1.staticWait(2000);
         });
+        /**
+         * To verify page title
+         */
         this.verifyPageTitle = (headerMessage) => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("inside verify login page title " + headerMessage);
             yield waitActions_1.waitForObject(this.logoutBtn);
             yield checkTitleContains_1.checkTitleContains(headerMessage);
         });
+        /**
+         * To enter security answer
+         */
         this.enterSecurityAnswer = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.securityQuestion);
-            yield console.log("Inside Business Actions");
             yield this.securityQuestion.getText().then((txtMsg) => __awaiter(this, void 0, void 0, function* () {
-                console.log("text message ===>" + txtMsg);
                 if (txtMsg.startsWith("Question: How do you spell")) {
-                    console.log("Question: Inside sercurityAns -->" + txtMsg + "element -->" + protractor_1.element);
                     yield this.txtSecurityAnswer.sendKeys(securityQuestions_1.securityQuestions["How do you spell \"password\"?"]);
                 }
                 else if (txtMsg.trim() === "Question: What is 2+2?") {
-                    console.log("Inside sercurityAns -->" + txtMsg);
                     yield this.txtSecurityAnswer.sendKeys(securityQuestions_1.securityQuestions["What is 2+2?"]);
                 }
                 else if (txtMsg.trim() === "Question: 1+1=?") {
-                    console.log("Inside securityans -->" + txtMsg);
                     yield this.txtSecurityAnswer.sendKeys(securityQuestions_1.securityQuestions["1+1?"]);
                 }
             }));
         });
+        /**
+         * To login to application
+         */
         this.loginToApplication = (UsernameVal, PasswordVal) => __awaiter(this, void 0, void 0, function* () {
-            console.log("Inside login to application = " + UsernameVal + "----" + PasswordVal);
             yield this.enterUserName(UsernameVal);
             yield this.enterPassword(PasswordVal);
             yield this.clickOnLogin();
         });
+        /**
+         *  To click on logout button
+         */
         this.clickOnLogOut = () => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("Click on logout button");
-            yield this.logoutBtn.getLocation().then(function (loaction) { return protractor_1.browser.executeScript('window.scrollTo(0,0)'); });
+            yield this.logoutBtn.getLocation().then(function () {
+                return protractor_1.browser.executeScript('window.scrollTo(0,0)');
+            });
             yield waitActions_1.staticWait(2000);
             yield clickElement_1.clickElement(this.logoutBtn);
             yield waitActions_1.staticWait(2000);
             yield waitActions_1.waitForObject(this.txtUsername);
         });
+        /**
+         * To verify  text
+         */
         this.verifyText = (headerMessage) => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("inside verify login page title " + headerMessage);
             yield checkContainsText_1.checkContainsText(this.headerMsg, headerMessage);
         });
+        /**
+         * To enter invalid otp
+         */
         this.enterMultipleInvalidOTP = (OTP) => __awaiter(this, void 0, void 0, function* () {
             for (var i = 1; i <= 3; i++) {
-                console.log(i);
                 yield setInputField_1.enterText(this.txtOTP, OTP);
                 yield this.clickOnLogin();
                 yield waitActions_1.staticWait(5000);
                 yield clearInputField_1.clearInputField(this.txtOTP);
             }
         });
+        /**
+         * To verify OTP field
+         */
         this.verifyOTPField = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.txtOTP);
             yield isElementPresent_1.isElementPresent(this.txtOTP);
         });
+        /**
+         * To enter invalid security answer
+         */
         this.enterMultipleInvalidAns = (ANS) => __awaiter(this, void 0, void 0, function* () {
             for (var i = 1; i <= 3; i++) {
-                console.log(i);
                 yield setInputField_1.enterText(this.txtSecurityAnswer, ANS);
                 yield this.clickOnContinue();
                 yield waitActions_1.staticWait(3000);
             }
         });
-        this.verifySecAnsField = () => __awaiter(this, void 0, void 0, function* () {
+        /**
+         * To verify security answer field
+         */
+        this.verifySecurityAnswerField = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.txtSecurityAnswer);
             yield isElementPresent_1.isElementPresent(this.txtSecurityAnswer);
         });
+        /**
+         * To verify error message
+         */
         this.verifyErrorMessage = (errorMessage) => __awaiter(this, void 0, void 0, function* () {
             yield checkContainsText_1.checkContainsText(this.errMsg, errorMessage);
         });
+        /**
+         * To enter invalid OTP
+         */
         this.enterInvalidOTP = (OTP) => __awaiter(this, void 0, void 0, function* () {
             yield setInputField_1.enterText(this.txtOTP, OTP);
             yield waitActions_1.waitForObject(this.btnLogin);
             yield this.clickOnLogin();
         });
+        /**
+         * To enter invalid Security answer
+         */
         this.enterInvalidANS = (ANS) => __awaiter(this, void 0, void 0, function* () {
             yield setInputField_1.enterText(this.txtSecurityAnswer, ANS);
             yield waitActions_1.waitForObject(this.btnLogin);
             yield this.clickOnLogin();
         });
+        /**
+         * To click on DataVision logo
+         */
         this.clickOnDataVisionLogo = () => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("Click on logout button");
             yield waitActions_1.waitForObject(this.dataVisionLogo);
             yield clickElement_1.clickElement(this.dataVisionLogo);
         });
+        /**
+         * To click on Continue button
+         */
         this.clickOnContinue = () => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("Click on continue");
             yield clickElement_1.clickElement(this.continueButton);
         });
-        console.log("Inside constructor");
         this.txtUsername = protractor_1.element(protractor_1.by.id('username'));
         this.txtPassword = protractor_1.element(protractor_1.by.id('password'));
         this.dataVisionLogo = protractor_1.element(protractor_1.by.css("img.submasthead-dvlogo"));

@@ -50,9 +50,9 @@ When(/^User clicks on contraction button on Contacts tile$/, () => __awaiter(thi
     yield contactsTile.clickOnContractIconContacts();
 }));
 // Then(/^User expects that tile is closed and dashboard is displayed$/, async()=>{
-// });
+// })
 // When(/^User clicks outside of tile$/, async () => {
-// });
+// })
 // When(/^User taps on Esc button on keyboard$/, async () => {
-//     await contactsTile.tapEscButton();
-// });
+//     await contactsTile.tapEscButton()
+// })

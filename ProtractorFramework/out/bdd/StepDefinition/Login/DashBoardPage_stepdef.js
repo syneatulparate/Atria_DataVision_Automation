@@ -30,3 +30,13 @@ Then(/^User expects that Admin link is not displyed$/, () => __awaiter(this, voi
     expect(yield dasboardPage.verifyAdminLink()).to.equal(false, "Admin link is not displayed");
     yield loginPage.clickOnLogOut();
 }));
+Then(/^User verify "([^"]*)?" , "([^"]*)?" and "([^"]*)?" Dashboard page is present$/, () => __awaiter(this, void 0, void 0, function* () {
+    yield waitActions_1.staticWait(3000);
+    expect(yield dasboardPage.verifyAdminLink()).to.equal(false, "Admin link is not displayed");
+    yield loginPage.clickOnLogOut();
+}));
+Then(/^User verify "([^"]*)?"$/, () => __awaiter(this, void 0, void 0, function* () {
+    yield waitActions_1.staticWait(3000);
+    expect(yield dasboardPage.verifyAdminLink()).to.equal(false, "Admin link is not displayed");
+    yield loginPage.clickOnLogOut();
+}));

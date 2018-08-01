@@ -17,78 +17,118 @@ const alertAction_1 = require("../../../uiActions/alertActions/alertAction");
 const waitActions_1 = require("../../../uiActions/waitActions/waitActions");
 const moveToElement_1 = require("../../../uiActions/mouseActions/moveToElement");
 const checkBoxActions_1 = require("../../../uiActions/mouseActions/checkBoxActions");
-const dragElement_1 = require("../../../uiActions/mouseActions/dragElement");
 const chai = require("chai").use(require("chai-as-promised"));
 const expect = chai.expect;
 class EntitlementPage {
     constructor() {
+        /**
+         * To click on add user button
+         */
         this.clickOnAddUserButton = () => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("Click Add user button");
             yield waitActions_1.waitForObject(this.addUserButton);
             yield clickElement_1.clickElement(this.addUserButton);
         });
+        /**
+         * To Verify search text box
+         */
         this.verifySearchTextBox = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.txtSearch).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify Global search text box
+         */
         this.verifyGlobalSearchTexbox = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.searchTextGlobal)
                 .then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify global search button
+         */
         this.verifyGlobalSearchBtn = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.searchTextGlobal)
                 .then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+        * To click on search button
+        */
         this.clickOnSearchButton = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.searchButton);
             yield clickElement_1.clickElement(this.searchButton);
         });
+        /**
+        * To enter user name in search text
+        */
         this.enterUserName = (userName) => __awaiter(this, void 0, void 0, function* () {
             yield setInputField_1.enterText(this.txtSearch, userName);
         });
+        /**
+         * To click on add selected user button
+         */
         this.clickOnAddSelectedUserButton = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.addSelectedUserButton);
             yield clickElement_1.clickElement(this.addSelectedUserButton);
         });
+        /**
+        * To click on remove icon
+        */
         this.clickOnRemoveIcon = () => __awaiter(this, void 0, void 0, function* () {
             yield clickElement_1.clickElement(this.removeIcon);
         });
+        /**
+         * To click on remove button
+         */
         this.clickOnRemoveButton = () => __awaiter(this, void 0, void 0, function* () {
             yield clickElement_1.clickElement(this.removeButton);
         });
+        /**
+         * To click on Cancel button
+         */
         this.clickOnCancelButton = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.cancelButton);
             yield clickElement_1.clickElement(this.cancelButton);
         });
+        /**
+         * To click on delete role link and then click on OK button
+         */
         this.deleteRoleAndAccept = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.deleteRoleButton);
             yield clickElement_1.clickElement(this.deleteRoleButton);
             yield waitActions_1.staticWait(3000);
             yield alertAction_1.alertAccept();
         });
+        /**
+         *  To click on delete role link and then click on Cancel button
+         */
         this.deleteRoleAndDismiss = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.deleteRoleButton);
             yield clickElement_1.clickElement(this.deleteRoleButton);
             yield waitActions_1.staticWait(3000);
             yield alertAction_1.alertDismiss();
         });
+        /**
+         * To click on Ok button
+         */
         this.clickOnConfirmOkButton = () => __awaiter(this, void 0, void 0, function* () {
             yield clickElement_1.clickElement(this.confirmOkButton);
         });
+        /**
+         * To click on Cancel button
+         */
         this.clickOnConfirmCancelButton = () => __awaiter(this, void 0, void 0, function* () {
             yield clickElement_1.clickElement(this.clickOnCancelButton);
         });
+        /**
+         * To click on Details button with respect to expected role
+         */
         this.verifyAndClickOnDetails = (role) => __awaiter(this, void 0, void 0, function* () {
             let roleDetailsButton = protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" +
                 role + "']//following::button[1] | //*[contains(text(),'" +
@@ -96,24 +136,38 @@ class EntitlementPage {
             yield waitActions_1.waitForObject(roleDetailsButton);
             yield clickElement_1.clickElement(roleDetailsButton);
         });
+        /**
+         * To click on View button with respect to expected user
+         */
         this.verifyAndClickOnView = (userName) => __awaiter(this, void 0, void 0, function* () {
             let viewButton = protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" +
                 userName + "']//following::button[1] | //*[contains(text(),'" +
                 userName + "')]//following::button[1]"));
             yield clickElement_1.clickElement(viewButton);
         });
+        /**
+         * To verify message
+         */
         this.verifyMessage = (message) => __awaiter(this, void 0, void 0, function* () {
             yield checkContainsText_1.checkContainsText(this.messageBox, message);
         });
+        /**
+         * To verify no user present
+         */
         this.verifyNoUserPresent = (userName) => __awaiter(this, void 0, void 0, function* () {
             yield isElementPresent_1.isElementPresent((protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" +
                 userName + "']//following::button[1] | //*[contains(text(),'" +
                 userName + "')]//following::button[1]"))));
         });
+        /**
+         * To verify add user button
+         */
         this.verifyAddUserButton = () => __awaiter(this, void 0, void 0, function* () {
             yield this.verifyElement(this.addUserButton);
-            // await isElementPresent(this.addUserButton)
         });
+        /**
+         * To delete user from role
+         */
         this.removeUser = (userName) => __awaiter(this, void 0, void 0, function* () {
             let minusButton = protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" +
                 userName + "']//following::button[2] | //*[contains(text(),'" +
@@ -126,11 +180,17 @@ class EntitlementPage {
             yield clickElement_1.clickElement(removeButton);
             yield waitActions_1.staticWait(3000);
         });
+        /**
+         * To click on view button
+         */
         this.clickOnViewButton = (userName) => __awaiter(this, void 0, void 0, function* () {
             yield clickElement_1.clickElement(protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" +
                 userName + "']//following::button[1] | //*[contains(text(),'" +
                 userName + "')]//following::button[1]")));
         });
+        /**
+         * To verify user profile table
+         */
         this.verifyUserProfile = (userName) => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.userProfile);
             let useprofilrele = protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" +
@@ -138,99 +198,138 @@ class EntitlementPage {
             yield this.verifyElement(this.userProfile);
             yield this.verifyElement(useprofilrele);
         });
+        /**
+         * To verify Classic Contact Read scope table
+         */
         this.verifyClassicContactReadScope = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.classicContact);
             yield this.verifyElement(this.classicContact);
         });
+        /**
+         * To click on check box to select user
+         */
         this.selectUser = (userName) => __awaiter(this, void 0, void 0, function* () {
             let checkBoxForUser = protractor_1.element(protractor_1.by.xpath("//*[(text()='" + userName + "')]//ancestor::tr//tbody//input"));
             yield waitActions_1.waitForObject(checkBoxForUser);
             yield clickElement_1.clickElement(checkBoxForUser);
         });
+        /**
+         * To verify that the user is added
+         */
         this.verifyUserAdded = (userName) => __awaiter(this, void 0, void 0, function* () {
             let flag;
             let userAdded = protractor_1.element(protractor_1.by.xpath("//*[contains(text(),'" + userName + "')]"));
             return yield isElementPresent_1.isElementPresent(userAdded).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify warning message while creating new role
+         */
         this.verifyWarningMessage = (errorMessage) => __awaiter(this, void 0, void 0, function* () {
             yield checkContainsText_1.checkContainsText(protractor_1.element(protractor_1.by.xpath("//p[contains(text(),  'Role name is limited to 50 characters')]")), errorMessage);
         });
+        /**
+         * To click on new role button
+         */
         this.clickOnNewRole = () => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("Click Add user button");
-            // await waitForObject(element(by.xpath("//button[contains(text(),  'New Role')]")))
             yield waitActions_1.waitForObject(this.NewRoleButton);
             yield clickElement_1.clickElement(this.NewRoleButton);
         });
+        /**
+         * To verify role name field
+         */
         this.verifyRoleNameField = () => __awaiter(this, void 0, void 0, function* () {
-            // await waitForObject(this.txtRoleName)
             yield this.verifyElement(this.txtRoleName);
         });
+        /**
+         * To enter role name in role name text field
+         */
         this.enterRoleName = (length) => __awaiter(this, void 0, void 0, function* () {
             this.createRandomName(length);
             yield setInputField_1.enterText(this.txtRoleName, this.randonname);
             yield waitActions_1.waitForObject(this.CreateRoleButton);
         });
+        /**
+         * To verify duplicate role name
+         */
         this.VerifyDuplicateRoleName = (Rolename) => __awaiter(this, void 0, void 0, function* () {
             yield setInputField_1.enterText(this.txtRoleName, Rolename);
             yield waitActions_1.waitForObject(this.CreateRoleButton);
         });
+        /**
+         * To enter role name in role name text field
+         */
         this.EnterRoleName = (length) => __awaiter(this, void 0, void 0, function* () {
             this.createRandomName(length);
             yield setInputField_1.enterText(this.txtRoleName, this.randonname);
         });
+        /**
+         * To click on create role button
+         */
         this.clickOnCreateRoleButton = () => __awaiter(this, void 0, void 0, function* () {
             yield clickElement_1.clickElement(this.CreateRoleButton);
         });
+        /**
+         * To verify role name after creating new role
+         */
         this.verifyRoleName = () => __awaiter(this, void 0, void 0, function* () {
             let linkPresent;
-            yield console.log("wait element");
             let elemRoleName = protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" +
                 this.randonname + "'] | //*[contains(text(),'" + this.randonname + "')]"));
-            console.log("element name is = " + this.randonname);
             yield waitActions_1.waitForObject(elemRoleName);
             yield clickElement_1.clickElement(elemRoleName);
             linkPresent = this.verifyElement(elemRoleName);
-            yield linkPresent.then(function (text) { console.log(text); });
             return linkPresent;
         });
+        /**
+         * To Verify role name is not added
+         */
         this.verifyRoleNotPresent = () => __awaiter(this, void 0, void 0, function* () {
             let linkPresent;
             linkPresent = this.verifyElement(protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" +
                 this.randonname + "'] | //*[contains(text(),'" + this.randonname + "')]")));
-            yield linkPresent.then(function (text) { console.log(text); });
             return linkPresent;
         });
+        /**
+         * To verify Role and permission table title
+         */
         this.verifyRoleandPermissionColumn = () => __awaiter(this, void 0, void 0, function* () {
             let linkPresent;
             yield waitActions_1.waitForObject(this.headElement);
             linkPresent = this.verifyElement(protractor_1.element(protractor_1.by.xpath("//th[contains(text(),'Users Assigned This Role')]")));
             linkPresent = this.verifyElement(protractor_1.element(protractor_1.by.xpath("//th[contains(text(),'Permissions')]")));
-            yield linkPresent.then(function (text) { console.log(text); });
             return linkPresent;
         });
+        /**
+         * To clcik on edit button
+         */
         this.clickOnEditButton = () => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("edir button");
             yield waitActions_1.waitForObject(this.EditButton);
             yield clickElement_1.clickElement(this.EditButton);
         });
+        /**
+         * To select permission check box from permission table
+         */
         this.SelectCheckBox = (permission) => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("select check box");
             let checkelement = protractor_1.element(protractor_1.by.xpath("//*[text()='" + permission + "']/ancestor::tr[@class='ng-star-inserted']//input | //*[@dv-tooltip='" +
                 permission + "']/ancestor::tr[@class='ng-star-inserted']//input"));
             yield waitActions_1.waitForObject(checkelement);
             yield checkBoxActions_1.selectCheckBox(checkelement);
         });
+        /**
+         * To deselect permission checkbox from permission table
+         */
         this.deSelectCheckBox = (permission) => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("select check box");
             let permissionCheckbox = protractor_1.element(protractor_1.by.xpath("//*[text()='" +
                 permission + "']/ancestor::tr[@class='ng-star-inserted']//input | //*[@dv-tooltip='" +
                 permission + "']/ancestor::tr[@class='ng-star-inserted']//input"));
             yield waitActions_1.waitForObject(permissionCheckbox);
             yield checkBoxActions_1.deSelectCheckBox(permissionCheckbox);
         });
+        /**
+         *To select multiple permissions from permission table
+         */
         this.SelectMultipleCheckBox = () => __awaiter(this, void 0, void 0, function* () {
             protractor_1.element.all(protractor_1.by.css("span input.checkbox")).isSelected().then(function (selected) {
                 if (selected) {
@@ -241,19 +340,26 @@ class EntitlementPage {
                 }
             });
         });
+        /**
+         *To Click on save button after selecting the permission
+         */
         this.clickOnSaveButton = () => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("save button ");
             yield waitActions_1.waitForObject(this.SaveButton);
             yield clickElement_1.clickElement(this.SaveButton);
         });
+        /**
+         * To verify permission is not present after deselecting the permission
+         */
         this.VerifyRemovePermission = (permission) => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("wait element");
             let elem1 = protractor_1.element(protractor_1.by.xpath("//th[contains(text(),'Permissions')]"));
             let elem = protractor_1.element(protractor_1.by.xpath("//*[text()='" + permission + "']"));
             yield this.verifyElement(elem1);
             yield this.verifyElement(elem);
             yield waitActions_1.waitForObject(this.EditButton);
         });
+        /**
+         * To create random role name
+         */
         this.createRandomName = (length) => __awaiter(this, void 0, void 0, function* () {
             let i;
             this.randonname = '';
@@ -265,6 +371,9 @@ class EntitlementPage {
             this.randonname = autoname + this.randonname;
             return this.randonname;
         });
+        /**
+         * Toverify multiple check boxes
+         */
         this.verifymultiplecheckbox = () => __awaiter(this, void 0, void 0, function* () {
             yield clickElement_1.clickElement(this.randonname);
             yield waitActions_1.waitForObject(this.EditButton);
@@ -274,8 +383,10 @@ class EntitlementPage {
             yield waitActions_1.waitForObject(this.SaveButton);
             yield clickElement_1.clickElement(this.SaveButton);
         });
+        /**
+         * To delete role permanently
+         */
         this.DeleteRolePerm = () => __awaiter(this, void 0, void 0, function* () {
-            console.log("create role");
             yield waitActions_1.waitForObject(this.NewRoleButton);
             yield clickElement_1.clickElement(this.NewRoleButton);
             yield this.createRandomName(7);
@@ -286,8 +397,10 @@ class EntitlementPage {
             yield waitActions_1.staticWait(3000);
             yield this.deleteRoleAndAccept();
         });
+        /**
+         * To click on cancel
+         */
         this.CancelDeleteRole = () => __awaiter(this, void 0, void 0, function* () {
-            console.log("create role");
             yield waitActions_1.waitForObject(this.NewRoleButton);
             yield clickElement_1.clickElement(this.NewRoleButton);
             yield this.createRandomName(7);
@@ -298,8 +411,10 @@ class EntitlementPage {
             yield waitActions_1.staticWait(3000);
             yield this.deleteRoleAndDismiss();
         });
+        /**
+         *
+         */
         this.elemetbeforeEdit = () => __awaiter(this, void 0, void 0, function* () {
-            console.log("before edit");
             let i;
             let elem = protractor_1.element(protractor_1.by.xpath("//div[@class='tbl']//tbody/tr/td[@colspan='2']"));
             let countele = elem.count();
@@ -310,8 +425,10 @@ class EntitlementPage {
                 });
             }
         });
+        /**
+         *
+         */
         this.elemetAfterEdit = () => __awaiter(this, void 0, void 0, function* () {
-            console.log("before edit");
             let i;
             let elem1 = protractor_1.element(protractor_1.by.xpath("//div[@class='tbl']//tbody/tr/td[@colspan='2']"));
             let counteleafter = elem1.count();
@@ -322,16 +439,16 @@ class EntitlementPage {
                 });
             }
         });
+        /**
+         * To verify permision not added after clickinng on cancel
+         */
         this.verifyPermissionCancel = () => __awaiter(this, void 0, void 0, function* () {
-            console.log("before edit");
             let i;
             let elem = protractor_1.element(protractor_1.by.css((".tbl-body.zebrastripe tr"))).count().then(function (rowCount) {
-                console.log("Count:" + rowCount);
                 return rowCount;
             });
             let counteleafter = elem;
             let elem1 = protractor_1.element(protractor_1.by.css((".tbl-body.zebrastripe tr"))).count().then(function (rowCount) {
-                console.log("Count:" + rowCount);
                 return rowCount;
             });
             let countele = elem1;
@@ -349,308 +466,413 @@ class EntitlementPage {
             }
             if (countele === counteleafter) {
                 expect(permissionebeforeedit).to.equals(permissioneAfteredit);
-                console.log("element are same");
             }
             else {
             }
         });
+        /**
+         * To click on details of any role
+         */
         this.ClickOnDetails = () => __awaiter(this, void 0, void 0, function* () {
             let elem1 = protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" + this.randonname + "']//following::button[1] | //*[contains(text(),'" + this.randonname + "')]//following::button[1]"));
             yield waitActions_1.waitForObject(elem1);
             yield clickElement_1.clickElement(elem1);
         });
+        /**
+         * To select multiple check boxes
+         */
         this.multipleSelect = (elem) => __awaiter(this, void 0, void 0, function* () {
-            //let elem : ElementFinder = element(by.xpath("//dv-permissions-page//table//tbody//tr"));
             yield waitActions_1.waitForObject(elem);
             yield protractor_1.element.all(elem).count()
                 .then(function (size) {
-                console.log("size is 1 = " + size);
-                //browser.sleep(10000);
-                console.log("size is = " + size);
             });
         });
+        /**
+         * To verify brokers and dealers link
+         */
         this.verifyBrokersAndDealerslink = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.brokersDealersLink).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify users link
+         */
         this.verifyUsersLink = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.usersLink).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify CFS engineering blog
+         */
         this.verifyCFSSPFEngineeringBlog = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.cfsenggbloglink).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify send my docs link
+         */
         this.verifySendMyDocsLink = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.senmydoclink).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify commission interpreters link
+         */
         this.verifyCommissionsInterpretersLink = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.ComisInterpreterslink).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify setuo client scanner link
+         */
         this.verifySetUpClientScannerlink = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.setupclientscanner).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify user profile link
+         */
         this.verifyUserprofilelink = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.Usersettings).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify update profile button
+         */
         this.verifyUpdateProfileBtn = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.UpdateProfileBtn).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify classic Contact views link
+         */
         this.verifyClassicContactViewsLink = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.classicContactViewLink).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify classsic users link
+         */
         this.verifyClassicUsersLink = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.classicUsersLink).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify cmses link
+         */
         this.verifyCMSesLink = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.cmsesLink).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * TO verify roles and permissions link
+         */
         this.verifyRolesAndPermissionsLink = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.rolesAndPermissionLink).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify send my docs saves link
+         */
         this.verifySendMyDocsSavesLink = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.sendMyDocsSavesLink).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify send my docs scanners link
+         */
         this.verifySendMyDocsScannersLink = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.sendMyDocsScanners).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify send my scans link
+         */
         this.verifySendMyScansLink = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.sendMyScansLink).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify user sessions link
+         */
         this.verifyUserSessionsLink = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.userSessionsLink).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify manage user link
+         */
         this.verifyManageUsersLink = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.manageUserLink).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify active lockout link
+         */
         this.verifyActiveLockoutLink = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.activeLockouts).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify work groups link
+         */
         this.verifyWorkgroupsLink = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.workGroupsLink).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify settings link
+         */
         this.verifysettingsLink = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.settingslink).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify user setup link
+         */
         this.verifyUserSetupLink = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.usersetuplink).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * Mouse action to move to element and verdify link
+         */
         this.mousehoverandverifylink = (element, element1) => __awaiter(this, void 0, void 0, function* () {
-            console.log("hover elemet");
             yield moveToElement_1.moveToElement(element);
             yield waitActions_1.staticWait(2000);
             yield waitActions_1.waitForObject(element1);
         });
+        /**
+         * Mouse action to move to element and click
+         */
         this.mousehoverandclicklink = (element) => __awaiter(this, void 0, void 0, function* () {
-            console.log("mouse hover on element" + element);
             yield moveToElement_1.moveToElement(element);
             yield waitActions_1.staticWait(3000);
-            yield console.log("click on element" + element);
             yield clickElement_1.clickElement(element);
             yield waitActions_1.staticWait(3000);
         });
+        /**
+         * To verify screen title
+         */
         this.verifyScreenTiltle = (title) => __awaiter(this, void 0, void 0, function* () {
             yield isElementPresent_1.isElementPresent(protractor_1.element(protractor_1.by.xpath("//h1[contains(text(),'" + title + "')]")));
         });
+        /**
+         * To click on users link
+         */
         this.clickOnUsersLink = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.usersLink);
             yield clickElement_1.clickElement(this.usersLink);
         });
+        /**
+         * To click on classic contacts views link
+         */
         this.clickOnClassicContactViewsLink = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.classicContactViewLink);
             yield clickElement_1.clickElement(this.classicContactViewLink);
         });
+        /**
+         * To click on classic users link
+         */
         this.clickOnClassicUsersLink = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.classicUsersLink);
             yield clickElement_1.clickElement(this.classicUsersLink);
         });
+        /**
+         * To click on cmses link
+         */
         this.clickOnCMSESLink = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.cmsesLink);
             yield clickElement_1.clickElement(this.cmsesLink);
         });
+        /**
+         * To click on roles and permissions link
+         */
         this.clickOnRolesAndPermissions = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.rolesAndPermissionLink);
             yield clickElement_1.clickElement(this.rolesAndPermissionLink);
         });
+        /**
+         * To click on send my docs saves
+         */
         this.clickOnSendMyDocSaves = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.sendMyDocsScanners);
             yield clickElement_1.clickElement(this.sendMyDocsScanners);
         });
+        /**
+         * To click on send my docs scanners
+         */
         this.clickOnSendMyDocsScanners = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.sendMyDocsScanners);
             yield clickElement_1.clickElement(this.sendMyDocsScanners);
         });
+        /**
+         * To click on send my scans link
+         */
         this.clickOnSendMyScans = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.sendMyScansLink);
             yield clickElement_1.clickElement(this.sendMyScansLink);
         });
+        /**
+         * To click on user sessions
+         */
         this.clickOnUserSessions = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.userSessionsLink);
             yield clickElement_1.clickElement(this.userSessionsLink);
         });
+        /**
+         * To click on Manage user link
+         */
         this.clickOnManageUser = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.manageUserLink);
             yield clickElement_1.clickElement(this.manageUserLink);
         });
+        /**
+         * To click on Active lockouts link
+         */
         this.clickOnActiveLockoutsLink = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.activeLockouts);
             yield clickElement_1.clickElement(this.EditButton);
         });
+        /**
+         * To click on work groups link
+         */
         this.clickOnworkGroupsLink = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.workGroupsLink);
             yield clickElement_1.clickElement(this.workGroupsLink);
         });
+        /**
+         * To click on link
+         */
         this.clickOnLink = (element, element1) => __awaiter(this, void 0, void 0, function* () {
             yield moveToElement_1.moveToElement(element);
             yield waitActions_1.staticWait(2000);
             yield clickElement_1.clickElement(element1);
         });
+        /**
+         * To click on user name
+         */
         this.clickOnUserName = (linkname) => __awaiter(this, void 0, void 0, function* () {
             let ele = protractor_1.element(protractor_1.by.xpath("//div[@class='tbl']//tbody/tr//a[contains(text(),'" + linkname + "')]"));
         });
+        /**
+         * To enter string in the text box
+         */
         this.EnterString = (string, element) => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("Inside enter username");
             yield setInputField_1.enterText(element, string);
         });
+        /**
+         *
+         */
         this.afterEnterRole = (role) => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("count test");
             this.rows1 = protractor_1.element.all(protractor_1.by.xpath("//tbody[@class='tbl-body zebrastripe ng-star-inserted']//tr//span[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') , translate('"
                 + role + "', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]"));
             this.sum1 = this.rows1.count().then(function (count) {
                 var su = count;
-                console.log(su);
                 return su;
             });
-            yield console.log("count before = " + this.sum1);
             return yield this.sum1;
         });
+        /**
+         * To click on settings link
+         */
         this.clickOnSettngsLink = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.settingslink);
             yield clickElement_1.clickElement(this.settingslink);
         });
+        /**
+         * To click on user Setup
+         */
         this.clickOnUserSetup = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.usersetuplink);
             yield clickElement_1.clickElement(this.usersetuplink);
         });
+        /**
+         * To verify element is present
+         */
         this.verifyElement = (elem) => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(elem).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify delete role button
+         */
         this.verifyDeleteroleBtn = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.deleteRoleButton).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify add user button
+         */
         this.verifyaddUserButton = (elem) => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.addUserButton).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify edit button
+         */
         this.verifyEditButton = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.EditButton).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To Verify Roles and Permission table header
+         */
         this.verifyElementRoleAndpermision = (elem) => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(protractor_1.element(protractor_1.by.xpath("//h1[contains(text(),'Roles & Permissions')]"))).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
-        });
-        this.dragAndDropTest = () => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("Into drag function");
-            yield dragElement_1.dragElement(this.src1, this.destination1);
         });
         this.addUserButton = protractor_1.element(protractor_1.by.xpath("//button[contains(text(),  '+ Add Users')]"));
         this.txtSearch = protractor_1.element(protractor_1.by.css("input[placeholder ='User search']"));
@@ -713,86 +935,85 @@ class EntitlementPage {
         this.UsersList = protractor_1.element.all(protractor_1.by.xpath("//table//th[contains(text(),'Users')]//ancestor::table[1]//td[1]"));
         this.settingslink = protractor_1.element(protractor_1.by.css("a[routerlink='settings/usersettings']"));
         this.usersetuplink = protractor_1.element(protractor_1.by.css("a[routerlink='settings/usersetup']"));
-        this.src1 = protractor_1.element(protractor_1.by.xpath("//div//span[@id='contacts']"));
-        this.destination1 = protractor_1.element(protractor_1.by.xpath("//tr//td[@id='configureTile_1']"));
     }
+    /**
+     * To verify user name
+     */
     verifyUserName(userName) {
         return __awaiter(this, void 0, void 0, function* () {
             let flag;
             flag = false;
-            // let temp:Promise<boolean>;        
             yield waitActions_1.waitForObject(this.userList);
             yield this.userList.each((element, index) => __awaiter(this, void 0, void 0, function* () {
                 yield element.getText().then((text) => __awaiter(this, void 0, void 0, function* () {
-                    yield console.log(text);
                     if (yield text.toUpperCase().includes(userName.toUpperCase())) {
                         flag = true;
                     }
                     else {
                         flag = false;
                     }
-                    yield console.log("value of flag 1" + flag);
                 }));
             }));
-            yield console.log("value of flag 2" + flag);
             return flag;
         });
     }
+    /**
+     * To verify Classic User Ownerhips table
+     */
     verifyClassicUserOwnerships() {
         return __awaiter(this, void 0, void 0, function* () {
             let linkPresent;
-            yield console.log("wait element");
             let flag;
             yield waitActions_1.waitForObject(this.classicUserOwnerships);
             linkPresent = this.verifyElement(this.classicUserOwnerships);
-            yield linkPresent.then(function (text) { console.log(text); });
             return linkPresent;
         });
     }
+    /**
+     * To verify permission after adding
+     */
     VerifyPermission(permission) {
         return __awaiter(this, void 0, void 0, function* () {
             let linkPresent;
-            yield console.log("wait element");
             let permissionelement1 = protractor_1.element(protractor_1.by.xpath("//*[text()='" + permission + "'] | //*[@dv-tooltip='" + permission + "']"));
             linkPresent = this.verifyElement(permissionelement1);
-            yield linkPresent.then(function (text) { console.log(text); });
             return yield linkPresent;
         });
     }
+    /**
+     * Verify roles and permissions table
+     */
     verifyRolesAndPermissionSection() {
         return __awaiter(this, void 0, void 0, function* () {
             let linkPresent;
-            yield console.log("wait element");
             let flag;
             yield waitActions_1.waitForObject(this.RolesandPermissionSection);
             linkPresent = this.verifyElement(this.RolesandPermissionSection);
-            yield linkPresent.then(function (text) { console.log(text); });
             return linkPresent;
         });
     }
+    /**
+     * To verify link name
+     * @param linkName
+     */
     verifyLink(linkName) {
         return __awaiter(this, void 0, void 0, function* () {
             let linkPresent;
             waitActions_1.staticWait(5000);
             switch (linkName) {
                 case 'Users':
-                    console.log("Users");
                     linkPresent = this.verifyUsersLink();
                     break;
                 case 'Brokers and Dealers':
-                    console.log("B and D");
                     linkPresent = this.verifyBrokersAndDealerslink();
                     break;
                 case 'Classic Contact Views':
-                    console.log("CCV");
                     linkPresent = this.verifyClassicContactViewsLink();
                     break;
                 case 'Classic Users':
-                    console.log("CU");
                     linkPresent = this.verifyClassicUsersLink();
                     break;
                 case 'CMSES':
-                    console.log("CMSES");
                     linkPresent = this.verifyCMSesLink();
                     break;
                 case 'Roles and Permissions':
@@ -821,11 +1042,9 @@ class EntitlementPage {
                     break;
                 case 'CFS/SPF Engineering Blog':
                     linkPresent = this.verifyCFSSPFEngineeringBlog();
-                    //linkPresent = true;
                     break;
                 case 'SendMyDocs':
                     linkPresent = this.verifySendMyDocsLink();
-                    //  linkPresent = true;
                     break;
                 case 'User settings':
                     linkPresent = this.verifyUserprofilelink();
@@ -846,10 +1065,13 @@ class EntitlementPage {
                     linkPresent = this.verifySetUpClientScannerlink();
                     break;
             }
-            yield linkPresent.then(function (text) { console.log(text); });
             return linkPresent;
         });
     }
+    /**
+     * To verify role name filter
+     * @param role
+     */
     verifyRoleNameFilter(role) {
         return __awaiter(this, void 0, void 0, function* () {
             let flag;
@@ -857,20 +1079,21 @@ class EntitlementPage {
             yield waitActions_1.waitForObject(this.roleList);
             yield this.roleList.each((element, index) => __awaiter(this, void 0, void 0, function* () {
                 yield element.getText().then((text) => __awaiter(this, void 0, void 0, function* () {
-                    yield console.log(text);
                     if (yield text.toUpperCase().includes(role.toUpperCase())) {
                         flag = true;
                     }
                     else {
                         flag = false;
                     }
-                    yield console.log("value of flag 1" + flag);
                 }));
             }));
-            yield console.log("value of flag 2" + flag);
             return flag;
         });
     }
+    /**
+     * To verify filter for permission
+     * @param role
+     */
     verifyPermissionFilter(role) {
         return __awaiter(this, void 0, void 0, function* () {
             let flag;
@@ -878,20 +1101,21 @@ class EntitlementPage {
             yield waitActions_1.waitForObject(this.permissionList);
             yield this.permissionList.each((element, index) => __awaiter(this, void 0, void 0, function* () {
                 yield element.getText().then((text) => __awaiter(this, void 0, void 0, function* () {
-                    yield console.log(text);
                     if (yield text.toUpperCase().includes(role.toUpperCase())) {
                         flag = true;
                     }
                     else {
                         flag = false;
                     }
-                    yield console.log("value of flag 1" + flag);
                 }));
             }));
-            yield console.log("value of flag 2" + flag);
             return yield flag;
         });
     }
+    /**
+     * To verify filters for user name
+     * @param role
+     */
     verifyUsersFilter(role) {
         return __awaiter(this, void 0, void 0, function* () {
             let flag;
@@ -899,17 +1123,14 @@ class EntitlementPage {
             yield waitActions_1.waitForObject(this.UsersList);
             yield this.UsersList.each((element, index) => __awaiter(this, void 0, void 0, function* () {
                 yield element.getText().then((text) => __awaiter(this, void 0, void 0, function* () {
-                    yield console.log(text);
                     if (yield text.toUpperCase().includes(role.toUpperCase())) {
                         flag = true;
                     }
                     else {
                         flag = false;
                     }
-                    yield console.log("value of flag 1" + flag);
                 }));
             }));
-            yield console.log("value of flag 2" + flag);
             return yield flag;
         });
     }

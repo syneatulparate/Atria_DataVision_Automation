@@ -14,6 +14,9 @@ const waitActions_1 = require("../../../uiActions/waitActions/waitActions");
 const chai = require("chai").use(require("chai-as-promised"));
 class UserSetupPage {
     constructor() {
+        /**
+         * To verify User Settings
+         */
         this.verifyUserSettings = () => __awaiter(this, void 0, void 0, function* () {
             return yield isElementPresent_1.isElementPresent(this.userSetupHeading)
                 .then(function (flag) {
@@ -23,6 +26,9 @@ class UserSetupPage {
         });
         this.userSetupHeading = protractor_1.element(protractor_1.by.xpath("//h2"));
     }
+    /**
+     * To verify page elements
+     */
     verifyPageElement(expectedPage) {
         return __awaiter(this, void 0, void 0, function* () {
             let linkPresent;
@@ -49,6 +55,9 @@ class UserSetupPage {
             return linkPresent;
         });
     }
+    /**
+     * To Verify Header elements
+     */
     verifyHeaderElement(role) {
         return __awaiter(this, void 0, void 0, function* () {
             let flag;

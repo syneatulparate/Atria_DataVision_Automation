@@ -1,48 +1,48 @@
-import { ElementFinder, element, by, browser } from "protractor";
-import { waitForObject } from "../../../uiActions/waitActions/waitActions";
-import { clickElement } from "../../../uiActions/mouseActions/clickElement";
-import { moveToElement } from "../../../uiActions/mouseActions/moveToElement";
-import { isElementPresent } from "../../../uiActions/verifyActions/isElementPresent";
-import { protractor } from "protractor/built/ptor";
-import { promise } from "selenium-webdriver";
+import { ElementFinder, element, by, browser } from "protractor"
+import { waitForObject } from "../../../uiActions/waitActions/waitActions"
+import { clickElement } from "../../../uiActions/mouseActions/clickElement"
+import { moveToElement } from "../../../uiActions/mouseActions/moveToElement"
+import { isElementPresent } from "../../../uiActions/verifyActions/isElementPresent"
+import { protractor } from "protractor/built/ptor"
+import { promise } from "selenium-webdriver"
 
 
 export class ContactsToReviewTilePage {
 
-    public messageIcon: ElementFinder;
-    public phoneIcon: ElementFinder;
-    public commentIcon: ElementFinder;
-    public primaryEmail: ElementFinder;
-    public phoneNumber: ElementFinder;
-    public comments: ElementFinder;
-    public lastViewed: ElementFinder;
-    public mostViewed: ElementFinder;
-    public byInvestment: ElementFinder;
-    public contactViewDropDown: ElementFinder;
-    public recentContactScreen: ElementFinder;
-    public mostContactScreen: ElementFinder;
-    public byInvestmentScreen: ElementFinder;
-    public expandIcon: ElementFinder;
-    public contractIcon: ElementFinder;
-    public goToContactsLink: ElementFinder;
+    public messageIcon: ElementFinder
+    public phoneIcon: ElementFinder
+    public commentIcon: ElementFinder
+    public primaryEmail: ElementFinder
+    public phoneNumber: ElementFinder
+    public comments: ElementFinder
+    public lastViewed: ElementFinder
+    public mostViewed: ElementFinder
+    public byInvestment: ElementFinder
+    public contactViewDropDown: ElementFinder
+    public recentContactScreen: ElementFinder
+    public mostContactScreen: ElementFinder
+    public byInvestmentScreen: ElementFinder
+    public expandIcon: ElementFinder
+    public contractIcon: ElementFinder
+    public goToContactsLink: ElementFinder
 
     constructor() {
-        this.messageIcon = element(by.css("a[routerlink='']"));
-        this.phoneIcon = element(by.css("a[routerlink='']"));
-        this.commentIcon = element(by.css("a[routerlink='']"));
-        this.primaryEmail = element(by.css("a[routerlink='']"));
-        this.phoneNumber = element(by.css("a[routerlink='']"));
-        this.comments = element(by.css("a[routerlink='']"));
-        this.lastViewed = element(by.css("a[routerlink='']"));
-        this.mostViewed = element(by.css("a[routerlink='']"));
-        this.byInvestment = element(by.css("a[routerlink='']"));
-        this.contactViewDropDown = element(by.css("a[routerlink='']"));
-        this.recentContactScreen = element(by.css("a[routerlink='']"));
-        this.mostContactScreen = element(by.css("a[routerlink='']"));
-        this.byInvestmentScreen = element(by.css("a[routerlink='']"));
-        this.expandIcon = element(by.css("a[routerlink='']"));
-        this.contractIcon = element(by.css("a[routerlink='']"));
-        this.goToContactsLink = element(by.css("a[routerlink='']"));
+        this.messageIcon = element(by.css("a[routerlink='']"))
+        this.phoneIcon = element(by.css("a[routerlink='']"))
+        this.commentIcon = element(by.css("a[routerlink='']"))
+        this.primaryEmail = element(by.css("a[routerlink='']"))
+        this.phoneNumber = element(by.css("a[routerlink='']"))
+        this.comments = element(by.css("a[routerlink='']"))
+        this.lastViewed = element(by.css("a[routerlink='']"))
+        this.mostViewed = element(by.css("a[routerlink='']"))
+        this.byInvestment = element(by.css("a[routerlink='']"))
+        this.contactViewDropDown = element(by.css("a[routerlink='']"))
+        this.recentContactScreen = element(by.css("a[routerlink='']"))
+        this.mostContactScreen = element(by.css("a[routerlink='']"))
+        this.byInvestmentScreen = element(by.css("a[routerlink='']"))
+        this.expandIcon = element(by.css("a[routerlink='']"))
+        this.contractIcon = element(by.css("a[routerlink='']"))
+        this.goToContactsLink = element(by.css("a[routerlink='']"))
     }
 
     /**
@@ -70,53 +70,53 @@ export class ContactsToReviewTilePage {
      * Verify Primary email 
      */
     async verifyPrimaryEmail(userEmail): Promise<boolean> {
-        let flag: any;
-        flag = false;
-        let email: any;
+        let flag: any
+        flag = false
+        let email: any
         await this.primaryEmail.getText().then(async (email) => {
-            await console.log(email);
+            await console.log(email)
             if (await email.toUpperCase().includes(userEmail.toUpperCase())) {
-                flag = true;
+                flag = true
             } else {
-                flag = false;
+                flag = false
             }
         })
-        return flag;
+        return flag
     }
     /**
      * Verify Phone number 
      */
     async  verifyPhoneNumber(userPhoneNumber): Promise<boolean> {
         let flag: any
-        flag = false;
-        let phoneNumber: any;
+        flag = false
+        let phoneNumber: any
         await this.phoneNumber.getText().then(async (phoneNumber) => {
-            await console.log(phoneNumber);
+            await console.log(phoneNumber)
             if (await phoneNumber.toUpperCase().includes(userPhoneNumber.toUpperCase())) {
-                flag = true;
+                flag = true
             } else {
-                flag = false;
+                flag = false
             }
         })
-        return flag;
+        return flag
     }
 
     /**
     * Verify Phone number 
     */
     async verifyComments(userComments): Promise<boolean> {
-        let flag: any;
-        flag = false;
-        let comments: any;
+        let flag: any
+        flag = false
+        let comments: any
         await this.comments.getText().then(async (comments) => {
-            await console.log(comments);
+            await console.log(comments)
             if (await comments.toUpperCase().includes(userComments.toUpperCase())) {
-                flag = true;
+                flag = true
             } else {
-                flag = false;
+                flag = false
             }
         })
-        return flag;
+        return flag
     }
 
 
@@ -144,33 +144,33 @@ export class ContactsToReviewTilePage {
     * To verify "Last View" screen after clicking on go to comtacts link
     */
     verifyLastViewedScreen = async () => {
-        let flag: any;
+        let flag: any
         return await isElementPresent(this.recentContactScreen).then(function (flag) {
-            console.log("value of the flag = " + flag);
-            return flag;
-        });
+            console.log("value of the flag = " + flag)
+            return flag
+        })
     }
 
     /**
     * To verify "Most Viewed" screen after clicking on go to comtacts link
     */
     verifyMostViewedScreen = async () => {
-        let flag: any;
+        let flag: any
         return await isElementPresent(this.mostContactScreen).then(function (flag) {
-            console.log("value of the flag = " + flag);
-            return flag;
-        });
+            console.log("value of the flag = " + flag)
+            return flag
+        })
     }
 
     /**
     * To verify "Most Viewed" screen after clicking on go to comtacts link
     */
     verifyByInvestmentScreen = async () => {
-        let flag: any;
+        let flag: any
         return await isElementPresent(this.byInvestmentScreen).then(function (flag) {
-            console.log("value of the flag = " + flag);
-            return flag;
-        });
+            console.log("value of the flag = " + flag)
+            return flag
+        })
     }
     /**
      * To click on the expand icon for contacts tile
@@ -192,17 +192,17 @@ export class ContactsToReviewTilePage {
    * To verify contraction button
    */
     verifyContractionButton = async () => {
-        let flag: any;
+        let flag: any
         return await isElementPresent(this.contractIcon).then(function (flag) {
-            console.log("value of the flag = " + flag);
-            return flag;
-        });
+            console.log("value of the flag = " + flag)
+            return flag
+        })
     }
     /**
         * To tap on Esc button on keyboard
         */
     tapEscButton = async () => {
-        browser.actions().sendKeys(protractor.Key.ESCAPE).perform();
+        browser.actions().sendKeys(protractor.Key.ESCAPE).perform()
     }
 
     /**

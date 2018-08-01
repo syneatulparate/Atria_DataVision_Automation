@@ -16,12 +16,9 @@ const { When, Then } = require("cucumber");
 let loginPage = new LoginPage_1.LoginPage();
 Given(/^User is on Login page$/, openWebsite_1.openWebsite);
 When(/^User enters valid "([^"]*)?" and "([^"]*)?" and click login button$/, (username, password) => __awaiter(this, void 0, void 0, function* () {
-    //console.log("Inside when clause --" + username + " ===" + password);
     yield loginPage.loginToApplication(username, password);
 }));
-//---------------------------------------------------------------Hardik
 When(/^User click on the forgot password link and verifies the title "([^"]*)?" is displayed$/, (headerMessage) => __awaiter(this, void 0, void 0, function* () {
-    // Write code here that turns the phrase above into concrete actions
     yield loginPage.clickOnForgotPassword();
     yield loginPage.verifyLoginPageTitle(headerMessage);
 }));
@@ -30,18 +27,14 @@ Then(/^User expects that title contains the text "([^"]*)?"$/, (headerMessage) =
     yield loginPage.verifyLoginPageTitle(headerMessage);
 }));
 When(/^User enter securityAnswer to the securityAnswer input field$/, () => __awaiter(this, void 0, void 0, function* () {
-    console.log("inside security when method");
     yield loginPage.enterSecurityAnswer();
 }));
 Then(/^User logout from the account$/, () => __awaiter(this, void 0, void 0, function* () {
-    // await waitForObject(loginPage.logoutBtn)
     yield loginPage.clickOnLogOut();
     yield waitActions_1.staticWait(3000);
     yield waitActions_1.waitForObject(loginPage.txtUsername);
 }));
-//---------------------------------------------------------------Hardik
 When(/^User click on the logout button and verifies the title "([^"]*)?" is Present$/, (headerMessage) => __awaiter(this, void 0, void 0, function* () {
-    // Write code here that turns the phrase above into concrete actions
     yield loginPage.clickOnLogOut();
     yield loginPage.verifyLoginPageTitle(headerMessage);
 }));
@@ -63,15 +56,15 @@ When(/^User enters invalid Otp "([^"]*)?" 3 times$/, (OTP) => __awaiter(this, vo
 Then(/^User expect that the OTP field is Present$/, () => __awaiter(this, void 0, void 0, function* () {
     yield loginPage.verifyOTPField();
 }));
-When(/^User enters invalid Ans "([^"]*)?" 3 times$/, (ANS) => __awaiter(this, void 0, void 0, function* () {
+When(/^User enters invalid SecurityAnswer "([^"]*)?" 3 times$/, (ANS) => __awaiter(this, void 0, void 0, function* () {
     yield loginPage.enterMultipleInvalidAns(ANS);
 }));
-Then(/^User expect that the SecAns field is displayed$/, () => __awaiter(this, void 0, void 0, function* () {
-    yield loginPage.verifySecAnsField();
+Then(/^User expect that the SecurityAnswer field is displayed$/, () => __awaiter(this, void 0, void 0, function* () {
+    yield loginPage.verifySecurityAnswerField();
 }));
 When(/^User enter invalid otp "([^"]*)?" and click on Login button$/, (ANS) => __awaiter(this, void 0, void 0, function* () {
     yield loginPage.enterInvalidOTP(ANS);
 }));
-When(/^User enter invalid ans "([^"]*)?" and click on Login button$/, (ANS) => __awaiter(this, void 0, void 0, function* () {
+When(/^User enter invalid SecurityAnswer "([^"]*)?" and click on Login button$/, (ANS) => __awaiter(this, void 0, void 0, function* () {
     yield loginPage.enterInvalidANS(ANS);
 }));

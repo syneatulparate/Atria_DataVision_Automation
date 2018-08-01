@@ -63,7 +63,6 @@ Feature: Entitlement
         When  User clicks on details of "<role>" role
         When  User removes "<roleUserName>" from the role
         Then  User expects that the "<roleUserName>" is not assigned to the role
-
         Examples:
             | roleUserName      | role       |
             | Prajyot Fulsundar | Super User |
@@ -113,7 +112,6 @@ Feature: Entitlement
         When  User click on newRole button and verifies RoleName field is present
         When  User enters rolename of length "<length>" and click on createRole button
         Then  User expects that rolename is present
-
         Examples:
             | length |
             | 7      |

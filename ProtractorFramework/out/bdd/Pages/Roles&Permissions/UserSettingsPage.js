@@ -14,17 +14,21 @@ const waitActions_1 = require("../../../uiActions/waitActions/waitActions");
 const chai = require("chai").use(require("chai-as-promised"));
 class UserSettingsPage {
     constructor() {
+        /**
+         * To Verify User settings
+         */
         this.verifyUserSettings = () => __awaiter(this, void 0, void 0, function* () {
             return yield isElementPresent_1.isElementPresent(this.userSettingsHeading)
                 .then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
+        /**
+         * To verify User setup
+         */
         this.verifyUserSetup = () => __awaiter(this, void 0, void 0, function* () {
             return yield isElementPresent_1.isElementPresent(this.userSettingsHeading)
                 .then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });
@@ -35,6 +39,9 @@ class UserSettingsPage {
         //this.applyButton = element( )
         //this.cancelButton =
     }
+    /**
+     * To Verify Page Heading
+     */
     verifyPageHeading(expectedPage) {
         return __awaiter(this, void 0, void 0, function* () {
             let linkPresent;

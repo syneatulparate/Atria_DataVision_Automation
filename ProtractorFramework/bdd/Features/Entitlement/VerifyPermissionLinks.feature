@@ -2,16 +2,16 @@ Feature: Entitlement
 
     Background: Roles and Permissions
         Given User is on Login page
-        When  User log in with "classicdev48" and "drowssap" and navigates to Roles and Permission Page
+        # When  User log in with "classicdev48" and "drowssap" and navigates to Roles and Permission Page
 
     @AT216_Ent_040_01 @SmokeTest @Regression @Sprint4 
     Scenario Outline: Verify Admin link by adding permission
         When  User clicks on details of "<role>" role
-        When  User click on Edit button and select "<permission>"
-        When  User click on save button and Verify newly added "<permission>"
-        Then  User logout from the account
-        When  User enters valid "<username>" and "<password>" and click login button
-        Then  User expects that Admin link is displyed on dashboard
+        # When  User click on Edit button and select "<permission>"
+        # When  User click on save button and Verify newly added "<permission>"
+        # Then  User logout from the account
+        # When  User enters valid "<username>" and "<password>" and click login button
+        # Then  User expects that Admin link is displyed on dashboard
         Examples:
             | role             | permission      | username     | password |
             | Test Permissions | admin_dashboard | classicdev40 | drowssap |
@@ -342,7 +342,6 @@ Feature: Entitlement
         When User enters valid "<username>" and "<password>" and click login button
         When User click on Commissions link
         Then User expects that "<linkName>" link is displayed on Commissions Page
-
         Examples:
             | role     | permission                   | username     | password | linkName                 |
             | TestUser | commission_interpreters_user | classicdev10 | drowssap | Commissions Interpreters |
@@ -357,7 +356,6 @@ Feature: Entitlement
         When User enters valid "<username>" and "<password>" and click login button
         When User click on Commissions link
         Then  User expects that "<linkName>" link is not displayed on Commissions Page
-
         Examples:
             | role     | permission                   | username     | password | linkName                 |
             | TestUser | commission_interpreters_user | classicdev10 | drowssap | Commissions Interpreters |
@@ -370,7 +368,6 @@ Feature: Entitlement
         Then  User logout from the account
         When User enters valid "<username>" and "<password>" and click login button
         Then User expects that "<linkName>" link is displayed under the Resources Menu
-
         Examples:
             | role     | permission       | username     | password | linkName                 |
             | TestUser | engineering_blog | classicdev10 | drowssap | CFS/SPF Engineering Blog |
@@ -384,7 +381,6 @@ Feature: Entitlement
         Then  User logout from the account
         When User enters valid "<username>" and "<password>" and click login button
         Then User expects that "<linkName>" link is not displayed under the Resources Menu
-
         Examples:
             | role     | permission       | username     | password | linkName                 |
             | TestUser | engineering_blog | classicdev10 | drowssap | CFS/SPF Engineering Blog |
@@ -412,7 +408,6 @@ Feature: Entitlement
         Then  User expects that "<linkName>" link is displayed under the Tools Menu
         When  User clicks on "<linkName>"
         Then  User expects that Set Up Client Scanner tab is displayed on the SendMyDocs page
-
         Examples:
             | role     | permission        | username     | password | linkName   |
             | TestUser | setup_client_scan | classicdev10 | drowssap | SendMyDocs |
@@ -428,7 +423,6 @@ Feature: Entitlement
         Then  User expects that "<linkName>" link is displayed under the Tools Menu
         When  User clicks on "<linkName>"
         Then  User expects that Set Up Client Scanner is not displayed on the SendMyDocs page
-
         Examples:
             | role     | permission        | username     | password | linkName   |
             | TestUser | setup_client_scan | classicdev10 | drowssap | SendMyDocs |
@@ -442,7 +436,6 @@ Feature: Entitlement
         Then  User logout from the account
         When  User enters valid "<username>" and "<password>" and click login button
         Then  User expects that "<linkName>" link is not displayed under the Tools Menu
-
         Examples:
             | role     | permission | username     | password | linkName   |
             | TestUser | scan       | classicdev10 | drowssap | SendMyDocs |
@@ -457,7 +450,6 @@ Feature: Entitlement
         Then  User expects that "<linkName>" link is displayed under the Username Menu
         When  User clicks on "<linkName>" link
         Then  User expects that Update Profile is displayed on the User Settings page
-
         Examples:
             | role     | permission | username     | password | linkName      |
             | TestUser | settings   | classicdev10 | drowssap | User settings |
@@ -471,7 +463,6 @@ Feature: Entitlement
         Then  User logout from the account
         When  User enters valid "<username>" and "<password>" and click login button
         Then  User expects that "<linkName>" link is not displayed under the Username Menu
-
         Examples:
             | role     | permission | username     | password | linkName      |
             | TestUser | settings   | classicdev10 | drowssap | User settings |

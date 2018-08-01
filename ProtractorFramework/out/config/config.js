@@ -7,13 +7,13 @@ var Env;
 (function (Env) {
     Env["QA"] = "http://172.20.235.129:3000";
     Env["Dev"] = "http://172.20.235.113:3000";
-    Env["UAT"] = "";
+    Env["UAT"] = "http://www.globalsqa.com/demo-site/draganddrop/";
 })(Env = exports.Env || (exports.Env = {}));
 exports.config = {
     seleniumAddress: "http://127.0.0.1:4444/wd/hub",
     SELENIUM_PROMISE_MANAGER: false,
-    //baseUrl: Env.QA,
-    baseUrl: Env.Dev,
+    baseUrl: Env.UAT,
+    // baseUrl: Env.Dev,
     capabilities: {
         browserName: "chrome",
     },
@@ -41,7 +41,6 @@ exports.config = {
         format: "json:./reports/json/cucumber_report.json",
         require: ["../../bdd/StepDefinition/*/*.ts", "../../support/*.ts"],
         strict: true,
-        //tags: "@Sprint1 or @Sprint2 or @Sprint3 or @Sprint4",
         tags: "@AT216_Ent_040_01",
     },
     onComplete: () => {

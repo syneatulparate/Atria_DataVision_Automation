@@ -23,7 +23,7 @@ const getElemLocation = async(elem) =>{
     // })
     await browser.actions().mouseMove(elem).mouseUp().perform;
 }
-
+export{ getElemLocation }
 const dragElement = async (source:ElementFinder, destination:ElementFinder) => {
    await browser.actions().dragAndDrop(source,destination).mouseUp().perform();
     // await browser.actions().mouseMove(source).perform();
@@ -36,4 +36,3 @@ const dragElement = async (source:ElementFinder, destination:ElementFinder) => {
 };
 
 export { dragElement }
-export{ getElemLocation }

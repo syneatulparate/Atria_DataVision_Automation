@@ -14,26 +14,35 @@ const isElementPresent_1 = require("../../../uiActions/verifyActions/isElementPr
 const waitActions_1 = require("../../../uiActions/waitActions/waitActions");
 class DashBoardPage {
     constructor() {
+        /**
+         * To Click on admin button
+         */
         this.clickOnAdminButton = () => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("Admin");
             yield waitActions_1.waitForObject(this.adminButton);
             yield clickElement_1.clickElement(this.adminButton);
         });
+        /**
+         * To Click on Roles and Permission link
+         */
         this.clickOnRolesAndPermissionLink = () => __awaiter(this, void 0, void 0, function* () {
             yield console.log("Roles and Permission link");
             yield clickElement_1.clickElement(this.rolesAndPermissionLink);
         });
+        /**
+         * To Verify Roles and Permission link
+         */
         this.VerifyRolesAndPermission = () => __awaiter(this, void 0, void 0, function* () {
-            yield console.log("verify ");
             yield this.clickOnAdminButton();
             yield waitActions_1.waitForObject(this.rolesAndPermissionLink);
             yield this.clickOnRolesAndPermissionLink();
             yield waitActions_1.waitForObject(this.headerMsg);
         });
+        /**
+         * To Verify admin link
+         */
         this.verifyAdminLink = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.adminButton).then(function (flag) {
-                console.log("value of the flag = " + flag);
                 return flag;
             });
         });

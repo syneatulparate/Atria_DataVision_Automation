@@ -9,7 +9,7 @@ const jsonReports = process.cwd() + "/reports/json";
 export enum Env {
     QA = "http://172.20.235.129:3000",
     Dev = "http://172.20.235.113:3000",
-    UAT = "",
+    UAT = "http://www.globalsqa.com/demo-site/draganddrop/",
 }
 
 export const config: Config = {
@@ -18,7 +18,7 @@ export const config: Config = {
 
     SELENIUM_PROMISE_MANAGER: false,
 
-    baseUrl: Env.QA,
+    baseUrl: Env.UAT,
     // baseUrl: Env.Dev,
 
     capabilities: {
@@ -58,7 +58,7 @@ export const config: Config = {
         format: "json:./reports/json/cucumber_report.json",
         require: ["../../bdd/StepDefinition/*/*.ts", "../../support/*.ts"],
         strict: true,
-        tags: "@Sprint1 or @Sprint2 or @Sprint3 or @Sprint4",
+        tags: "@AT216_Ent_040_01",
 
     },
 
