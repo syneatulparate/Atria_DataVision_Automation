@@ -12,11 +12,10 @@ const protractor_1 = require("protractor");
 const waitForObject = (element) => __awaiter(this, void 0, void 0, function* () {
     return protractor_1.browser.wait(() => __awaiter(this, void 0, void 0, function* () {
         yield protractor_1.browser.sleep(2000);
-        return yield element.isDisplayed()
-            .then(function (isDisplayed) {
+        return yield element.isDisplayed().then(function (isDisplayed) {
             console.log("object displayed --> " + isDisplayed + " " + element);
             return isDisplayed;
-        }, function (error) {
+        }, function () {
             console.log("Object not found --> " + element);
             return false;
         });

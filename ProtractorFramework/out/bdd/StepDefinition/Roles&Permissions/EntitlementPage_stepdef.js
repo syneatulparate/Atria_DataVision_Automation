@@ -24,8 +24,7 @@ let dasboardPage = new DashBoardPage_1.DashBoardPage();
 When(/^User clicks on the add user button and verifies the search textbox is displyed$/, () => __awaiter(this, void 0, void 0, function* () {
     yield entitlementPage.clickOnAddUserButton();
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifySearchTextBox())
-        .to.equal(true, 'Search text box not displayed');
+    expect(yield entitlementPage.verifySearchTextBox()).to.equal(true, "Search text box not displayed");
 }));
 When(/^User enters "([^"]*)?" in the search text box$/, (userName) => __awaiter(this, void 0, void 0, function* () {
     yield entitlementPage.enterUserName(userName);
@@ -40,17 +39,17 @@ When(/^User clicks on Add selected user button$/, () => __awaiter(this, void 0, 
 }));
 Then(/^User expects that "([^"]*)?" is added successfully$/, (userName) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyUserAdded(userName)).to.equal(true, 'User not added to role');
+    expect(yield entitlementPage.verifyUserAdded(userName)).to.equal(true, "User not added to role");
 }));
 Then(/^User expects that "([^"]*)?" is not added$/, (userName) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.staticWait(3000);
     yield console.log(yield entitlementPage.verifyUserAdded(userName));
-    yield expect(yield entitlementPage.verifyUserAdded(userName)).to.equal(false, 'User added to role');
+    yield expect(yield entitlementPage.verifyUserAdded(userName)).to.equal(false, "User added to role");
 }));
 Then(/^User expect that names with matching text is displayed$/, (userName) => __awaiter(this, void 0, void 0, function* () {
     yield console.log((yield entitlementPage.verifyUserName(userName)) + "is value in");
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyUserName(userName)).to.equal(true, 'User names did not matched');
+    expect(yield entitlementPage.verifyUserName(userName)).to.equal(true, "User names did not matched");
 }));
 When(/^User deletes role from the system permanently$/, () => __awaiter(this, void 0, void 0, function* () {
     yield entitlementPage.deleteRoleAndAccept();
@@ -69,7 +68,7 @@ When(/^User clicks on details of "([^"]*)?" role$/, (role) => __awaiter(this, vo
 Then(/^User expect that name with "([^"]*)?" is displayed$/, (userName) => __awaiter(this, void 0, void 0, function* () {
     yield console.log((yield entitlementPage.verifyUserName(userName)) + "is value in");
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyUserName(userName)).to.equal(true, 'User names did not matched');
+    expect(yield entitlementPage.verifyUserName(userName)).to.equal(true, "User names did not matched");
 }));
 Then(/^User navigates back to role details page without adding the "([^"]*)?"$/, (userName) => __awaiter(this, void 0, void 0, function* () {
     yield entitlementPage.verifyAddUserButton();
@@ -84,7 +83,7 @@ When(/^User clicks on Cancel button$/, () => __awaiter(this, void 0, void 0, fun
 Then(/^User expects that the "([^"]*)?" is not assigned to the role$/, (userName) => __awaiter(this, void 0, void 0, function* () {
     yield console.log(yield entitlementPage.verifyUserAdded(userName));
     yield waitActions_1.staticWait(3000);
-    yield expect(yield entitlementPage.verifyUserAdded(userName)).to.equal(false, 'User added to role');
+    yield expect(yield entitlementPage.verifyUserAdded(userName)).to.equal(false, "User added to role");
 }));
 Then(/^User expects that the User details page is displayed of "([^"]*)?"$/, (userName) => __awaiter(this, void 0, void 0, function* () {
     yield entitlementPage.verifyUserProfile(userName);
@@ -95,7 +94,7 @@ When(/^User clicks on view button for "([^"]*)?"$/, (userName) => __awaiter(this
 Then(/^User expects that the Classic user ownerships section is displayed$/, () => __awaiter(this, void 0, void 0, function* () {
     //await entitlementPage.verifyClassicUserOwnerships()
     yield waitActions_1.staticWait(3000);
-    yield expect(yield entitlementPage.verifyClassicUserOwnerships()).to.equal(true, 'ClassicUserOwnerships is present');
+    yield expect(yield entitlementPage.verifyClassicUserOwnerships()).to.equal(true, "ClassicUserOwnerships is present");
 }));
 Then(/^User expects that the Classic user read scope section is displayed$/, () => __awaiter(this, void 0, void 0, function* () {
     yield entitlementPage.verifyClassicContactReadScope();
@@ -117,7 +116,7 @@ When(/^User enters valid "([^"]*)?" and click on createRole button$/, (Rolename)
 }));
 Then(/^User expects that rolename is present$/, () => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.staticWait(3000);
-    yield expect(yield entitlementPage.verifyRoleName()).to.equal(true, 'Rolename is present');
+    yield expect(yield entitlementPage.verifyRoleName()).to.equal(true, "Rolename is present");
     // await entitlementPage.verifyRoleName()
 }));
 Then(/^User expect that "([^"]*)?" is displayed on screen$/, (WarnMsg) => __awaiter(this, void 0, void 0, function* () {
@@ -136,18 +135,18 @@ When(/^User enters rolename of length "([^"]*)?" and click on newRole button$/, 
 }));
 Then(/^User expects that rolename is not present$/, () => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.staticWait(3000);
-    yield expect(yield entitlementPage.verifyRoleNotPresent()).to.equal(false, 'Rolename is present');
+    yield expect(yield entitlementPage.verifyRoleNotPresent()).to.equal(false, "Rolename is present");
     //await entitlementPage.verifyRoleNotPresent()
 }));
 Then(/^User expects that user role and permission column should display$/, () => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.staticWait(3000);
-    yield expect(yield entitlementPage.verifyRoleandPermissionColumn()).to.equal(true, 'RoleandPermissionColumn is not present');
+    yield expect(yield entitlementPage.verifyRoleandPermissionColumn()).to.equal(true, "RoleandPermissionColumn is not present");
     // await entitlementPage.verifyRoleandPermissionColumn()
 }));
 When(/^User clicks on details of role and verify role and permission column should display$/, () => __awaiter(this, void 0, void 0, function* () {
     yield entitlementPage.ClickOnDetails();
     yield waitActions_1.staticWait(3000);
-    yield expect(yield entitlementPage.verifyRoleandPermissionColumn()).to.equal(true, 'Rolename is present');
+    yield expect(yield entitlementPage.verifyRoleandPermissionColumn()).to.equal(true, "Rolename is present");
     //await entitlementPage.verifyRoleandPermissionColumn()
 }));
 When(/^User click on Edit button and select "([^"]*)?"$/, (permission) => __awaiter(this, void 0, void 0, function* () {
@@ -158,7 +157,7 @@ When(/^User click on Edit button and select "([^"]*)?"$/, (permission) => __awai
 When(/^User click on save button and Verify newly added "([^"]*)?"$/, (permission) => __awaiter(this, void 0, void 0, function* () {
     yield entitlementPage.clickOnSaveButton();
     yield waitActions_1.staticWait(3000);
-    yield expect(yield entitlementPage.VerifyPermission(permission)).to.equal(true, 'Permission is added');
+    yield expect(yield entitlementPage.VerifyPermission(permission)).to.equal(true, "Permission is added");
     //await entitlementPage.VerifyPermission(permission)
 }));
 When(/^User click on Edit button$/, () => __awaiter(this, void 0, void 0, function* () {
@@ -167,12 +166,12 @@ When(/^User click on Edit button$/, () => __awaiter(this, void 0, void 0, functi
 When(/^User click on save button and Verify not added "([^"]*)?"$/, (permission) => __awaiter(this, void 0, void 0, function* () {
     yield entitlementPage.clickOnSaveButton();
     yield waitActions_1.staticWait(3000);
-    yield expect(yield entitlementPage.VerifyPermission(permission)).to.equal(false, 'Permission is not added');
+    yield expect(yield entitlementPage.VerifyPermission(permission)).to.equal(false, "Permission is not added");
 }));
 When(/^User click on cancel button and Verify not added "([^"]*)?"$/, (permission) => __awaiter(this, void 0, void 0, function* () {
     yield entitlementPage.clickOnCancelButton();
     yield waitActions_1.staticWait(3000);
-    yield expect(yield entitlementPage.VerifyPermission(permission)).to.equal(false, 'Permission is not added');
+    yield expect(yield entitlementPage.VerifyPermission(permission)).to.equal(false, "Permission is not added");
     //await entitlementPage.VerifyNotAddedPermission(permission)
 }));
 Then(/^User removes "([^"]*)?"$/, (permission) => __awaiter(this, void 0, void 0, function* () {
@@ -181,26 +180,25 @@ Then(/^User removes "([^"]*)?"$/, (permission) => __awaiter(this, void 0, void 0
 When(/^User click on edit button and Verify "([^"]*)?"$/, (permission) => __awaiter(this, void 0, void 0, function* () {
     yield entitlementPage.clickOnEditButton();
     yield waitActions_1.staticWait(3000);
-    yield expect(yield entitlementPage.VerifyPermission(permission)).to.equal(true, 'Permission is added');
+    yield expect(yield entitlementPage.VerifyPermission(permission)).to.equal(true, "Permission is added");
 }));
 When(/^User click on save button and Verify "([^"]*)?" removed$/, (permission) => __awaiter(this, void 0, void 0, function* () {
     yield entitlementPage.clickOnSaveButton();
     yield waitActions_1.waitForObject(protractor_1.element(protractor_1.by.xpath("//th[contains(text(),'Permissions')]")));
     yield waitActions_1.staticWait(3000);
-    yield expect(yield entitlementPage.VerifyPermission(permission)).to.equal(false, 'Permission is added');
+    yield expect(yield entitlementPage.VerifyPermission(permission)).to.equal(false, "Permission is added");
     //await entitlementPage.VerifyRemovePermission(permission)
 }));
 Then(/^User expects that the Roles and Permissions section is displayed$/, () => __awaiter(this, void 0, void 0, function* () {
     //await entitlementPage.verifyRolesAndPermissionSection()
     yield waitActions_1.staticWait(3000);
-    yield expect(yield entitlementPage.verifyRolesAndPermissionSection()).to.equal(true, 'RolesAndPermissionSection is displayed');
+    yield expect(yield entitlementPage.verifyRolesAndPermissionSection()).to.equal(true, "RolesAndPermissionSection is displayed");
 }));
 When(/^User clicks on details od rolename$/, () => __awaiter(this, void 0, void 0, function* () {
     yield entitlementPage.verifymultiplecheckbox();
 }));
 When(/^User log in with "([^"]*)?" and "([^"]*)?" and navigates to Roles and Permission Page$/, (userName, password) => __awaiter(this, void 0, void 0, function* () {
-    return yield loginPage.txtUsername.isDisplayed()
-        .then(() => __awaiter(this, void 0, void 0, function* () {
+    return yield loginPage.txtUsername.isDisplayed().then(() => __awaiter(this, void 0, void 0, function* () {
         yield loginPage.loginToApplication(userName, password);
         yield waitActions_1.waitForObject(loginPage.logoutBtn);
         yield loginPage.verifyLoginPageTitle("Dashboard – dataVISION");
@@ -223,13 +221,13 @@ When(/^User click on Edit button and select multiple$/, () => __awaiter(this, vo
 Then(/^User expects that "([^"]*)?" link is displayed on Admin page$/, (linkName) => __awaiter(this, void 0, void 0, function* () {
     yield dasboardPage.clickOnAdminButton();
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyLink(linkName)).to.equal(true, 'Link is not displayed');
+    expect(yield entitlementPage.verifyLink(linkName)).to.equal(true, "Link is not displayed");
     yield loginPage.clickOnLogOut();
 }));
 Then(/^User expects that "([^"]*)?" link is not displayed$/, (linkName) => __awaiter(this, void 0, void 0, function* () {
     yield dasboardPage.clickOnAdminButton();
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyLink(linkName)).to.equal(false, 'Link is displayed');
+    expect(yield entitlementPage.verifyLink(linkName)).to.equal(false, "Link is displayed");
     yield loginPage.clickOnLogOut();
 }));
 When(/^User click on Contact link$/, () => __awaiter(this, void 0, void 0, function* () {
@@ -247,7 +245,7 @@ Then(/^User expects that search link on the Contacts page$/, () => __awaiter(thi
 Then(/^User expects that "([^"]*)?" link is displayed on Commissions Page$/, (linkName) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.waitForObject(entitlementPage.ComisInterpreterslink);
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyLink(linkName)).to.equal(true, 'Link is displayed');
+    expect(yield entitlementPage.verifyLink(linkName)).to.equal(true, "Link is displayed");
     yield clickElement_1.clickElement(loginPage.logoutBtn);
     yield waitActions_1.waitForObject(loginPage.txtUsername);
 }));
@@ -262,7 +260,7 @@ When(/^User click on Commissions link$/, () => __awaiter(this, void 0, void 0, f
 }));
 Then(/^User expects that "([^"]*)?" link is not displayed on Commissions Page$/, (linkName) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyLink(linkName)).to.equal(false, 'Link is not displayed');
+    expect(yield entitlementPage.verifyLink(linkName)).to.equal(false, "Link is not displayed");
     yield waitActions_1.waitForObject(loginPage.logoutBtn);
     yield clickElement_1.clickElement(loginPage.logoutBtn);
     yield waitActions_1.waitForObject(loginPage.txtUsername);
@@ -273,7 +271,7 @@ Then(/^User expects that "([^"]*)?" link is displayed under the Resources Menu$/
     yield waitActions_1.staticWait(3000);
     yield clickElement_1.clickElement(entitlementPage.ResourcesTab);
     yield waitActions_1.staticWait(3000);
-    yield expect(yield entitlementPage.verifyLink(linkName)).to.equal(true, linkName + 'Link is displayed');
+    yield expect(yield entitlementPage.verifyLink(linkName)).to.equal(true, linkName + "Link is displayed");
     yield clickElement_1.clickElement(loginPage.logoutBtn);
     yield waitActions_1.waitForObject(loginPage.txtUsername);
 }));
@@ -283,7 +281,7 @@ Then(/^User expects that "([^"]*)?" link is not displayed under the Resources Me
     yield clickElement_1.clickElement(entitlementPage.ResourcesTab);
     yield waitActions_1.staticWait(3000);
     yield waitActions_1.staticWait(3000);
-    yield expect(yield entitlementPage.verifyLink(linkName)).to.equal(false, linkName + 'Link is not displayed');
+    yield expect(yield entitlementPage.verifyLink(linkName)).to.equal(false, linkName + "Link is not displayed");
     yield waitActions_1.waitForObject(loginPage.logoutBtn);
     yield clickElement_1.clickElement(loginPage.logoutBtn);
     yield waitActions_1.staticWait(2000);
@@ -294,14 +292,14 @@ Then(/^User expects that "([^"]*)?" link is displayed under the Tools Menu$/, (l
     yield moveToElement_1.moveToElement(entitlementPage.ToolsTab);
     yield clickElement_1.clickElement(entitlementPage.ToolsTab);
     yield waitActions_1.staticWait(3000);
-    yield expect(yield entitlementPage.verifyLink(linkName)).to.equal(true, linkName + 'Link is displayed');
+    yield expect(yield entitlementPage.verifyLink(linkName)).to.equal(true, linkName + "Link is displayed");
 }));
 Then(/^User expects that "([^"]*)?" link is not displayed under the Tools Menu$/, (linkName) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.waitForObject(loginPage.logoutBtn);
     yield moveToElement_1.moveToElement(entitlementPage.ToolsTab);
     yield clickElement_1.clickElement(entitlementPage.ToolsTab);
     yield waitActions_1.staticWait(3000);
-    yield expect(yield entitlementPage.verifyLink(linkName)).to.equal(false, linkName + 'Link is not displayed');
+    yield expect(yield entitlementPage.verifyLink(linkName)).to.equal(false, linkName + "Link is not displayed");
     yield clickElement_1.clickElement(loginPage.logoutBtn);
     yield waitActions_1.waitForObject(loginPage.txtUsername);
 }));
@@ -317,7 +315,7 @@ When(/^User clicks on "([^"]*)?" link$/, () => __awaiter(this, void 0, void 0, f
 Then(/^User expects that Set Up Client Scanner tab is displayed on the SendMyDocs page$/, () => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.waitForObject(entitlementPage.setupclientscanner);
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyLink('Set Up Client Scanner')).to.equal(true, 'Link is displayed');
+    expect(yield entitlementPage.verifyLink("Set Up Client Scanner")).to.equal(true, "Link is displayed");
     yield clickElement_1.clickElement(loginPage.logoutBtn);
     yield waitActions_1.staticWait(3000);
     yield waitActions_1.waitForObject(loginPage.txtUsername);
@@ -325,14 +323,14 @@ Then(/^User expects that Set Up Client Scanner tab is displayed on the SendMyDoc
 Then(/^User expects that Set Up Client Scanner is not displayed on the SendMyDocs page$/, () => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.waitForObject(loginPage.logoutBtn);
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyLink('Set Up Client Scanner')).to.equal(false, 'Link is not displayed');
+    expect(yield entitlementPage.verifyLink("Set Up Client Scanner")).to.equal(false, "Link is not displayed");
     yield clickElement_1.clickElement(loginPage.logoutBtn);
     yield waitActions_1.waitForObject(loginPage.txtUsername);
 }));
 Then(/^User expects that Update Profile is displayed on the User Settings page$/, () => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.waitForObject(loginPage.logoutBtn);
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyLink('Update Profile')).to.equal(true, 'Link is displayed');
+    expect(yield entitlementPage.verifyLink("Update Profile")).to.equal(true, "Link is displayed");
     yield clickElement_1.clickElement(loginPage.logoutBtn);
     yield waitActions_1.waitForObject(loginPage.txtUsername);
 }));
@@ -341,14 +339,14 @@ Then(/^User expects that "([^"]*)?" link is displayed under the Username Menu$/,
     yield moveToElement_1.moveToElement(entitlementPage.UserTab);
     yield clickElement_1.clickElement(entitlementPage.UserTab);
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyLink(linkName)).to.equal(true, 'Link is displayed');
+    expect(yield entitlementPage.verifyLink(linkName)).to.equal(true, "Link is displayed");
 }));
 Then(/^User expects that "([^"]*)?" link is not displayed under the Username Menu$/, (linkName) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.waitForObject(loginPage.logoutBtn);
     yield moveToElement_1.moveToElement(entitlementPage.UserTab);
     yield clickElement_1.clickElement(entitlementPage.UserTab);
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyLink(linkName)).to.equal(false, 'Link is not displayed');
+    expect(yield entitlementPage.verifyLink(linkName)).to.equal(false, "Link is not displayed");
     yield waitActions_1.waitForObject(loginPage.logoutBtn);
     yield waitActions_1.staticWait(2000);
     yield clickElement_1.clickElement(loginPage.logoutBtn);
@@ -366,12 +364,12 @@ Then(/^User expects that "([^"]*)?" link is not displayed on the dashboard page$
 Then(/^User expects that "([^"]*)?" link is notdisplayed on contact page$/, (linkName) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.waitForObject(loginPage.logoutBtn);
     yield waitActions_1.staticWait(3000);
-    yield expect(yield entitlementPage.verifyLink(linkName)).to.equal(true, linkName + 'Link is not displayed');
+    yield expect(yield entitlementPage.verifyLink(linkName)).to.equal(true, linkName + "Link is not displayed");
 }));
 Then(/^User expects that "([^"]*)?" link is displayed on contact page$/, (linkName) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.waitForObject(loginPage.logoutBtn);
     yield waitActions_1.staticWait(3000);
-    yield expect(yield entitlementPage.verifyLink(linkName)).to.equal(true, linkName + 'Link is displayed');
+    yield expect(yield entitlementPage.verifyLink(linkName)).to.equal(true, linkName + "Link is displayed");
 }));
 When(/^Admin user enters a string on the "([^"]*)?" section under Roles$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.waitForObject(loginPage.logoutBtn);
@@ -380,7 +378,7 @@ When(/^Admin user enters a string on the "([^"]*)?" section under Roles$/, (role
 Then(/^Roles matching the entered string should be auto-filtered by "([^"]*)?" and displayed in the Roles section$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield console.log((yield entitlementPage.verifyRoleNameFilter(role)) + "is value in");
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyRoleNameFilter(role)).to.equal(true, 'Roles names matched');
+    expect(yield entitlementPage.verifyRoleNameFilter(role)).to.equal(true, "Roles names matched");
 }));
 When(/^Admin user enters a string on the "([^"]*)?" section under Permissions$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.waitForObject(loginPage.logoutBtn);
@@ -389,7 +387,7 @@ When(/^Admin user enters a string on the "([^"]*)?" section under Permissions$/,
 Then(/^Permissions matching the entered string should be auto-filtered by "([^"]*)?" and displayed in the Roles section$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield console.log((yield entitlementPage.verifyPermissionFilter(role)) + "is value in");
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyPermissionFilter(role)).to.equal(true, 'Roles names matched');
+    expect(yield entitlementPage.verifyPermissionFilter(role)).to.equal(true, "Roles names matched");
 }));
 When(/^Admin User clicks on Details button against a "([^"]*)?"$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield entitlementPage.verifyAndClickOnDetails(role);
@@ -404,7 +402,7 @@ When(/^Admin user enters a string on the "([^"]*)?" section under Users Assigned
 }));
 Then(/^Users matching the entered string should be auto-filtered by "([^"]*)?" and displayed in the Users Assigned This Role section$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyUsersFilter(role)).to.equal(true, 'Roles names matched');
+    expect(yield entitlementPage.verifyUsersFilter(role)).to.equal(true, "Roles names matched");
 }));
 When(/^Admin user enters a string on the "([^"]*)?" section under Permissions This Role Grants section$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.waitForObject(loginPage.logoutBtn);
@@ -412,7 +410,7 @@ When(/^Admin user enters a string on the "([^"]*)?" section under Permissions Th
 }));
 Then(/^Permissions matching the entered string should be auto-filtered by "([^"]*)?" and displayed in the Permissions This Role Grants section$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.staticWait(2000);
-    yield expect(yield entitlementPage.verifyPermissionFilter(role)).to.equal(true, 'Roles names matched');
+    yield expect(yield entitlementPage.verifyPermissionFilter(role)).to.equal(true, "Roles names matched");
 }));
 Then(/^Admin User is navigated to the Permission Detail Page of the corresponding "([^"]*)?"$/, () => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.waitForObject(loginPage.logoutBtn);
@@ -424,7 +422,7 @@ When(/^Admin user enters a string on the "([^"]*)?" section under Users Granted 
 }));
 Then(/^Users matching the entered string should be auto-filtered by "([^"]*)?" and displayed in the Users Granted This Permission section$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyUsersFilter(role)).to.equal(true, 'Roles names matched');
+    expect(yield entitlementPage.verifyUsersFilter(role)).to.equal(true, "Roles names matched");
 }));
 When(/^Admin user enters a string on the "([^"]*)?" section under Roles That Grant This Permission section$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.waitForObject(loginPage.logoutBtn);
@@ -432,7 +430,7 @@ When(/^Admin user enters a string on the "([^"]*)?" section under Roles That Gra
 }));
 Then(/^Roles matching the entered string should be auto-filtered by "([^"]*)?" and displayed in the Users Assigned This Role section$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield console.log((yield entitlementPage.verifyRoleNameFilter(role)) + "is value in");
-    expect(yield entitlementPage.verifyRoleNameFilter(role)).to.equal(true, 'Roles names matched');
+    expect(yield entitlementPage.verifyRoleNameFilter(role)).to.equal(true, "Roles names matched");
 }));
 When(/^Admin user enters a invalid string on the "([^"]*)?" section under Roles$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.waitForObject(loginPage.logoutBtn);
@@ -441,7 +439,7 @@ When(/^Admin user enters a invalid string on the "([^"]*)?" section under Roles$
 Then(/^No Roles should be displayed by "([^"]*)?" in the Roles section$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield console.log((yield entitlementPage.verifyRoleNameFilter(role)) + "is value in");
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyRoleNameFilter(role)).to.equal(false, 'Roles names matched');
+    expect(yield entitlementPage.verifyRoleNameFilter(role)).to.equal(false, "Roles names matched");
 }));
 When(/^Admin user enters a invalid string on the "([^"]*)?" section under Permissions$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.waitForObject(loginPage.logoutBtn);
@@ -454,7 +452,7 @@ When(/^Admin user enters a invalid string on the "([^"]*)?" section under Users 
 Then(/^No Users should be displayed by "([^"]*)?" in the Users Assigned This Role section$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield console.log((yield entitlementPage.verifyUsersFilter(role)) + "is value in");
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyUsersFilter(role)).to.equal(false, 'Roles names matched');
+    expect(yield entitlementPage.verifyUsersFilter(role)).to.equal(false, "Roles names matched");
 }));
 When(/^Admin user enters a invalid string on the "([^"]*)?" section under Permissions This Role Grants section$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.waitForObject(loginPage.logoutBtn);
@@ -462,7 +460,7 @@ When(/^Admin user enters a invalid string on the "([^"]*)?" section under Permis
 }));
 Then(/^No Permissions should be displayed by "([^"]*)?" in the Permissions This Role Grants section$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.staticWait(3000);
-    yield expect(yield entitlementPage.verifyPermissionFilter(role)).to.equal(false, 'Roles names matched');
+    yield expect(yield entitlementPage.verifyPermissionFilter(role)).to.equal(false, "Roles names matched");
     yield waitActions_1.staticWait(2000);
 }));
 When(/^Admin user enters a invalid string on the "([^"]*)?" section under Users Granted This Permission section$/, (role) => __awaiter(this, void 0, void 0, function* () {
@@ -472,7 +470,7 @@ When(/^Admin user enters a invalid string on the "([^"]*)?" section under Users 
 Then(/^No Users should be displayed by "([^"]*)?" in the Users Granted This Permission section$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield console.log((yield entitlementPage.verifyUsersFilter(role)) + "is value in");
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyUsersFilter(role)).to.equal(false, 'Roles names matched');
+    expect(yield entitlementPage.verifyUsersFilter(role)).to.equal(false, "Roles names matched");
 }));
 When(/^Admin user enters a invalid string on the "([^"]*)?" section under Roles That Grant This Permission section$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.waitForObject(loginPage.logoutBtn);
@@ -481,21 +479,21 @@ When(/^Admin user enters a invalid string on the "([^"]*)?" section under Roles 
 Then(/^No Roles should be displayed by "([^"]*)?" in the Users Assigned This Role section$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield console.log((yield entitlementPage.verifyRoleNameFilter(role)) + "is value in");
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyRoleNameFilter(role)).to.equal(false, 'Roles names matched');
+    expect(yield entitlementPage.verifyRoleNameFilter(role)).to.equal(false, "Roles names matched");
     yield waitActions_1.waitForObject(loginPage.logoutBtn);
     yield clickElement_1.clickElement(loginPage.logoutBtn);
 }));
 Then(/^User expects that search textbox on the dashboard$/, () => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyGlobalSearchTexbox()).to.equal(true, 'Search textbox is not displayed');
+    expect(yield entitlementPage.verifyGlobalSearchTexbox()).to.equal(true, "Search textbox is not displayed");
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyGlobalSearchBtn()).to.equal(true, 'Search button is not displayed');
+    expect(yield entitlementPage.verifyGlobalSearchBtn()).to.equal(true, "Search button is not displayed");
 }));
 Then(/^User expects that search textbox is not displayed$/, () => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifySearchTextBox()).to.equal(false, 'Search textbox is displayed');
+    expect(yield entitlementPage.verifySearchTextBox()).to.equal(false, "Search textbox is displayed");
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyGlobalSearchBtn()).to.equal(false, 'Search button is displayed');
+    expect(yield entitlementPage.verifyGlobalSearchBtn()).to.equal(false, "Search button is displayed");
 }));
 When(/^User clicks on Settings$/, () => __awaiter(this, void 0, void 0, function* () {
     yield entitlementPage.clickOnSettngsLink();
@@ -507,5 +505,5 @@ When(/^User clicks on User Setup$/, () => __awaiter(this, void 0, void 0, functi
 Then(/^No Permissions should be displayed by "([^"]*)?" in the Permissions section$/, (role) => __awaiter(this, void 0, void 0, function* () {
     yield console.log((yield entitlementPage.verifyPermissionFilter(role)) + "is value in");
     yield waitActions_1.staticWait(3000);
-    expect(yield entitlementPage.verifyPermissionFilter(role)).to.equal(false, 'Perrmission names matched');
+    expect(yield entitlementPage.verifyPermissionFilter(role)).to.equal(false, "Perrmission names matched");
 }));

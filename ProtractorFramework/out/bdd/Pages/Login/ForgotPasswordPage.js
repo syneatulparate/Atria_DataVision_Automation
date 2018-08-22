@@ -106,7 +106,7 @@ class ForgotPasswordPage {
             yield waitActions_1.waitForObject(this.securityQuestion);
             yield this.securityQuestion.getText().then((txtMsg) => __awaiter(this, void 0, void 0, function* () {
                 if (txtMsg.startsWith("Question: How do you spell")) {
-                    yield this.txtSecurityAnswer.sendKeys(securityQuestions_1.securityQuestions["How do you spell \"password\"?"]);
+                    yield this.txtSecurityAnswer.sendKeys(securityQuestions_1.securityQuestions['How do you spell "password"?']);
                 }
                 else if (txtMsg.trim() === "Question: What is 2+2?") {
                     yield this.txtSecurityAnswer.sendKeys(securityQuestions_1.securityQuestions["What is 2+2?"]);
@@ -151,14 +151,14 @@ class ForgotPasswordPage {
                 yield clearInputField_1.clearInputField(this.txtOTP);
             }
         });
-        this.txtUsername = protractor_1.element(protractor_1.by.id('username'));
+        this.txtUsername = protractor_1.element(protractor_1.by.id("username"));
         this.continueButton = protractor_1.element(protractor_1.by.css(".btn[type='submit']"));
         this.errMsg = protractor_1.element(protractor_1.by.xpath("//div[@class='toast-message']"));
         this.msgCloseButton = protractor_1.element(protractor_1.by.xpath("//div[@class='octicon octicon-x']"));
         this.emailTextField = protractor_1.element(protractor_1.by.css("#security-email[type='text']"));
         this.securityQuestion = protractor_1.element(protractor_1.by.css("label[for='security-answer']"));
         this.txtSecurityAnswer = protractor_1.element(protractor_1.by.css("#security-answer[type='text']"));
-        this.txtOTP = protractor_1.element(protractor_1.by.id('opt-text'));
+        this.txtOTP = protractor_1.element(protractor_1.by.id("opt-text"));
     }
 }
 exports.ForgotPasswordPage = ForgotPasswordPage;

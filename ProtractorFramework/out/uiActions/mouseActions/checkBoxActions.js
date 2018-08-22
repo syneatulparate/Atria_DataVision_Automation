@@ -10,14 +10,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const clickElement_1 = require("./clickElement");
 const waitActions_1 = require("../waitActions/waitActions");
-const { When, Then } = require("cucumber");
 const chai = require("chai").use(require("chai-as-promised"));
 const expect = chai.expect;
 const selectCheckBox = (element) => __awaiter(this, void 0, void 0, function* () {
-    yield element.isDisplayed()
-        .then((isDisplayed) => __awaiter(this, void 0, void 0, function* () {
-        yield element.isSelected()
-            .then((isSelected) => __awaiter(this, void 0, void 0, function* () {
+    yield element.isDisplayed().then((isDisplayed) => __awaiter(this, void 0, void 0, function* () {
+        yield element.isSelected().then((isSelected) => __awaiter(this, void 0, void 0, function* () {
             if (isSelected == false) {
                 yield clickElement_1.clickElement(element);
                 console.log("Checkbox selected");
@@ -35,10 +32,8 @@ const selectCheckBox = (element) => __awaiter(this, void 0, void 0, function* ()
 exports.selectCheckBox = selectCheckBox;
 const deSelectCheckBox = (element) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.waitForObject(element);
-    yield element.isDisplayed()
-        .then((isDisplayed) => __awaiter(this, void 0, void 0, function* () {
-        yield element.isSelected()
-            .then((isSelected) => __awaiter(this, void 0, void 0, function* () {
+    yield element.isDisplayed().then((isDisplayed) => __awaiter(this, void 0, void 0, function* () {
+        yield element.isSelected().then((isSelected) => __awaiter(this, void 0, void 0, function* () {
             if (isSelected == true) {
                 yield clickElement_1.clickElement(element);
                 console.log("Checkbox deselected");

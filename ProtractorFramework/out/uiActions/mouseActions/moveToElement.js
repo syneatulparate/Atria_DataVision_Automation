@@ -11,8 +11,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const protractor_1 = require("protractor");
 const chai = require("chai").use(require("chai-as-promised"));
 const moveToElement = (elem) => __awaiter(this, void 0, void 0, function* () {
-    yield protractor_1.browser.actions().
-        mouseMove(elem).
-        perform();
+    yield protractor_1.browser
+        .actions()
+        .mouseMove(elem)
+        .perform();
 });
 exports.moveToElement = moveToElement;

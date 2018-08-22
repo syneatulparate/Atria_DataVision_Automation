@@ -77,7 +77,7 @@ class LoginPage {
             yield waitActions_1.waitForObject(this.securityQuestion);
             yield this.securityQuestion.getText().then((txtMsg) => __awaiter(this, void 0, void 0, function* () {
                 if (txtMsg.startsWith("Question: How do you spell")) {
-                    yield this.txtSecurityAnswer.sendKeys(securityQuestions_1.securityQuestions["How do you spell \"password\"?"]);
+                    yield this.txtSecurityAnswer.sendKeys(securityQuestions_1.securityQuestions['How do you spell "password"?']);
                 }
                 else if (txtMsg.trim() === "Question: What is 2+2?") {
                     yield this.txtSecurityAnswer.sendKeys(securityQuestions_1.securityQuestions["What is 2+2?"]);
@@ -100,7 +100,7 @@ class LoginPage {
          */
         this.clickOnLogOut = () => __awaiter(this, void 0, void 0, function* () {
             yield this.logoutBtn.getLocation().then(function () {
-                return protractor_1.browser.executeScript('window.scrollTo(0,0)');
+                return protractor_1.browser.executeScript("window.scrollTo(0,0)");
             });
             yield waitActions_1.staticWait(2000);
             yield clickElement_1.clickElement(this.logoutBtn);
@@ -183,8 +183,8 @@ class LoginPage {
         this.clickOnContinue = () => __awaiter(this, void 0, void 0, function* () {
             yield clickElement_1.clickElement(this.continueButton);
         });
-        this.txtUsername = protractor_1.element(protractor_1.by.id('username'));
-        this.txtPassword = protractor_1.element(protractor_1.by.id('password'));
+        this.txtUsername = protractor_1.element(protractor_1.by.id("username"));
+        this.txtPassword = protractor_1.element(protractor_1.by.id("password"));
         this.dataVisionLogo = protractor_1.element(protractor_1.by.css("img.submasthead-dvlogo"));
         this.btnLogin = protractor_1.element(protractor_1.by.xpath("//button[contains(text(),'Log In')]"));
         this.btnLoginRem = protractor_1.element(protractor_1.by.xpath("//button[@type='button']"));

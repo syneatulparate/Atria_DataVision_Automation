@@ -9,23 +9,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const protractor_1 = require("protractor");
-const { When, Then } = require("cucumber");
 const chai = require("chai").use(require("chai-as-promised"));
-const expect = chai.expect;
 const enterText = (element, value) => __awaiter(this, void 0, void 0, function* () {
     /**
-    * The command to perform on the browser object (addValue or setValue)
-    * @type {String}
-    */
-    yield protractor_1.browser.manage().timeouts().implicitlyWait(0);
+     * The command to perform on the browser object (addValue or setValue)
+     * @type {String}
+     */
+    yield protractor_1.browser
+        .manage()
+        .timeouts()
+        .implicitlyWait(0);
     yield protractor_1.browser.wait(function () {
         protractor_1.browser.sleep(2000);
-        return element.isDisplayed()
-            .then(function (isDisplayed) {
+        return element.isDisplayed().then(function (isDisplayed) {
             console.log("object displayed --> " + element);
-            var today = new Date();
             return isDisplayed;
-        }, function (error) {
+        }, function () {
             console.log("Object not found --> " + element);
             return false;
         });

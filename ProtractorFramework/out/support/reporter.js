@@ -20,7 +20,8 @@ const cucumberReporterOptions = {
     jsonFile: targetJson,
     output: htmlReports + "/cucumber_reporter.html",
     reportSuiteAsScenarios: true,
-    theme: "bootstrap",
+    theme: "bootstrap"
+    //theme: "hierarchy"
 };
 class Reporter {
     static createDirectory(dir) {

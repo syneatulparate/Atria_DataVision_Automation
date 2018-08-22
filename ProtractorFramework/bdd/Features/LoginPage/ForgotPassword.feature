@@ -97,8 +97,8 @@ Feature: Authentication & Authorization
         When  User enters invalid SecurityAnswer "<SecurityAnswer>" 3 times
         Then  User expect that "<ErrorMsg>" is displayed
         Examples:
-            | username     | email                      | SecurityAnswer    | ErrorMsg                                             |
-            | CLASSICDEV43 | classicdev43@synechron.com | 123456 | Please contact the Help Desk to reset your password. |
+            | username     | email                      | SecurityAnswer | ErrorMsg                                             |
+            | CLASSICDEV43 | classicdev43@synechron.com | 123456         | Please contact the Help Desk to reset your password. |
 
     @AT30_ATH_046_01 @Regression @Sprint1
     Scenario Outline: Error message for incorrect OTP.

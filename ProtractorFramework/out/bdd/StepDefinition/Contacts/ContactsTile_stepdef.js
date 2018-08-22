@@ -24,13 +24,13 @@ When(/^User hovers mouse on comments Icon for "([^"]*)?" on Contacts tile$/, (us
     yield contactsTile.moveToCommentIcon(userName);
 }));
 Then(/^User expect that "([^"]*)?" primary email of the user is displayed on Contacts tile$/, (email) => __awaiter(this, void 0, void 0, function* () {
-    expect(yield contactsTile.verifyPrimaryEmail(email)).to.equal(true, 'Primary Email is not displayed');
+    expect(yield contactsTile.verifyPrimaryEmail(email)).to.equal(true, "Primary Email is not displayed");
 }));
 Then(/^User expect that "([^"]*)?" number of the user is displayed on Contacts tile$/, (phoneNumber) => __awaiter(this, void 0, void 0, function* () {
-    expect(yield contactsTile.verifyPhoneNumber(phoneNumber)).to.equal(true, 'Phone number is not displayed');
+    expect(yield contactsTile.verifyPhoneNumber(phoneNumber)).to.equal(true, "Phone number is not displayed");
 }));
 Then(/^User expect that number of "([^"]*)?" the user is displayed on Contacts tile$/, (comments) => __awaiter(this, void 0, void 0, function* () {
-    expect(yield contactsTile.verifyPhoneNumber(comments)).to.equal(true, 'Phone number is not displayed');
+    expect(yield contactsTile.verifyPhoneNumber(comments)).to.equal(true, "Phone number is not displayed");
 }));
 When(/^User selects "([^"]*)?" from the dropdown on Contacts tile$/, (viewOption) => __awaiter(this, void 0, void 0, function* () {
     yield contactsTile.selectViewCategory(viewOption);
@@ -38,8 +38,7 @@ When(/^User selects "([^"]*)?" from the dropdown on Contacts tile$/, (viewOption
 When(/^User clicks on Go to Contacts link$/, () => __awaiter(this, void 0, void 0, function* () {
     yield contactsTile.clickOnGoToContact();
 }));
-Then(/^User expect "([^"]*)?" contact screen is displayed on Contacts tile$/, (contactScreen) => __awaiter(this, void 0, void 0, function* () {
-}));
+Then(/^User expect "([^"]*)?" contact screen is displayed on Contacts tile$/, (contactScreen) => __awaiter(this, void 0, void 0, function* () { }));
 When(/^User clicks on the expand icon on Contacts tile$/, () => __awaiter(this, void 0, void 0, function* () {
     yield contactsTile.clickOnExpandIconContacts();
 }));

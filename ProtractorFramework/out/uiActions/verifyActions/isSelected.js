@@ -18,12 +18,10 @@ const isSelected = (element, falseCase) => __awaiter(this, void 0, void 0, funct
      */
     const isSelected = yield protractor_1.$(element).isSelected();
     if (falseCase) {
-        expect(isSelected).to.not
-            .equal(true, `Expected element "${element}" not to be Selected`);
+        expect(isSelected).to.not.equal(true, `Expected element "${element}" not to be Selected`);
     }
     else {
-        expect(isSelected).to
-            .equal(true, `Expected element "${element}" to be Selected`);
+        expect(isSelected).to.equal(true, `Expected element "${element}" to be Selected`);
     }
 });
 exports.isSelected = isSelected;

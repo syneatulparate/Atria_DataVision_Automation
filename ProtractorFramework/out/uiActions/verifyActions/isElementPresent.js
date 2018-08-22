@@ -16,7 +16,7 @@ const chai = require("chai").use(require("chai-as-promised"));
 //      */
 //     let isElementPresent = await browser.isElementPresent(element);
 //    // let elementPresent = false;
-//   //  console.log("from true part!!!!!!!!!!!!!!");    
+//   //  console.log("from true part!!!!!!!!!!!!!!");
 //     if (isElementPresent) {
 //         expect(isElementPresent).to.equal(true, `Expected element "${element}" to be visible`);
 //         console.log("from true part");
@@ -29,11 +29,10 @@ const chai = require("chai").use(require("chai-as-promised"));
 //     }
 const isElementPresent = (elem) => __awaiter(this, void 0, void 0, function* () {
     /**
-    * Visible state of the give element
-    * @type {String}
-    */
-    return yield elem.isDisplayed()
-        .then(function (isDisplayed) {
+     * Visible state of the give element
+     * @type {String}
+     */
+    return yield elem.isDisplayed().then(function (isDisplayed) {
         console.log("Elemenet is present on the page");
         return isDisplayed;
     }, function () {

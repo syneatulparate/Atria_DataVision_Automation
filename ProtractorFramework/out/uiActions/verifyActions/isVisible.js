@@ -15,14 +15,12 @@ const isVisible = (element, falseCase) => __awaiter(this, void 0, void 0, functi
      * Visible state of the give element
      * @type {String}
      */
-    const isVisible = yield (element).isDisplayed();
+    const isVisible = yield element.isDisplayed();
     if (falseCase) {
-        expect(isVisible).to.not
-            .equal(true, `Expected element "${element}" not to be visible`);
+        expect(isVisible).to.not.equal(true, `Expected element "${element}" not to be visible`);
     }
     else {
-        expect(isVisible).to
-            .equal(true, `Expected element "${element}" to be visible`);
+        expect(isVisible).to.equal(true, `Expected element "${element}" to be visible`);
     }
 });
 exports.isVisible = isVisible;

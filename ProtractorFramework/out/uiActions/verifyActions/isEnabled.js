@@ -16,14 +16,12 @@ const isEnabled = (element, falseCase) => __awaiter(this, void 0, void 0, functi
      * Visible state of the give element
      * @type {String}
      */
-    const isEnabled = yield (protractor_1.$(element)).isEnabled();
+    const isEnabled = yield protractor_1.$(element).isEnabled();
     if (falseCase) {
-        expect(isEnabled).to.not
-            .equal(true, `Expected element "${element}" not to be Enabled`);
+        expect(isEnabled).to.not.equal(true, `Expected element "${element}" not to be Enabled`);
     }
     else {
-        expect(isEnabled).to
-            .equal(true, `Expected element "${element}" to be Enabled`);
+        expect(isEnabled).to.equal(true, `Expected element "${element}" to be Enabled`);
     }
 });
 exports.isEnabled = isEnabled;

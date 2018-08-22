@@ -22,8 +22,7 @@ let entitlementPage = new EntitlementPage_1.EntitlementPage();
 let loginPage = new LoginPage_1.LoginPage();
 let userSetuppage = new UserSetupPage_1.UserSetupPage();
 When(/^User log in with "([^"]*)?" and "([^"]*)?" and navigates to Dashboard Page$/, (userName, password) => __awaiter(this, void 0, void 0, function* () {
-    return yield loginPage.txtUsername.isDisplayed()
-        .then((isDisplayed) => __awaiter(this, void 0, void 0, function* () {
+    return yield loginPage.txtUsername.isDisplayed().then((isDisplayed) => __awaiter(this, void 0, void 0, function* () {
         yield loginPage.loginToApplication(userName, password);
         yield waitActions_1.waitForObject(loginPage.logoutBtn);
         yield loginPage.verifyLoginPageTitle("Dashboard – dataVISION");

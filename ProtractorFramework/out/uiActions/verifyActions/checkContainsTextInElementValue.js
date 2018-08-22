@@ -13,7 +13,9 @@ const checkContainsTextInElementValue = (element, expectedText) => __awaiter(thi
     var EC = protractor_1.protractor.ExpectedConditions;
     console.log("Inside the check function");
     protractor_1.browser.waitForAngular();
-    var eText = protractor_1.$(element).getText().then(function (code) {
+    var eText = protractor_1.$(element)
+        .getText()
+        .then(function (code) {
         console.log("Value of the text in element = " + code);
     });
     console.log("Text inside the element" + eText);

@@ -2,33 +2,31 @@ import * as path from "path";
 import { browser, Config } from "protractor";
 import { Reporter } from "../support/reporter";
 
-
 const jsonReports = process.cwd() + "/reports/json";
 
-
 export enum Env {
-    QA = "http://172.20.235.129:3000",
-    Dev = "http://172.20.235.113:3000",
-    UAT = "http://www.globalsqa.com/demo-site/draganddrop/",
+  QA = "http://172.20.235.129:3000",
+  Dev = "http://172.20.235.113:3000",
+  UAT = "http://www.way2automation.com/angularjs-protractor/webtables/"
 }
 
 export const config: Config = {
+  seleniumAddress: "http://127.0.0.1:4444/wd/hub",
 
-    seleniumAddress: "http://127.0.0.1:4444/wd/hub",
+  SELENIUM_PROMISE_MANAGER: false,
 
-    SELENIUM_PROMISE_MANAGER: false,
+  baseUrl: Env.UAT,
+  //baseUrl: Env.Dev,
+  workspaceFolderPath: __dirname.replace("config", ""),
 
-    baseUrl: Env.UAT,
-    // baseUrl: Env.Dev,
-
-    capabilities: {
-        browserName: "chrome",
-        //browserName : "MicrosoftEdge",
-        //browserName: "firefox",
-        //   browserName:"internet explore",
-        //browserName:"Safari",
-    },
-    /* multiCapabilities: [
+  capabilities: {
+    browserName: "chrome"
+    //browserName : "MicrosoftEdge",
+    //browserName: "firefox",
+    //browserName:"internet explore",
+    //browserName:"Safari",
+  },
+  /* multiCapabilities: [
  
          {
              browserName : "chrome",  
@@ -38,32 +36,29 @@ export const config: Config = {
  
      ],*/
 
+  framework: "custom",
+  frameworkPath: require.resolve("protractor-cucumber-framework"),
 
+  specs: ["../../bdd/Features/*/*.feature"],
 
-    framework: "custom",
-    frameworkPath: require.resolve("protractor-cucumber-framework"),
+  onPrepare: () => {
+    browser.ignoreSynchronization = true;
+    browser
+      .manage()
+      .window()
+      .maximize();
+    Reporter.createDirectory(jsonReports);
+  },
 
-    specs: [
-        "../../bdd/Features/*/*.feature",
-    ],
+  cucumberOpts: {
+    compiler: "ts:ts-node/register",
+    format: "json:./reports/json/cucumber_report.json",
+    require: ["../../bdd/StepDefinition/*/*.ts", "../../support/*.ts"],
+    strict: true,
+    tags: "@test12"
+  },
 
-    onPrepare: () => {
-        browser.ignoreSynchronization = true;
-        browser.manage().window().maximize();
-        Reporter.createDirectory(jsonReports);
-    },
-
-    cucumberOpts: {
-        compiler: "ts:ts-node/register",
-        format: "json:./reports/json/cucumber_report.json",
-        require: ["../../bdd/StepDefinition/*/*.ts", "../../support/*.ts"],
-        strict: true,
-        tags: "@AT216_Ent_040_01",
-
-    },
-
-
-    onComplete: () => {
-        Reporter.createHTMLReport();
-    },
+  onComplete: () => {
+    Reporter.createHTMLReport();
+  }
 };

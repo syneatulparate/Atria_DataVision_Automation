@@ -18,8 +18,7 @@ class UserSetupPage {
          * To verify User Settings
          */
         this.verifyUserSettings = () => __awaiter(this, void 0, void 0, function* () {
-            return yield isElementPresent_1.isElementPresent(this.userSetupHeading)
-                .then(function (flag) {
+            return yield isElementPresent_1.isElementPresent(this.userSetupHeading).then(function (flag) {
                 console.log("value of the flag = " + flag);
                 return flag;
             });
@@ -34,24 +33,26 @@ class UserSetupPage {
             let linkPresent;
             waitActions_1.staticWait(5000);
             switch (expectedPage) {
-                case 'User Name':
+                case "User Name":
                     console.log("User Name");
                     linkPresent = this.verifyUserSettings();
                     break;
-                case 'Email Address':
+                case "Email Address":
                     console.log("User Name");
                     linkPresent = this.verifyUserSettings();
                     break;
-                case 'Workgroup':
+                case "Workgroup":
                     console.log("User Name");
                     linkPresent = this.verifyUserSettings();
                     break;
-                case 'Module':
+                case "Module":
                     console.log("User Name");
                     linkPresent = this.verifyUserSettings();
                     break;
             }
-            yield linkPresent.then(function (text) { console.log(text); });
+            yield linkPresent.then(function (text) {
+                console.log(text);
+            });
             return linkPresent;
         });
     }

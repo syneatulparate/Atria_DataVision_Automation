@@ -35,15 +35,15 @@ class ContactsTilePage {
             yield moveToElement_1.moveToElement(this.commentIcon);
         });
         /**
-        * To select "Last View" or "Most Viewed" contact from the drop down list
-        */
+         * To select "Last View" or "Most Viewed" contact from the drop down list
+         */
         this.selectViewCategory = (viewOption) => __awaiter(this, void 0, void 0, function* () {
             yield this.contactViewDropDown.isDisplayed().then(() => __awaiter(this, void 0, void 0, function* () {
-                if (yield viewOption.toUpperCase().includes(("Last Viewed").toUpperCase())) {
+                if (yield viewOption.toUpperCase().includes("Last Viewed".toUpperCase())) {
                     yield clickElement_1.clickElement(this.contactViewDropDown);
                     yield clickElement_1.clickElement(this.lastViewed);
                 }
-                else if (yield viewOption.toUpperCase().includes(("Most Viewed").toUpperCase())) {
+                else if (yield viewOption.toUpperCase().includes("Most Viewed".toUpperCase())) {
                     yield clickElement_1.clickElement(this.contactViewDropDown);
                     yield clickElement_1.clickElement(this.mostViewed);
                 }
@@ -54,8 +54,8 @@ class ContactsTilePage {
             }));
         });
         /**
-        * To verify "Last View" screen after clicking on go to comtacts link
-        */
+         * To verify "Last View" screen after clicking on go to comtacts link
+         */
         this.verifyLastViewedScreen = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.recentContactScreen).then(function (flag) {
@@ -64,8 +64,8 @@ class ContactsTilePage {
             });
         });
         /**
-        * To verify "Most Viewed" screen after clicking on go to comtacts link
-        */
+         * To verify "Most Viewed" screen after clicking on go to comtacts link
+         */
         this.verifyMostViewedScreen = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.mostContactScreen).then(function (flag) {
@@ -74,8 +74,8 @@ class ContactsTilePage {
             });
         });
         /**
-        * To verify "Most Viewed" screen after clicking on go to comtacts link
-        */
+         * To verify "Most Viewed" screen after clicking on go to comtacts link
+         */
         this.verifyByInvestmentScreen = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.byInvestmentScreen).then(function (flag) {
@@ -98,8 +98,8 @@ class ContactsTilePage {
             yield clickElement_1.clickElement(this.contractIcon);
         });
         /**
-       * To verify contraction button
-       */
+         * To verify contraction button
+         */
         this.verifyContractionButton = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
             return yield isElementPresent_1.isElementPresent(this.contractIcon).then(function (flag) {
@@ -108,14 +108,17 @@ class ContactsTilePage {
             });
         });
         /**
-            * To tap on Esc button on keyboard
-            */
+         * To tap on Esc button on keyboard
+         */
         this.tapEscButton = () => __awaiter(this, void 0, void 0, function* () {
-            protractor_1.browser.actions().sendKeys(ptor_1.protractor.Key.ESCAPE).perform();
+            protractor_1.browser
+                .actions()
+                .sendKeys(ptor_1.protractor.Key.ESCAPE)
+                .perform();
         });
         /**
-        * To click on the go to contact link for contacts tile
-        */
+         * To click on the go to contact link for contacts tile
+         */
         this.clickOnGoToContact = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.contractIcon);
             yield clickElement_1.clickElement(this.contractIcon);
@@ -178,8 +181,8 @@ class ContactsTilePage {
         });
     }
     /**
-    * Verify Phone number
-    */
+     * Verify Phone number
+     */
     verifyComments(userComments) {
         return __awaiter(this, void 0, void 0, function* () {
             let flag;

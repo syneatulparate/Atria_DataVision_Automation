@@ -14,11 +14,17 @@ const chai = require("chai").use(require("chai-as-promised"));
 const expect = chai.expect;
 const alertAccept = () => __awaiter(this, void 0, void 0, function* () {
     protractor_1.browser.sleep(5000);
-    yield protractor_1.browser.switchTo().alert().accept();
+    yield protractor_1.browser
+        .switchTo()
+        .alert()
+        .accept();
 });
 exports.alertAccept = alertAccept;
 const alertDismiss = () => __awaiter(this, void 0, void 0, function* () {
     protractor_1.browser.sleep(5000);
-    yield protractor_1.browser.switchTo().alert().dismiss();
+    yield protractor_1.browser
+        .switchTo()
+        .alert()
+        .dismiss();
 });
 exports.alertDismiss = alertDismiss;

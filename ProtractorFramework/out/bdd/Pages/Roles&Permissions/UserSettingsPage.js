@@ -18,8 +18,7 @@ class UserSettingsPage {
          * To Verify User settings
          */
         this.verifyUserSettings = () => __awaiter(this, void 0, void 0, function* () {
-            return yield isElementPresent_1.isElementPresent(this.userSettingsHeading)
-                .then(function (flag) {
+            return yield isElementPresent_1.isElementPresent(this.userSettingsHeading).then(function (flag) {
                 return flag;
             });
         });
@@ -27,8 +26,7 @@ class UserSettingsPage {
          * To verify User setup
          */
         this.verifyUserSetup = () => __awaiter(this, void 0, void 0, function* () {
-            return yield isElementPresent_1.isElementPresent(this.userSettingsHeading)
-                .then(function (flag) {
+            return yield isElementPresent_1.isElementPresent(this.userSettingsHeading).then(function (flag) {
                 return flag;
             });
         });
@@ -47,16 +45,18 @@ class UserSettingsPage {
             let linkPresent;
             waitActions_1.staticWait(5000);
             switch (expectedPage) {
-                case 'User Settings':
+                case "User Settings":
                     console.log("User Settings");
                     linkPresent = this.verifyUserSettings();
                     break;
-                case 'User Setup/Information':
+                case "User Setup/Information":
                     console.log("User Setup");
                     linkPresent = this.verifyUserSetup();
                     break;
             }
-            yield linkPresent.then(function (text) { console.log(text); });
+            yield linkPresent.then(function (text) {
+                console.log(text);
+            });
             return linkPresent;
         });
     }

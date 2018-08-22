@@ -41,7 +41,6 @@ class DashBoardPage {
          * To Verify admin link
          */
         this.verifyAdminLink = () => __awaiter(this, void 0, void 0, function* () {
-            let flag;
             return yield isElementPresent_1.isElementPresent(this.adminButton).then(function (flag) {
                 return flag;
             });

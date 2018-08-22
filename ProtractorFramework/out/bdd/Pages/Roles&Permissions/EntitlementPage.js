@@ -42,8 +42,7 @@ class EntitlementPage {
          */
         this.verifyGlobalSearchTexbox = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
-            return yield isElementPresent_1.isElementPresent(this.searchTextGlobal)
-                .then(function (flag) {
+            return yield isElementPresent_1.isElementPresent(this.searchTextGlobal).then(function (flag) {
                 return flag;
             });
         });
@@ -52,21 +51,20 @@ class EntitlementPage {
          */
         this.verifyGlobalSearchBtn = () => __awaiter(this, void 0, void 0, function* () {
             let flag;
-            return yield isElementPresent_1.isElementPresent(this.searchTextGlobal)
-                .then(function (flag) {
+            return yield isElementPresent_1.isElementPresent(this.searchTextGlobal).then(function (flag) {
                 return flag;
             });
         });
         /**
-        * To click on search button
-        */
+         * To click on search button
+         */
         this.clickOnSearchButton = () => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.searchButton);
             yield clickElement_1.clickElement(this.searchButton);
         });
         /**
-        * To enter user name in search text
-        */
+         * To enter user name in search text
+         */
         this.enterUserName = (userName) => __awaiter(this, void 0, void 0, function* () {
             yield setInputField_1.enterText(this.txtSearch, userName);
         });
@@ -78,8 +76,8 @@ class EntitlementPage {
             yield clickElement_1.clickElement(this.addSelectedUserButton);
         });
         /**
-        * To click on remove icon
-        */
+         * To click on remove icon
+         */
         this.clickOnRemoveIcon = () => __awaiter(this, void 0, void 0, function* () {
             yield clickElement_1.clickElement(this.removeIcon);
         });
@@ -131,8 +129,10 @@ class EntitlementPage {
          */
         this.verifyAndClickOnDetails = (role) => __awaiter(this, void 0, void 0, function* () {
             let roleDetailsButton = protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" +
-                role + "']//following::button[1] | //*[contains(text(),'" +
-                role + "')]//following::button[1]"));
+                role +
+                "']//following::button[1] | //*[contains(text(),'" +
+                role +
+                "')]//following::button[1]"));
             yield waitActions_1.waitForObject(roleDetailsButton);
             yield clickElement_1.clickElement(roleDetailsButton);
         });
@@ -141,8 +141,10 @@ class EntitlementPage {
          */
         this.verifyAndClickOnView = (userName) => __awaiter(this, void 0, void 0, function* () {
             let viewButton = protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" +
-                userName + "']//following::button[1] | //*[contains(text(),'" +
-                userName + "')]//following::button[1]"));
+                userName +
+                "']//following::button[1] | //*[contains(text(),'" +
+                userName +
+                "')]//following::button[1]"));
             yield clickElement_1.clickElement(viewButton);
         });
         /**
@@ -155,9 +157,11 @@ class EntitlementPage {
          * To verify no user present
          */
         this.verifyNoUserPresent = (userName) => __awaiter(this, void 0, void 0, function* () {
-            yield isElementPresent_1.isElementPresent((protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" +
-                userName + "']//following::button[1] | //*[contains(text(),'" +
-                userName + "')]//following::button[1]"))));
+            yield isElementPresent_1.isElementPresent(protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" +
+                userName +
+                "']//following::button[1] | //*[contains(text(),'" +
+                userName +
+                "')]//following::button[1]")));
         });
         /**
          * To verify add user button
@@ -170,11 +174,15 @@ class EntitlementPage {
          */
         this.removeUser = (userName) => __awaiter(this, void 0, void 0, function* () {
             let minusButton = protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" +
-                userName + "']//following::button[2] | //*[contains(text(),'" +
-                userName + "')]//following::button[2]"));
+                userName +
+                "']//following::button[2] | //*[contains(text(),'" +
+                userName +
+                "')]//following::button[2]"));
             let removeButton = protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" +
-                userName + "']//following::button[3] | //*[contains(text(),'" +
-                userName + "')]//following::button[3]"));
+                userName +
+                "']//following::button[3] | //*[contains(text(),'" +
+                userName +
+                "')]//following::button[3]"));
             yield clickElement_1.clickElement(minusButton);
             yield waitActions_1.waitForObject(removeButton);
             yield clickElement_1.clickElement(removeButton);
@@ -185,8 +193,10 @@ class EntitlementPage {
          */
         this.clickOnViewButton = (userName) => __awaiter(this, void 0, void 0, function* () {
             yield clickElement_1.clickElement(protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" +
-                userName + "']//following::button[1] | //*[contains(text(),'" +
-                userName + "')]//following::button[1]")));
+                userName +
+                "']//following::button[1] | //*[contains(text(),'" +
+                userName +
+                "')]//following::button[1]")));
         });
         /**
          * To verify user profile table
@@ -194,7 +204,10 @@ class EntitlementPage {
         this.verifyUserProfile = (userName) => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(this.userProfile);
             let useprofilrele = protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" +
-                userName + "'] | //*[contains(text(),'" + userName + "')]"));
+                userName +
+                "'] | //*[contains(text(),'" +
+                userName +
+                "')]"));
             yield this.verifyElement(this.userProfile);
             yield this.verifyElement(useprofilrele);
         });
@@ -276,7 +289,10 @@ class EntitlementPage {
         this.verifyRoleName = () => __awaiter(this, void 0, void 0, function* () {
             let linkPresent;
             let elemRoleName = protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" +
-                this.randonname + "'] | //*[contains(text(),'" + this.randonname + "')]"));
+                this.randonname +
+                "'] | //*[contains(text(),'" +
+                this.randonname +
+                "')]"));
             yield waitActions_1.waitForObject(elemRoleName);
             yield clickElement_1.clickElement(elemRoleName);
             linkPresent = this.verifyElement(elemRoleName);
@@ -288,7 +304,10 @@ class EntitlementPage {
         this.verifyRoleNotPresent = () => __awaiter(this, void 0, void 0, function* () {
             let linkPresent;
             linkPresent = this.verifyElement(protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" +
-                this.randonname + "'] | //*[contains(text(),'" + this.randonname + "')]")));
+                this.randonname +
+                "'] | //*[contains(text(),'" +
+                this.randonname +
+                "')]")));
             return linkPresent;
         });
         /**
@@ -312,8 +331,11 @@ class EntitlementPage {
          * To select permission check box from permission table
          */
         this.SelectCheckBox = (permission) => __awaiter(this, void 0, void 0, function* () {
-            let checkelement = protractor_1.element(protractor_1.by.xpath("//*[text()='" + permission + "']/ancestor::tr[@class='ng-star-inserted']//input | //*[@dv-tooltip='" +
-                permission + "']/ancestor::tr[@class='ng-star-inserted']//input"));
+            let checkelement = protractor_1.element(protractor_1.by.xpath("//*[text()='" +
+                permission +
+                "']/ancestor::tr[@class='ng-star-inserted']//input | //*[@dv-tooltip='" +
+                permission +
+                "']/ancestor::tr[@class='ng-star-inserted']//input"));
             yield waitActions_1.waitForObject(checkelement);
             yield checkBoxActions_1.selectCheckBox(checkelement);
         });
@@ -322,8 +344,10 @@ class EntitlementPage {
          */
         this.deSelectCheckBox = (permission) => __awaiter(this, void 0, void 0, function* () {
             let permissionCheckbox = protractor_1.element(protractor_1.by.xpath("//*[text()='" +
-                permission + "']/ancestor::tr[@class='ng-star-inserted']//input | //*[@dv-tooltip='" +
-                permission + "']/ancestor::tr[@class='ng-star-inserted']//input"));
+                permission +
+                "']/ancestor::tr[@class='ng-star-inserted']//input | //*[@dv-tooltip='" +
+                permission +
+                "']/ancestor::tr[@class='ng-star-inserted']//input"));
             yield waitActions_1.waitForObject(permissionCheckbox);
             yield checkBoxActions_1.deSelectCheckBox(permissionCheckbox);
         });
@@ -331,7 +355,10 @@ class EntitlementPage {
          *To select multiple permissions from permission table
          */
         this.SelectMultipleCheckBox = () => __awaiter(this, void 0, void 0, function* () {
-            protractor_1.element.all(protractor_1.by.css("span input.checkbox")).isSelected().then(function (selected) {
+            protractor_1.element
+                .all(protractor_1.by.css("span input.checkbox"))
+                .isSelected()
+                .then(function (selected) {
                 if (selected) {
                     protractor_1.element(protractor_1.by.css("span input.checkbox")).click();
                 }
@@ -362,9 +389,9 @@ class EntitlementPage {
          */
         this.createRandomName = (length) => __awaiter(this, void 0, void 0, function* () {
             let i;
-            this.randonname = '';
-            let autoname = 'Automation_';
-            let letters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'; //Include numbers if you want
+            this.randonname = "";
+            let autoname = "Automation_";
+            let letters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"; //Include numbers if you want
             for (i = 0; i < length; i++) {
                 this.randonname += letters.charAt(Math.floor(Math.random() * letters.length));
             }
@@ -444,11 +471,15 @@ class EntitlementPage {
          */
         this.verifyPermissionCancel = () => __awaiter(this, void 0, void 0, function* () {
             let i;
-            let elem = protractor_1.element(protractor_1.by.css((".tbl-body.zebrastripe tr"))).count().then(function (rowCount) {
+            let elem = protractor_1.element(protractor_1.by.css(".tbl-body.zebrastripe tr"))
+                .count()
+                .then(function (rowCount) {
                 return rowCount;
             });
             let counteleafter = elem;
-            let elem1 = protractor_1.element(protractor_1.by.css((".tbl-body.zebrastripe tr"))).count().then(function (rowCount) {
+            let elem1 = protractor_1.element(protractor_1.by.css(".tbl-body.zebrastripe tr"))
+                .count()
+                .then(function (rowCount) {
                 return rowCount;
             });
             let countele = elem1;
@@ -474,7 +505,11 @@ class EntitlementPage {
          * To click on details of any role
          */
         this.ClickOnDetails = () => __awaiter(this, void 0, void 0, function* () {
-            let elem1 = protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" + this.randonname + "']//following::button[1] | //*[contains(text(),'" + this.randonname + "')]//following::button[1]"));
+            let elem1 = protractor_1.element(protractor_1.by.xpath("//*[@dv-tooltip='" +
+                this.randonname +
+                "']//following::button[1] | //*[contains(text(),'" +
+                this.randonname +
+                "')]//following::button[1]"));
             yield waitActions_1.waitForObject(elem1);
             yield clickElement_1.clickElement(elem1);
         });
@@ -483,9 +518,10 @@ class EntitlementPage {
          */
         this.multipleSelect = (elem) => __awaiter(this, void 0, void 0, function* () {
             yield waitActions_1.waitForObject(elem);
-            yield protractor_1.element.all(elem).count()
-                .then(function (size) {
-            });
+            yield protractor_1.element
+                .all(elem)
+                .count()
+                .then(function (size) { });
         });
         /**
          * To verify brokers and dealers link
@@ -807,8 +843,9 @@ class EntitlementPage {
          *
          */
         this.afterEnterRole = (role) => __awaiter(this, void 0, void 0, function* () {
-            this.rows1 = protractor_1.element.all(protractor_1.by.xpath("//tbody[@class='tbl-body zebrastripe ng-star-inserted']//tr//span[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') , translate('"
-                + role + "', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]"));
+            this.rows1 = protractor_1.element.all(protractor_1.by.xpath("//tbody[@class='tbl-body zebrastripe ng-star-inserted']//tr//span[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') , translate('" +
+                role +
+                "', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]"));
             this.sum1 = this.rows1.count().then(function (count) {
                 var su = count;
                 return su;
@@ -975,7 +1012,11 @@ class EntitlementPage {
     VerifyPermission(permission) {
         return __awaiter(this, void 0, void 0, function* () {
             let linkPresent;
-            let permissionelement1 = protractor_1.element(protractor_1.by.xpath("//*[text()='" + permission + "'] | //*[@dv-tooltip='" + permission + "']"));
+            let permissionelement1 = protractor_1.element(protractor_1.by.xpath("//*[text()='" +
+                permission +
+                "'] | //*[@dv-tooltip='" +
+                permission +
+                "']"));
             linkPresent = this.verifyElement(permissionelement1);
             return yield linkPresent;
         });
@@ -1001,67 +1042,67 @@ class EntitlementPage {
             let linkPresent;
             waitActions_1.staticWait(5000);
             switch (linkName) {
-                case 'Users':
+                case "Users":
                     linkPresent = this.verifyUsersLink();
                     break;
-                case 'Brokers and Dealers':
+                case "Brokers and Dealers":
                     linkPresent = this.verifyBrokersAndDealerslink();
                     break;
-                case 'Classic Contact Views':
+                case "Classic Contact Views":
                     linkPresent = this.verifyClassicContactViewsLink();
                     break;
-                case 'Classic Users':
+                case "Classic Users":
                     linkPresent = this.verifyClassicUsersLink();
                     break;
-                case 'CMSES':
+                case "CMSES":
                     linkPresent = this.verifyCMSesLink();
                     break;
-                case 'Roles and Permissions':
+                case "Roles and Permissions":
                     linkPresent = this.verifyRolesAndPermissionsLink();
                     break;
-                case 'Send MyDocs Saves':
+                case "Send MyDocs Saves":
                     linkPresent = this.verifySendMyDocsSavesLink();
                     break;
-                case 'Send My Doc Scanners':
+                case "Send My Doc Scanners":
                     linkPresent = this.verifySendMyDocsScannersLink();
                     break;
-                case 'Send My Scans':
+                case "Send My Scans":
                     linkPresent = this.verifySendMyScansLink();
                     break;
-                case 'User Sessions':
+                case "User Sessions":
                     linkPresent = this.verifyUserSessionsLink();
                     break;
-                case 'Manage User':
+                case "Manage User":
                     linkPresent = this.verifyManageUsersLink();
                     break;
-                case 'Active Lockouts':
+                case "Active Lockouts":
                     linkPresent = this.verifyActiveLockoutLink();
                     break;
-                case 'Workgroups':
+                case "Workgroups":
                     linkPresent = this.verifyWorkgroupsLink();
                     break;
-                case 'CFS/SPF Engineering Blog':
+                case "CFS/SPF Engineering Blog":
                     linkPresent = this.verifyCFSSPFEngineeringBlog();
                     break;
-                case 'SendMyDocs':
+                case "SendMyDocs":
                     linkPresent = this.verifySendMyDocsLink();
                     break;
-                case 'User settings':
+                case "User settings":
                     linkPresent = this.verifyUserprofilelink();
                     break;
-                case 'Update Profile':
+                case "Update Profile":
                     linkPresent = this.verifyUpdateProfileBtn();
                     break;
-                case 'Settings':
+                case "Settings":
                     linkPresent = this.verifysettingsLink();
                     break;
-                case 'User Setup':
+                case "User Setup":
                     linkPresent = this.verifyUserSetupLink();
                     break;
-                case 'Commissions Interpreters':
+                case "Commissions Interpreters":
                     linkPresent = this.verifyCommissionsInterpretersLink();
                     break;
-                case 'Set Up Client Scanner':
+                case "Set Up Client Scanner":
                     linkPresent = this.verifySetUpClientScannerlink();
                     break;
             }

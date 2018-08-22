@@ -67,7 +67,7 @@ Feature: Entitlement
             | roleUserName      | role       |
             | Prajyot Fulsundar | Super User |
 
-    @AT81_Ent_018 @Regression @Sprint3 
+    @AT81_Ent_018 @Regression @Sprint3
     Scenario Outline: Verify removing role permanently from the system
         When User delete role permanently
         Then  User expects that the role is deleted and "<message>" is displayed
@@ -75,12 +75,12 @@ Feature: Entitlement
             | message                    |
             | Role deleted successfully. |
 
-    @AT81_Ent_019 @Regression @Sprint3 
+    @AT81_Ent_019 @Regression @Sprint3
     Scenario: Cancel the role removing process
         When  User Cancel the role Deletion
         Then  User expects that the Role details page is displayed
 
-    @AT128_Ent_020 @Regression @Sprint3 
+    @AT128_Ent_020 @Regression @Sprint3
     Scenario Outline: Verifing the user details page
         When  User clicks on details of "<role>" role
         When  User clicks on view button for "<roleUserName>"
@@ -89,7 +89,7 @@ Feature: Entitlement
             | roleUserName | role       |
             | Hardik Kori  | Super User |
 
-    @AT129_Ent_021 @Regression @Sprint3 
+    @AT129_Ent_021 @Regression @Sprint3
     Scenario Outline: Verifing Classic user ownerships section
         When  User clicks on details of "<role>" role
         When  User clicks on view button for "<roleUserName>"
@@ -98,7 +98,7 @@ Feature: Entitlement
             | roleUserName | role       |
             | Hardik Kori  | Super User |
 
-    @AT129_Ent_022 @Regression @Sprint3 
+    @AT129_Ent_022 @Regression @Sprint3
     Scenario Outline: Verifing read scope view
         When  User clicks on details of "<role>" role
         When  User clicks on view button for "<roleUserName>"
@@ -107,7 +107,7 @@ Feature: Entitlement
             | roleUserName | role       |
             | Hardik Kori  | Super User |
 
-    @AT69_Ent_005_01 @SmokeTest @Regression @Sprint3 
+    @AT69_Ent_005_01 @SmokeTest @Regression @Sprint3
     Scenario Outline:Creation of New Roles
         When  User click on newRole button and verifies RoleName field is present
         When  User enters rolename of length "<length>" and click on createRole button
@@ -126,7 +126,7 @@ Feature: Entitlement
             | length |
             | 38     |
 
-    @AT69_Ent_010_02 @Regression @Sprint3 
+    @AT69_Ent_010_02 @Regression @Sprint3
     Scenario Outline:Creation of New Roles length50
         When  User click on newRole button and verifies RoleName field is present
         When  User enters rolename of length "<length>" and click on createRole button
@@ -136,7 +136,7 @@ Feature: Entitlement
             | length |
             | 39     |
 
-    @AT69_Ent_010_03 @Regression @Sprint3 
+    @AT69_Ent_010_03 @Regression @Sprint3
     Scenario Outline: Creation of New Roles length51
         When  User click on newRole button and verifies RoleName field is present
         When  User enters rolename of length "<length>"
@@ -146,7 +146,7 @@ Feature: Entitlement
             | length | WarnMsg                               |
             | 51     | Role name is limited to 50 characters |
 
-    @AT69_Ent_007 @Regression @Sprint3 
+    @AT69_Ent_007 @Regression @Sprint3
     Scenario Outline: Creation and cancel New Roles
         When  User click on newRole button and verifies RoleName field is present
         When  User enters rolename of length "<length>" and click on cancel button
@@ -173,7 +173,7 @@ Feature: Entitlement
             | Rolename      | ErrorMsg                                |
             | DuplicateRole | Cannot create role, name already exists |
 
-    @AT72_Ent_001 @Regression @Sprint3 
+    @AT72_Ent_001 @Regression @Sprint3
     Scenario Outline: verify roles and permission of admin
         #System displays all the users assigned to a role, and permissions a role grants, to the Admin
         When  User clicks on details of "<Rolename>" role
@@ -194,7 +194,7 @@ Feature: Entitlement
             | Rolename   | permission   |
             | Super User | admin_realms |
 
-    @AT72_Ent_003 @Regression @Sprint3 
+    @AT72_Ent_003 @Regression @Sprint3
     Scenario Outline: Edit and verify no new permission added
         #System displays all the users assigned to a role, and permissions a role grants, to the Admin
         When  User clicks on details of "<Rolename>" role
@@ -205,7 +205,7 @@ Feature: Entitlement
             | Rolename   | permission       |
             | Super User | admin_user_roles |
 
-    @AT72_Ent_004 @Regression @Sprint3 
+    @AT72_Ent_004 @Regression @Sprint3
     Scenario Outline: Edit and cancel changes verification
         #System displays all the users assigned to a role, and permissions a role grants, to the Admin
         When  User clicks on details of "<Rolename>" role
@@ -216,7 +216,7 @@ Feature: Entitlement
             | Rolename   | permission       |
             | Super User | admin_user_roles |
 
-    @AT73_Ent_012 @Regression @Sprint3 
+    @AT73_Ent_012 @Regression @Sprint3
     Scenario Outline: Verify adding permissions without selecting new permission
         When  User clicks on details of "<Rolename>" role
         Then  User expects that user role and permission column should display
@@ -226,7 +226,7 @@ Feature: Entitlement
             | Rolename   | permission       |
             | Super User | admin_user_roles |
 
-    @AT73_Ent_013 @Regression @Sprint3 
+    @AT73_Ent_013 @Regression @Sprint3
     Scenario Outline: Verify adding permissions by selecting new permission
         When  User clicks on details of "<Rolename>" role
         Then  User expects that user role and permission column should display
@@ -236,7 +236,7 @@ Feature: Entitlement
             | Rolename   | permission       |
             | Super User | admin_user_roles |
 
-    @AT73_Ent_011 @Regression @Sprint3 
+    @AT73_Ent_011 @Regression @Sprint3
     Scenario Outline: Delete permission
         #Roles & Permission - Deletion of a Permission from a Role
         When  User clicks on details of "<Rolename>" role
@@ -248,7 +248,7 @@ Feature: Entitlement
             | Rolename   | permission   |
             | Super User | admin_realms |
 
-    @AT131_Ent_022 @Regression @Sprint4 
+    @AT131_Ent_022 @Regression @Sprint4
     Scenario Outline:Roles & Permissions - Verifing Roles and Permissions section
         #Roles & Permissions - Verifing Roles and Permissions section
         When  User clicks on details of "<role>" role
@@ -260,7 +260,7 @@ Feature: Entitlement
             | roleUserName | role       |
             | Hardik Kori  | Super User |
 
-    @AT73_Ent_005_01 @Regression @Sprint3 
+    @AT73_Ent_005_01 @Regression @Sprint3
     Scenario Outline:Creation of New Roles
         When  User click on newRole button and verifies RoleName field is present
         When  User enters rolename of length "<length>" and click on createRole button

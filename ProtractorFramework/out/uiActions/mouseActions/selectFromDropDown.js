@@ -23,6 +23,6 @@ const selectFromDropDown = (value, type, element) => __awaiter(this, void 0, voi
     //const method = (action === 'click') ? 'click' : 'doubleClick';
     //checkIfElementExists(elem);
     //await ($(search[element])).click()
-    yield (protractor_1.browser.element.all(protractor_1.by.cssContainingText('option', value)).click());
+    yield protractor_1.browser.element.all(protractor_1.by.cssContainingText("option", value)).click();
 });
 exports.selectFromDropDown = selectFromDropDown;

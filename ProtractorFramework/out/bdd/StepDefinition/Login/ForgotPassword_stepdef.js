@@ -23,7 +23,7 @@ When(/^User enters "([^"]*)?" into the Username field and click on the continue 
 }));
 Then(/^User expect that "([^"]*)?" is displayed$/, (ErrorMsg) => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.staticWait(3000);
-    expect(yield forgotPasswordPage.verifyErrorMessage(ErrorMsg)).to.equal(true, 'error message is not displayed');
+    expect(yield forgotPasswordPage.verifyErrorMessage(ErrorMsg)).to.equal(true, "error message is not displayed");
 }));
 Then(/^User expect that "([^"]*)?" is present$/, (ErrorMsg) => __awaiter(this, void 0, void 0, function* () {
     yield forgotPasswordPage.verifyErrorMessage(ErrorMsg);
@@ -33,7 +33,7 @@ Then(/^User enters "([^"]*)?"$/, (emailAddress) => __awaiter(this, void 0, void 
 }));
 Then(/^User expect that email field is displayed$/, () => __awaiter(this, void 0, void 0, function* () {
     yield waitActions_1.staticWait(3000);
-    expect(yield forgotPasswordPage.verifyEmailField()).to.equal(true, 'email file is not present');
+    expect(yield forgotPasswordPage.verifyEmailField()).to.equal(true, "email file is not present");
 }));
 When(/^User set "([^"]*)?" to the answer field and "([^"]*)?" into email field and clicks on continue button$/, (securityAnswer, emailAddress) => __awaiter(this, void 0, void 0, function* () {
     yield forgotPasswordPage.enterInvalidSecurityAnswer(securityAnswer);
@@ -58,15 +58,13 @@ When(/^User enters a invalid email "([^"]*)?" in email textfield and clicks on c
     yield forgotPasswordPage.clickOnContinue();
 }));
 When(/^User click on the forgot password link and navigates to Forgot password Page$/, () => __awaiter(this, void 0, void 0, function* () {
-    return yield loginPage.txtUsername.isDisplayed()
-        .then((isDisplayed) => __awaiter(this, void 0, void 0, function* () {
+    return yield loginPage.txtUsername.isDisplayed().then((isDisplayed) => __awaiter(this, void 0, void 0, function* () {
         yield loginPage.clickOnForgotPassword();
         yield waitActions_1.staticWait(3000);
         yield loginPage.verifyLoginPageTitle("Log In – dataVISION");
         return true;
     }), (isDisplayed) => __awaiter(this, void 0, void 0, function* () {
-        return yield loginPage.logoutBtn.isDisplayed()
-            .then((isDisplayed) => __awaiter(this, void 0, void 0, function* () {
+        return yield loginPage.logoutBtn.isDisplayed().then((isDisplayed) => __awaiter(this, void 0, void 0, function* () {
             yield loginPage.clickOnLogOut();
             yield waitActions_1.staticWait(3000);
             yield loginPage.verifyLoginPageTitle("Log In – dataVISION");
