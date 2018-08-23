@@ -112,7 +112,7 @@ Feature: Upcoming birthdays
     Scenario: Verify History Events icon in Contacts to review tile
         When  User hovers mouse on history event Icon for user on upcoming birthdays tile
         Then  User expects that history notes popup box is displayed on upcoming birthdays tile
-#test
+
 #    @Regression @Sprint5
 #     Scenario Outline: Verify Expanded view
 #         When User clicks on the expand icon on upcoming bithdays tile
